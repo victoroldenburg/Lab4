@@ -15,8 +15,6 @@ typedef struct List {
 
 int isEmpty(L* head);
 
-int insert(N* list, N* node_to_insert);
+int insert(N* node_head, N* node_to_insert);
 
 int search(L* x, int k);
-
-//Test

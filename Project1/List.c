@@ -38,7 +38,8 @@ int isEmpty(L* head){
 //Insert to list begining
 int insert(N* node_head, N* node_to_insert) {
 
-	createNode(node_to_insert); //We create our node with default structs
+	//We create our node with default structs
+	createNode(node_to_insert); 
 
 	//Run as long we have input values
 	if (node_to_insert != NULL && node_head != NULL) { 
