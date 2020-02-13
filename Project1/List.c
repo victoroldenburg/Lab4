@@ -4,15 +4,14 @@
 
 //Create list
 L* createList() {
-	L* x = (L*)malloc(sizeof(L));
+	L* list = (L*)malloc(sizeof(L));
 
-	if (x != 0){
-		x->list = NULL;
-		x->next = NULL;
-		x->prev = NULL;
-		return x;
+	if (list != 0){
+		list->ListA = NULL;
+		list->ListB = NULL;
+		return list;
 	}
-	exit("Failed: list zero");
+	exit("Failed: no list selected");
 }
 
 //Create Node
@@ -20,7 +19,7 @@ N* createNode(int key) {
 	N* x = (N*)malloc(sizeof(N));
 
 	if (x != 0) {
-		x->key = key;
+		x->data = key;
 		x->next = NULL;
 		x->prev = NULL;
 		return x;
@@ -30,21 +29,35 @@ N* createNode(int key) {
 
 //Check if empty
 int isEmpty(L* head){
-	if (head == 0);
+	//If the head is empty the list is empty.
+	if (head == NULL); 
 		return true; 
 	return false;
 }
 
-//Insert to list
-int insert(N* list, N* node_to_insert) {
-	node_to_insert->next = list;
+//Insert to list begining
+int insert(N* node_head, N* node_to_insert) {
 
-	if (list != NULL) {
-		list->prev = node_to_insert;
+	createNode(node_to_insert); //We create our node with default structs
+
+	//Run as long we have input values
+	if (node_to_insert != NULL && node_head != NULL) { 
+		//x.next<-L.head Our node to insert's next pointer, points to the first object in the list.
+		node_to_insert->next = node_head; 
+
+		//As long as the node head is not empty we continue
+		if (node_head != NULL) { 
+			//Our new node is pointed to the head's prevoius 
+			node_head->prev = node_to_insert; 
+		}
+		//Our new node become our new head
+		node_head = node_to_insert;
+		//Set our new head previus to NULL
+		node_to_insert->prev = NULL;
+		//Our code was successfull
+		return true;
 	}
-	list = node_to_insert;
-	node_to_insert->prev = NULL;
-	return true;
+	return ("No input values");
 }
 
 //Search List

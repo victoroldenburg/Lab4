@@ -1,16 +1,16 @@
 #pragma once
 
 typedef struct Node {
-	int key; //int to key
-	struct N*next; //Pointer to next node, next = 0 -> tail
-	struct N*prev; //Pointer to prev node , prev = 0 -> head
+	int data; //int to key
+	struct N* next; //Pointer to next node, next = 0 -> tail
+	struct N* prev; //Pointer to prev node , prev = 0 -> head
+	struct N* head;
 
 } N;
 
 typedef struct List {
-	struct L* list; //Pointer to the first entity in list
-	struct L* next; //Nex data in list
-	struct L* prev; //Prev data in list
+	struct L* ListA; //The first List
+	struct L* ListB; //The second List
 } L;
 
 int isEmpty(L* head);
