@@ -22,7 +22,6 @@ int main() {
 		key++;
 	}
 
-	//Testing a value missing from the list. Should return NULL.
 	key = 5;
 
 	//Call Search key in list
