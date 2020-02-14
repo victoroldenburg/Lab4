@@ -67,7 +67,7 @@ N* search(L* list, int key) {
 	//Defining a temp varible
 	N* temp = list->head;
 	//Itterate when key is not empty and temp is not the key
-	while (temp->data != key && temp != NULL) {
+	while (temp != NULL && temp->data != key) {
 		//Assign Next pointer of node to temp
 		temp = temp->next;
 	}

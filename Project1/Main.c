@@ -18,15 +18,24 @@ int main() {
 		//Print true/false from insert
 		printf("%d", testInsert);
 
-		//Call Search key in list
-		N* foundNode = search(list, key);
-
-		//Print data from search
-		printf("%d", foundNode->data);
-
 		//Itterate key for testing for node with next key
 		key++;
 	}
+
+	key = 5;
+
+	//Call Search key in list
+	N* foundNode = search(list, key);
+
+	//Print data from search
+	if (foundNode != NULL) {
+		printf("%d", foundNode->data);
+	}
+	else {
+		printf("%p", foundNode);
+	}
+
+
 	return 0;
 }
 	
