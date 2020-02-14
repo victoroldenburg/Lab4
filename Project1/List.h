@@ -1,20 +1,22 @@
 #pragma once
+#include <stdbool.h>
 
 typedef struct Node {
 	int data; //int to key
-	struct N* next; //Pointer to next node, next = 0 -> tail
-	struct N* prev; //Pointer to prev node , prev = 0 -> head
-	struct N* head;
-
+	struct Node* next; //Pointer to next node, next = 0 -> tail
+	struct Node* prev; //Pointer to prev node , prev = 0 -> head
 } N;
 
 typedef struct List {
-	struct L* ListA; //The first List
-	struct L* ListB; //The second List
+	struct Node* head; //List head
 } L;
+
+L* createList();
+
+N* createNode(int key);
 
 int isEmpty(L* head);
 
-int insert(N* node_head, N* node_to_insert);
+bool insert(L* list, N* newNode);
 
-int search(L* x, int k);
+N* search(L* list, int key);
