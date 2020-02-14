@@ -62,12 +62,16 @@ int insert(N* node_head, N* node_to_insert) {
 }
 
 //Search List
-int search(L* x, int k) {			
-	L* listHead = x;
-	N*key = k;							
-
-	while (x != NULL && x != k) {
-		N*next = x;
+int search(N* list, int key) {	
+	//Defining a temp varible
+	N* temp = list;
+	//Assign list head to temp
+	list->head = temp; 
+	//Itterate when key is not empty and temp is not the key
+	while (key != NULL && temp != key) {
+		//Assign Next pointer of node to temp
+		N*next = temp;
 	}
-	return x;
+	//Return what you found
+	return temp;
 }
