@@ -6,8 +6,10 @@
 
 //Create list
 L* createList() {
+	//Allocate memory for new list
 	L* list = (L*)malloc(sizeof(L));
 
+	//Make sure head of list is NULL before starting any operations
 	if (list != NULL){
 		list->head = NULL;
 		return list;
@@ -17,8 +19,10 @@ L* createList() {
 
 //Create Node
 N* createNode(int key) {
+	//Allocate memory for newNode
 	N* x = (N*)malloc(sizeof(N));
 
+	//Make sure all values for a new node is set
 	if (x != NULL) {
 		x->data = key;
 		x->next = NULL;
@@ -37,22 +41,25 @@ int isEmpty(L* head){
 }
 
 //Insert to list begining
-bool insert(L* list, N* newNode) {
-	if (list == NULL || newNode == NULL) {
-		if (isEmpty) {
-			list->head = newNode;
-			newNode->prev = NULL;
-			newNode->next = NULL;
-			return true;
+bool insert(L* list, N* newNode){
+	//Define next pointer of new node to head pointer
+	newNode->next = list->head;
+	//List head not NULL means we already have head
+		if (list->head != NULL){
+			//Overwrite head prev with new node
+			list->head->prev = newNode;
 		}
-	else 
-		newNode->next = list->head;
-		list->head->prev = newNode;
-		list->head = newNode;
-		newNode->prev = NULL;
+	//Replace head with new node.
+	list->head = newNode;
+	//Should not point back.
+	newNode->prev = NULL; 
+
+	//Check for success
+	if (list->head == newNode) {
 		return true;
+	}else{
+		return false;
 	}
-	return false;
 }
 
 //Search List
