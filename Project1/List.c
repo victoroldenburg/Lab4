@@ -74,3 +74,16 @@ N* search(L* list, int key) {
 	//Return what you found
 	return temp;
 }
+
+
+void printlist(N* print)
+{
+	N* temp = print;
+	while (temp != NULL)
+	{
+		printf("%d ", temp->data);
+		temp = temp->next;
+	}
+}
+
+
