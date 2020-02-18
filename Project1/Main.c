@@ -86,6 +86,13 @@ int main() {
 	{
 		N* deletedNode = deleteNode(list, foundNode);
 	}
+	//Print data deleted
+	if (foundNode != NULL) {
+		printf("This is the value I deleted: %d\n", foundNode->data);
+	}
+	else {
+		printf("Delete returned NULL %p", foundNode);
+	}
 	
 
 	//Prints list with deleted element
