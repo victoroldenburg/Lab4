@@ -74,3 +74,92 @@ N* search(L* list, int key) {
 	//Return what you found
 	return temp;
 }
+
+
+void printlist(N* print)
+{
+	N* temp = print;
+	while (temp != NULL)
+	{
+		printf("%d ", temp->data);
+		temp = temp->next;
+	}
+	printf("\n");
+}
+
+
+N* deleteNode(L* list, N* node)
+{
+	if (node->prev != NULL)
+	{
+		node->prev->next = node->next;
+	}
+	else
+	{
+		list->head = node->next;
+	}
+	
+	if (node->next != NULL) {
+		node->next->prev = node->prev;
+	}
+		
+
+	return node;
+		free(node);
+}
+
+N* maximum(L* list)
+{
+	//Defining a temp varible
+	N* temp = list->head;
+	N* prtMaxValue = NULL;
+
+
+	//Sets maxvalue to the first nodes data
+	int currentmaxvalue = list->head->data;
+
+	do
+	{
+		//Checks if new temp data value is lager then previous
+		if (currentmaxvalue<temp->data)
+		{
+			currentmaxvalue = temp->data;
+			prtMaxValue = temp;
+
+		}
+	
+	//Assign Next pointer of node to temp
+	temp = temp->next;
+	} while (temp != NULL); 
+		
+		
+	return prtMaxValue;
+}
+
+N* minimum(L* list)
+{
+	//Defining a temp varible
+	N* temp = list->head;
+	N* prtMinValue = NULL;
+
+
+	//Sets maxvalue to the first nodes data
+	int currentminvalue = list->head->data;
+
+	do
+	{
+		//Checks if new temp data value is lager then previous
+		if (currentminvalue > temp->data)
+		{
+			currentminvalue = temp->data;
+			prtMinValue = temp;
+
+		}
+
+		//Assign Next pointer of node to temp
+		temp = temp->next;
+	} while (temp != NULL);
+
+
+	return prtMinValue;
+}
