@@ -56,7 +56,7 @@ int main() {
 
 	
 	
-		//Prints the first list in order
+	//Prints the first list in order
 	printf("List1: ");
 	N* listprint = list->head;
 	printlist(listprint);
@@ -68,18 +68,41 @@ int main() {
 
 
 	//Call Search key in list
+
+	key = 8;
 	N* foundNode = search(list, key);
 
 	//Print data from search
 	if (foundNode != NULL) {
-		printf("%d", foundNode->data);
+		printf("This is the value I found: %d\n", foundNode->data);
 	}
 	else {
-		printf("%p", foundNode);
+		printf("Search returned NULL %p", foundNode);
 	}
 
+	
+	//Delete node found in search
+	if (foundNode != NULL)
+	{
+		N* deletedNode = deleteNode(list, foundNode);
+	}
+	
+
+	//Prints list with deleted element
+	printf("List_with_delete: ");
+	listprint = list->head;
+	printlist(listprint);
+
+
+	//Return the pointer with maximum key value
+	N* maximumKey = maximum(list);
+
+	//Return pointer with minimum value
+	N* minimumKey = minimum(list);
 
 	return 0;
+
+
 }
 	
 

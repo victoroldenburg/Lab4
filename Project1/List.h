@@ -22,3 +22,9 @@ bool insert(L* list, N* newNode);
 N* search(L* list, int key);
 
 void printlist(N* print);
+
+N* deleteNode(L* list, N* node);
+
+N* maximum(L* list);
+
+N* minimum(L* list);
