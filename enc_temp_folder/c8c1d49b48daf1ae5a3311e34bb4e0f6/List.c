@@ -147,11 +147,10 @@ N* succ(L* list, N* node) {
 	int succValue = INT_MAX;
 	int key = node->data;
 
-	while (temp != NULL) {
+	while (temp != NULL && succValue < INT_MAX) {
 		if (temp->data > key && temp->data < succValue) {
 			succValue = temp->data;
 			succPtr = temp;
-			return succPtr;
 			}
 			temp = temp->next;
 		}

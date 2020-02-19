@@ -90,7 +90,7 @@ int main() {
 	N* minimumKey = minimum(list);
 
 	//Return successor key
-	N* sucessorKey = succ(foundNode);
+	N* sucessorKey = succ(list, foundNode);
 
 	//Print data 
 	if (sucessorKey != NULL) {
