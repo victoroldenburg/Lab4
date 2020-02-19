@@ -29,6 +29,8 @@ N* maximum(L* list);
 
 N* minimum(L* list);
 
+L* sortList(L* list);
+
 N* succ(N* node);
 
 N* pred(N* node);

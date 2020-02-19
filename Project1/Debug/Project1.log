@@ -1,4 +1,6 @@
 ﻿  List.c
+C:\Users\oskar\OneDrive\Skrivbord\Oskar's project\Project1\List.c(144,27): warning C4028: formal parameter 1 different from declaration
+C:\Users\oskar\OneDrive\Skrivbord\Oskar's project\Project1\List.c(144,27): warning C4029: declared formal parameter list different from definition
   Main.c
   Compiling...
   Generating Code...

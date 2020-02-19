@@ -141,9 +141,21 @@ N* minimum(L* list){
 	return prtMinValue;
 }
 
-N* succ(N* node) {
-	N* successor = node->next;
-	return successor;
+N* succ(L* list, N* node) {
+	N* temp = list->head;
+	N* succPtr = NULL;
+	int succValue = INT_MAX;
+	int key = node->data;
+
+	while (temp != NULL) {
+
+		if (temp->data > key && temp->data < succValue) {
+			succValue = temp->data;
+			succPtr = temp;
+			}
+			temp = temp->next;
+		}
+	return NULL;
 }
 
 N* pred(N* node) {
