@@ -28,3 +28,7 @@ N* deleteNode(L* list, N* node);
 N* maximum(L* list);
 
 N* minimum(L* list);
+
+N* succ(N* node);
+
+N* pred(N* node);

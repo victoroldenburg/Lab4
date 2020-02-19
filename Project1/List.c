@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 //Create list
-L* createList() {
+L* createList(){
 	//Allocate memory for new list
 	L* list = (L*)malloc(sizeof(L));
 
@@ -18,12 +18,12 @@ L* createList() {
 }
 
 //Create Node
-N* createNode(int key) {
+N* createNode(int key){
 	//Allocate memory for newNode
 	N* x = (N*)malloc(sizeof(N));
 
 	//Make sure all values for a new node is set
-	if (x != NULL) {
+	if (x != NULL){
 		x->data = key;
 		x->next = NULL;
 		x->prev = NULL;
@@ -55,7 +55,7 @@ bool insert(L* list, N* newNode){
 	newNode->prev = NULL; 
 
 	//Check for success
-	if (list->head == newNode) {
+	if (list->head == newNode){
 		return true;
 	}else{
 		return false;
@@ -75,91 +75,78 @@ N* search(L* list, int key) {
 	return temp;
 }
 
-
-void printlist(N* print)
-{
+void printlist(N* print){
 	N* temp = print;
-	while (temp != NULL)
-	{
+	while (temp != NULL){
 		printf("%d ", temp->data);
 		temp = temp->next;
 	}
 	printf("\n");
 }
 
-
-N* deleteNode(L* list, N* node)
-{
-	if (node->prev != NULL)
-	{
+N* deleteNode(L* list, N* node){
+	if (node->prev != NULL){
 		node->prev->next = node->next;
 	}
-	else
-	{
+	else{
 		list->head = node->next;
 	}
 	
 	if (node->next != NULL) {
 		node->next->prev = node->prev;
 	}
-		
-
 	return node;
 		free(node);
 }
 
-N* maximum(L* list)
-{
+N* maximum(L* list){
 	//Defining a temp varible
 	N* temp = list->head;
 	N* prtMaxValue = NULL;
 
-
 	//Sets maxvalue to the first nodes data
 	int currentmaxvalue = list->head->data;
 
-	do
-	{
+	do{
 		//Checks if new temp data value is lager then previous
-		if (currentmaxvalue<temp->data)
-		{
+		if (currentmaxvalue<temp->data){
 			currentmaxvalue = temp->data;
 			prtMaxValue = temp;
-
 		}
 	
 	//Assign Next pointer of node to temp
 	temp = temp->next;
 	} while (temp != NULL); 
-		
-		
 	return prtMaxValue;
 }
 
-N* minimum(L* list)
-{
+N* minimum(L* list){
 	//Defining a temp varible
 	N* temp = list->head;
 	N* prtMinValue = NULL;
 
-
 	//Sets maxvalue to the first nodes data
 	int currentminvalue = list->head->data;
 
-	do
-	{
+	do{
 		//Checks if new temp data value is lager then previous
-		if (currentminvalue > temp->data)
-		{
+		if (currentminvalue > temp->data){
 			currentminvalue = temp->data;
 			prtMinValue = temp;
-
 		}
 
 		//Assign Next pointer of node to temp
 		temp = temp->next;
-	} while (temp != NULL);
-
-
+	}while (temp != NULL);
 	return prtMinValue;
+}
+
+N* succ(N* node) {
+	N* successor = node->next;
+	return successor;
+}
+
+N* pred(N* node) {
+	N* predeccessor = node->prev;
+	return predeccessor;
 }
