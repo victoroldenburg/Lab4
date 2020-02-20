@@ -5,9 +5,10 @@
 int main() {
 	int key = 0;
 	int size = 0;
-
+//Doubly Linked List
 	L* list1 = createList();
 	L* list2 = createList();
+//Stacks and queues
 	L* stackList = createList();
 	L* queueList = createList();
 

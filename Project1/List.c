@@ -192,6 +192,7 @@ int printPSK(N* key, N* succ, N* pred) {
 	return true;
 }
 
+//###############################################STACK&QUEUE####################################################################
 void pushStack(L* stacklist, int dataValue)
 {
 	bool insertNode = insert(stacklist, createNode(dataValue));

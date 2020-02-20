@@ -35,6 +35,7 @@ N* predecessor(L* list, N* node);
 
 int printPSK(N* key, N* succ, N* pred);
 
+//###############################################STACK&QUEUE####################################################################
 void pushStack(L* stacklist, int dataValue);
 
 void popStack(L* stacklist);
