@@ -6,117 +6,88 @@ int main() {
 	int key = 0;
 	int size = 0;
 
-	//Create first list
-	L* list = createList();
+	L* list1 = createList();
 	L* list2 = createList();
 
-	int input1[] = { 3, 1, 5, 10, 8, 7, 9, 12};
-	int input2[] = { 5, 2, 9, 6, 1, 11, 7, 15};
+	int input1[] = { 3, 1, 5, 10, 8, 7};
+	int input2[] = { 5, 2, 9, 6, 1, 2};
 
-	//Create first list in order of array
+	N* listprint = NULL;
+	N* foundNode = NULL;
+	N* deletedNode = NULL;
+	N* nodeofKey = NULL;
+	N* successorNode = NULL;
+	N* predecessorNode = NULL;
+
+//Create first list 
 	size = sizeof(input1) / sizeof(input1[0]);
-
-	printf("List 1 created: ");
 	for (int i = size - 1; i >= 0; i--) {
 		//Runs the insert funtion and return true/false 
-		bool insertNode = insert(list, createNode(input1[i]));
+		bool insertNode = insert(list1, createNode(input1[i]));
+	}
 
-		//Print true/false
-		if (insertNode != false) {
-			printf("Node %d true. ", input1[i]);
-		}
-		else {
-			printf("Node %d false. ", input1[i]);
-		}
-	}printf("\n");
-
-	//Create second list reverse array
+//Create second list 
 	size = sizeof(input2) / sizeof(input2[0]);
-
-	printf("List 2 created: ");
-	for (int i = 0; i < size; i++) {
+	for (int i = size - 1; i >= 0; i--) {
 		//Runs the insert funtion and return true/false 
 		bool insertNode = insert(list2, createNode(input2[i]));
+	}
 
-		//Print true/false
-		if (insertNode != false) {
-			printf("Node %d true. ", input2[i]);
-		}
-		else {
-			printf("Node %d false. ", input2[i]);
-		}
-	}printf("\n");
+/**Function calls**/
+//Call Search key in list
+	foundNode = search(list1, key);
+	
+//Delete node found in search
+	deletedNode = deleteNode(list1, foundNode);
 
-	//Prints the first list in order
+/* Print Messages */
+//Printing key
+	int printKey = printf("The key is %d \n", key);
+
+//Prints the first list in order
 	printf("List1: ");
-	N* listprint = list->head;
+	listprint = list1->head;
 	printlist(listprint);
 
-	//Prints list2 in order
+//Prints list2 in order
 	printf("List2: ");
 	listprint = list2->head;
 	printlist(listprint);
+	printKey;
 
-	//Call Search key in list
-	printf("The key is: %d \n", key);
-	N* foundNode = search(list, key);
+//Return max/min value for L1 and L2
+	N* maximumNode1 = maximum(list1);
+	N* minimumNode1 = minimum(list1);
+	N* maximumNode2 = maximum(list2);
+	N* minimumNode2 = minimum(list2);
+//Print Maximum and minimum of each list.
+	printf("The maximum of List 1 is %d\n", maximumNode1->data);
+	printf("The minimum of List 1 is %d\n", minimumNode1->data);
+	printf("The maximum of List 2 is %d\n", maximumNode2->data);
+	printf("The minimum of List 2 is %d\n", minimumNode2->data);
 
-	//Print data from search
-	if (foundNode != NULL) {
-		printf("I found: %d\n", foundNode->data);
-	}
-	else {
-		printf("Search returned NULL! \n");
-	}
+//Return succ and pred of key
+//List 1
+	key = 5;
+	nodeofKey = search(list1, key);
+	successorNode = successor(list1, nodeofKey);
+	predecessorNode = predecessor(list1, nodeofKey);
+//Print Successor and predecessor of 5 in List 1.
+	int PSK = printPSK(nodeofKey, successorNode, predecessorNode);
+//List 2
+	key = 9;
+	nodeofKey = search(list2, key);
+	successorNode = successor(list2, nodeofKey);
+	predecessorNode = predecessor(list2, nodeofKey);
+//Print Successor and predecessor of 5 in List 1.
+	PSK = printPSK(nodeofKey, successorNode, predecessorNode);
 	
-	//Delete node found in search
-	if (foundNode != NULL){
-		N* deletedNode = deleteNode(list, foundNode);
-	}
-	//Print data deleted
-	if (foundNode != NULL) {
-		printf("This is the value I deleted: %d\n", foundNode->data);
-	}
-	else {
-		printf("Delete returned NULL \n");
-	}
-
-	//Prints list with deleted element
-	printf("List_with_delete: ");
-	listprint = list->head;
-	printlist(listprint);
-
-	//Return the pointer with maximum key value
-	N* maximumNode = maximum(list);
-		printf("This is the maximum in List1: %d\n", maximumNode->data);
-
-	//Return pointer with minimum value
-	N* minimumNode = minimum(list);
-		printf("This is the minimum in List1: %d\n", minimumNode->data);
-
-	//Return successor key
-	N* sucessorNode = succ(list, foundNode);
-
-	//Print data 
-	if (sucessorNode != NULL && foundNode != NULL) {
-		printf("The successor of %d is %d.\n", foundNode->data, sucessorNode->data);
-	}
-	else {
-		printf("The successor is NULL.\n");
-	}
-
-	//Return predecessor of key value
-	N* predecessorNode = pred(list, foundNode);
-
-	//Print data 
-	if (predecessorNode != NULL && foundNode != NULL) {
-		printf("The predecessor of %d is %d.\n", foundNode->data, predecessorNode->data);
-	}
-	else {
-		printf("The predecessor is NULL.\n");
-	}
+//Print: The key of the predecessor in List 2 of the maximum of List 1
+	N* predL2maxL1 = predecessor(list2, maximum(list1));
+	printf("The key of the predecessor in List 2 of the maximum of List 1 is %d\n", predL2maxL1->data);
+//Print: The key of the predecessor in List 1 of the maximum of List 2
+	N* predL1maxL2 = predecessor(list1, maximum(list2));
+	printf("The key of the predecessor in List 1 of the maximum of List 2 is %d\n", predL1maxL2->data);
 
 	return 0;
 }
-	
-

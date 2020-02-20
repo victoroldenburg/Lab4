@@ -33,10 +33,10 @@ N* createNode(int key){
 }
 
 //Check if empty
-int isEmpty(L* head){
+bool isEmpty(L* list){
 	//If the head is empty the list is empty.
-	if (head->head == NULL); 
-		return true; 
+	if (list->head == NULL);
+		return true;
 	return false;
 }
 
@@ -75,6 +75,7 @@ N* search(L* list, int key) {
 	return temp;
 }
 
+//Prints the whole list
 void printlist(N* print){
 	N* temp = print;
 	while (temp != NULL){
@@ -85,18 +86,20 @@ void printlist(N* print){
 }
 
 N* deleteNode(L* list, N* node){
-	if (node->prev != NULL){
-		node->prev->next = node->next;
-	}
-	else{
-		list->head = node->next;
-	}
-	
-	if (node->next != NULL) {
-		node->next->prev = node->prev;
-	}
-	return node;
+	if (node != NULL) {
+		if (node->prev != NULL) {
+			node->prev->next = node->next;
+		}else{
+			list->head = node->next;
+		}
+
+		if (node->next != NULL) {
+			node->next->prev = node->prev;
+		}
+		return node;
 		free(node);
+	}
+	return NULL;
 }
 
 N* maximum(L* list){
@@ -141,7 +144,7 @@ N* minimum(L* list){
 	return prtMinValue;
 }
 
-N* succ(L* list, N* node) {
+N* successor(L* list, N* node) {
 	N* temp = list->head;
 	N* succPtr = maximum(list);
 
@@ -158,7 +161,7 @@ N* succ(L* list, N* node) {
 	return succPtr;
 }
 
-N* pred(L* list, N* node) {
+N* predecessor(L* list, N* node) {
 	N* temp = list->head;
 	N* predPtr = minimum(list);
 
@@ -173,4 +176,18 @@ N* pred(L* list, N* node) {
 		temp = temp->next;
 	}
 	return predPtr;
+}
+
+int printPSK(N* key, N* succ, N* pred) {
+	if (succ != NULL && pred != NULL) {
+		printf("The key %d has the predecessor %d and successor %d.", key->data, pred->data, succ->data);
+	}
+	else if (succ != NULL) {
+		printf("The key %d has no predecessor and successor %d.", key->data, succ->data);
+	}
+	else {
+		printf("The key %d has the predecessor %d, but no successor.", key->data, pred->data);
+	}
+	printf("\n");
+	return true;
 }

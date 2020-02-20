@@ -15,13 +15,13 @@ L* createList();
 
 N* createNode(int key);
 
-int isEmpty(L* head);
+bool isEmpty(L* head);
 
 bool insert(L* list, N* newNode);
 
-N* search(L* list, int key);
-
 void printlist(N* print);
+
+N* search(L* list, int key);
 
 N* deleteNode(L* list, N* node);
 
@@ -29,6 +29,8 @@ N* maximum(L* list);
 
 N* minimum(L* list);
 
-N* succ(L* list, N* node);
+N* successor(L* list, N* node);
 
-N* pred(L* list, N* node);
+N* predecessor(L* list, N* node);
+
+int printPSK(N* key, N* succ, N* pred);
