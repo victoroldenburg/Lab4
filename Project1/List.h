@@ -34,3 +34,13 @@ N* successor(L* list, N* node);
 N* predecessor(L* list, N* node);
 
 int printPSK(N* key, N* succ, N* pred);
+
+void pushStack(L* stacklist, int dataValue);
+
+void popStack(L* stacklist);
+
+void pushQueue(L* queueList, int dataValue);
+
+void popQueue(L* queueList);
+
+bool insertLast(L* list, int dataValue);

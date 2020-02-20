@@ -8,6 +8,8 @@ int main() {
 
 	L* list1 = createList();
 	L* list2 = createList();
+	L* stackList = createList();
+	L* queueList = createList();
 
 	int input1[] = { 3, 1, 5, 10, 8, 7};
 	int input2[] = { 5, 2, 9, 6, 1, 2};
@@ -88,6 +90,42 @@ int main() {
 //Print: The key of the predecessor in List 1 of the maximum of List 2
 	N* predL1maxL2 = predecessor(list1, maximum(list2));
 	printf("The key of the predecessor in List 1 of the maximum of List 2 is %d\n", predL1maxL2->data);
+
+//###############################################STACK&QUEUE####################################################################
+//Push and pop stack & prints
+	printf("\n\n\n");
+	pushStack(stackList, 1);
+	pushStack(stackList, 9);
+	pushStack(stackList, 8);
+	pushStack(stackList, 7);
+	pushStack(stackList, 0);
+	pushStack(stackList, 2);
+	pushStack(stackList, 2);
+	pushStack(stackList, 0);
+	printf("The stack contains ");
+	printlist(stackList->head);
+
+	popStack(stackList);
+	popStack(stackList);
+	printf("After pop ");
+	printlist(stackList->head);
+	printf("\n\n");
+
+//Push and pops Queue & prints
+	pushQueue(queueList, 1);
+	pushQueue(queueList, 9);
+	pushQueue(queueList, 8);
+	pushQueue(queueList, 7);
+	pushQueue(queueList, 0);
+	pushQueue(queueList, 2);
+	pushQueue(queueList, 2);
+	pushQueue(queueList, 0);
+	printf("The queue contains ");
+	printlist(queueList->head);
+
+	popQueue(queueList);
+	printf("After pop ");
+	printlist(queueList->head);
 
 	return 0;
 }

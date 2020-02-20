@@ -191,3 +191,49 @@ int printPSK(N* key, N* succ, N* pred) {
 	printf("\n");
 	return true;
 }
+
+void pushStack(L* stacklist, int dataValue)
+{
+	bool insertNode = insert(stacklist, createNode(dataValue));
+}
+
+void popStack(L* stacklist)
+{
+	deleteNode(stacklist, stacklist->head);
+}
+
+void pushQueue(L* queueList, int dataValue)
+{
+	insertLast(queueList, dataValue);
+}
+
+void popQueue(L* queueList)
+{
+	deleteNode(queueList, queueList->head);
+}
+
+bool insertLast(L* list, int dataValue)
+{
+	N* newNode = createNode(dataValue);
+
+	if (list->head == NULL)
+	{
+		list->head = newNode;
+		return true;
+	}
+	N* temp = list->head;
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	if (newNode != NULL)
+	{
+		temp->next = newNode;
+		newNode->prev = temp;
+
+		return true;
+	}
+	return false;
+}
