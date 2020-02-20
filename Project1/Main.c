@@ -3,43 +3,49 @@
 #include <stdio.h>
 
 int main() {
-	int key = 5;
+	int key = 0;
+	int size = 0;
 
 	//Create first list
 	L* list = createList();
 	L* list2 = createList();
 
-	int input1[] = {3, 1, 5, 10, 8, 7};
-	int input2[] = {5, 2, 9, 6, 1, 2};
+	int input1[] = { 3, 1, 5, 10, 8, 7, 9, 12};
+	int input2[] = { 5, 2, 9, 6, 1, 11, 7, 15};
 
-	//Create first list
-	while (key >= 0) {
-		//We create our node with default structs
-		int inputValue = input1[key];
+	//Create first list in order of array
+	size = sizeof(input1) / sizeof(input1[0]);
 
-		N* newNode = createNode(inputValue);
-
+	printf("List 1 created: ");
+	for (int i = size - 1; i >= 0; i--) {
 		//Runs the insert funtion and return true/false 
-		bool testInsert = insert(list, newNode);
+		bool insertNode = insert(list, createNode(input1[i]));
 
-		//Itterate key for testing for node with next key
-		key--;
-	}
-	
-	//Create second list
-	key = 5;
-	while (key >= 0) {
-		//We create our node with default structs
-		int inputValue = input2[key];
+		//Print true/false
+		if (insertNode != false) {
+			printf("Node %d true. ", input1[i]);
+		}
+		else {
+			printf("Node %d false. ", input1[i]);
+		}
+	}printf("\n");
 
-		N* newNode = createNode(inputValue);
+	//Create second list reverse array
+	size = sizeof(input2) / sizeof(input2[0]);
 
+	printf("List 2 created: ");
+	for (int i = 0; i < size; i++) {
 		//Runs the insert funtion and return true/false 
-		bool testInsert = insert(list2, newNode);
+		bool insertNode = insert(list2, createNode(input2[i]));
 
-		//Itterate key for testing for node with next key
-		key--;
-	}
+		//Print true/false
+		if (insertNode != false) {
+			printf("Node %d true. ", input2[i]);
+		}
+		else {
+			printf("Node %d false. ", input2[i]);
+		}
+	}printf("\n");
 
 	//Prints the first list in order
 	printf("List1: ");
@@ -52,22 +58,19 @@ int main() {
 	printlist(listprint);
 
 	//Call Search key in list
-	key = 8;
+	printf("The key is: %d \n", key);
 	N* foundNode = search(list, key);
-
-	//What if key only is in list number 2?
 
 	//Print data from search
 	if (foundNode != NULL) {
-		printf("This is the value I found: %d\n", foundNode->data);
+		printf("I found: %d\n", foundNode->data);
 	}
 	else {
-		printf("Search returned NULL %p", foundNode);
+		printf("Search returned NULL! \n");
 	}
 	
 	//Delete node found in search
-	if (foundNode != NULL)
-	{
+	if (foundNode != NULL){
 		N* deletedNode = deleteNode(list, foundNode);
 	}
 	//Print data deleted
@@ -75,7 +78,7 @@ int main() {
 		printf("This is the value I deleted: %d\n", foundNode->data);
 	}
 	else {
-		printf("Delete returned NULL %p", foundNode);
+		printf("Delete returned NULL \n");
 	}
 
 	//Prints list with deleted element
@@ -84,31 +87,33 @@ int main() {
 	printlist(listprint);
 
 	//Return the pointer with maximum key value
-	N* maximumKey = maximum(list);
+	N* maximumNode = maximum(list);
+		printf("This is the maximum in List1: %d\n", maximumNode->data);
 
 	//Return pointer with minimum value
-	N* minimumKey = minimum(list);
+	N* minimumNode = minimum(list);
+		printf("This is the minimum in List1: %d\n", minimumNode->data);
 
 	//Return successor key
-	N* sucessorKey = succ(list, foundNode);
+	N* sucessorNode = succ(list, foundNode);
 
 	//Print data 
-	if (sucessorKey != NULL) {
-		printf("This is the successor: %d\n", sucessorKey->data);
+	if (sucessorNode != NULL && foundNode != NULL) {
+		printf("The successor of %d is %d.\n", foundNode->data, sucessorNode->data);
 	}
 	else {
-		printf("The key is the maximum value.");
+		printf("The successor is NULL.\n");
 	}
 
 	//Return predecessor of key value
-	N* predecessorKey = pred(foundNode);
+	N* predecessorNode = pred(list, foundNode);
 
 	//Print data 
-	if (predecessorKey != NULL) {
-		printf("This is the successor: %d\n", predecessorKey->data);
+	if (predecessorNode != NULL && foundNode != NULL) {
+		printf("The predecessor of %d is %d.\n", foundNode->data, predecessorNode->data);
 	}
 	else {
-		printf("The key is the minimum value.");
+		printf("The predecessor is NULL.\n");
 	}
 
 	return 0;

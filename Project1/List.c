@@ -109,7 +109,7 @@ N* maximum(L* list){
 
 	do{
 		//Checks if new temp data value is lager then previous
-		if (currentmaxvalue<temp->data){
+		if (currentmaxvalue < temp->data){
 			currentmaxvalue = temp->data;
 			prtMaxValue = temp;
 		}
@@ -143,22 +143,34 @@ N* minimum(L* list){
 
 N* succ(L* list, N* node) {
 	N* temp = list->head;
-	N* succPtr = NULL;
-	int succValue = INT_MAX;
-	int key = node->data;
+	N* succPtr = maximum(list);
+
+	if (node == NULL || node->data == succPtr->data) {
+		return NULL;
+	}
 
 	while (temp != NULL) {
-		if (temp->data > key && temp->data < succValue) {
-			succValue = temp->data;
+		if (temp->data < succPtr->data && temp->data > node->data) {
 			succPtr = temp;
-			return succPtr;
-			}
-			temp = temp->next;
 		}
-	return NULL;
+		temp = temp->next;
+	}
+	return succPtr;
 }
 
-N* pred(N* node) {
-	N* predeccessor = node->prev;
-	return predeccessor;
+N* pred(L* list, N* node) {
+	N* temp = list->head;
+	N* predPtr = minimum(list);
+
+	if (node == NULL || node->data == predPtr->data) {
+		return NULL;
+	}
+
+	while (temp != NULL) {
+		if (temp->data > predPtr->data && temp->data < node->data) {
+			predPtr = temp;
+		}
+		temp = temp->next;
+	}
+	return predPtr;
 }

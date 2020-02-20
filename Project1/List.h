@@ -31,4 +31,4 @@ N* minimum(L* list);
 
 N* succ(L* list, N* node);
 
-N* pred(N* node);
+N* pred(L* list, N* node);
