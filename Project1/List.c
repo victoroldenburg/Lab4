@@ -94,9 +94,11 @@ N* search(L* list, int key) {
 //Prints the whole list
 void printlist(N* print){
 	N* temp = print;
-	while (temp != NULL){
-		printf("%d ", temp->data);
-		temp = temp->next;
+	if (temp->next != NULL) {
+		while (temp != NULL) {
+			printf("%d ", temp->data);
+			temp = temp->next;
+		}
 	}
 	printf("\n");
 }
@@ -220,71 +222,4 @@ void* printPSK(N* node, N* succ, N* pred) {
 		printf("\n");
 	}
 	return 0;
-}
-
-//###############################################STACK&QUEUE####################################################################
-void pushStack(L* stacklist, int dataValue)
-{
-	if (stacklist != NULL) {
-		bool insertNode = insert(stacklist, createNode(dataValue));
-	}
-	else {
-		printf("List is NULL.\n");
-	}
-}
-
-void popStack(L* stacklist)
-{
-	if (stacklist != NULL) {
-		deleteNode(stacklist, stacklist->head);
-	}
-	else {
-		printf("List is NULL.\n");
-	}
-}
-
-void pushQueue(L* queueList, int dataValue)
-{
-	if (queueList != NULL) {
-		insertLast(queueList, dataValue);
-	}
-	else {
-		printf("List is NULL.\n");
-	}
-}
-
-void popQueue(L* queueList)
-{
-	if (queueList != NULL) {
-		deleteNode(queueList, queueList->head);
-	}
-	else {
-		printf("List is NULL.\n");
-	}
-}
-
-bool insertLast(L* list, int dataValue)
-{
-	N* newNode = createNode(dataValue);
-
-	if (list->head == NULL)
-	{
-		list->head = newNode;
-		return true;
-	}
-	N* temp = list->head;
-
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-
-	if (newNode != NULL)
-	{
-		temp->next = newNode;
-		newNode->prev = temp;
-
-		return true;
-	}
-	return false;
 }

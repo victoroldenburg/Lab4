@@ -1,4 +1,6 @@
 #include "List.h"
+#include "Stack.h"
+#include "Queue.h"
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>
@@ -11,8 +13,8 @@ int main() {
 	L* list1 = createList();
 	L* list2 = createList();
 //Stacks and queues
-	L* stackList = createList();
-	L* queueList = createList();
+	S* stackList = createStackList();
+	Q* queueList = createQueueList();
 
 	int input1[] = { 3, 1, 5, 10, 8, 7 };	//3, 1, 5, 10, 8, 7
 	int input2[] = { 5, 2, 9, 6, 1, 2 };	//5, 2, 9, 6, 1, 2 
@@ -32,17 +34,18 @@ int main() {
 		//Runs the insert funtion and return true/false 
 		bool insertNode = insert(list2, createNode(input2[i]));
 	}
-
-//Create third list
+	
+//Create stack
 	size = sizeof(input3) / sizeof(input3[0]);
-	for (int i = size - 1; i >= 0; i--) {
-		pushStack(stackList, input3[i]);
+	//for (int i = size - 1; i >= 0; i--) {
+	for (int i = 0; i < size; i++) {
+		pushStack(stackList, createNode(input3[i]));
 	}
 
 //Create forth list
 	size = sizeof(input3) / sizeof(input3[0]);
 	for (int i = 0; i < size; i++) {
-		pushQueue(queueList, input3[i]);
+		enqueue(queueList, createNode(input3[i]));
 	}
 
 /* Print Messages */
@@ -52,6 +55,7 @@ int main() {
 	printf("List 1: ");
 	N* listprint = list1->head;
 	printlist(listprint);
+	
 //Prints list
 	printf("List 2: ");
 	listprint = list2->head;
@@ -64,7 +68,9 @@ int main() {
 	N* minNode1 = minimum(list1);
 	if (maxNode1 != NULL && minNode1 != NULL) {
 		printf("The maximum of List 1 is %d\n", maxNode1->data);
+		//free(maxNode1);
 		printf("The minimum of List 1 is %d\n", minNode1->data);
+		//free(minNode1);
 	}
 	else {
 		printf("The list only value is 0.\n");
@@ -74,7 +80,9 @@ int main() {
 	N* minNode2 = minimum(list2);
 	if (maxNode2 != NULL && minNode2 != NULL) {
 		printf("The maximum of List 2 is %d\n", maxNode2->data);
+		//free(maxNode2);
 		printf("The minimum of List 2 is %d\n", minNode2->data);
+		//free(minNode2);
 	}
 	else {
 		printf("The list only value is 0.\n");
@@ -92,6 +100,10 @@ int main() {
 		N* predecessorNode = predecessor(list1, foundNode);
 		//Print Successor and predecessor of key in List 1.
 		void* PSK = printPSK(foundNode, successorNode, predecessorNode);
+		//free(PSK);
+		//free(foundNode);
+		//free(successorNode);
+		//free(predecessorNode);
 	}
 	else {
 		printf("This program cannot find key, %d, in list 1.\n", key);
@@ -102,10 +114,10 @@ int main() {
 
 	foundNode = search(list2, key);
 	if (foundNode != NULL) {
-		N* successorKey = successor(list2, foundNode);
-		N* predecessorKey = predecessor(list2, foundNode);
+		N* successorNode = successor(list2, foundNode);
+		N* predecessorNode = predecessor(list2, foundNode);
 		//Print Successor and predecessor of key in List 2.
-		void* PSK = printPSK(foundNode, successorKey, predecessorKey);
+		void* PSK = printPSK(foundNode, successorNode, predecessorNode);
 	}
 	else {
 		printf("This program cannot find key, %d, in list 2.\n", key);
@@ -124,26 +136,33 @@ int main() {
 	if (predL1maxL2 != NULL) {
 		printf("The key of the predecessor in List 1 of the maximum of List 2 is %d\n", predL1maxL2->data);
 	}
+	
+//##############PRINTING###########
 
-//###############################################STACK&QUEUE####################################################################
-	printf("\nPrinting Stacks 'n' Queues...\n");
-//Push and pop stack & prints
+	// pop stack & prints
 	printf("The stack contains ");
 	printlist(stackList->head);
 
 	popStack(stackList);
-	popStack(stackList);
+	//popStack(stackList);
 	printf("After pop ");
 	printlist(stackList->head);
 	printf("\n\n");
 
-//Push and pops Queue & prints
+// dequeue & prints
 	printf("The queue contains ");
-	printlist(queueList->head);
+	printlistQueue(queueList->tail);
+	printf("\n");
 
-	popQueue(queueList);
-	printf("After pop ");
-	printlist(queueList->head);
+	dequeue(queueList);
+	printf("After dequeue ");
+	printlistQueue(queueList->tail);
+	printf("\n");
+
+	free(list1);
+	free(list2);
+	free(listprint);
+	free(foundNode);
 
 	return 0;
 }
