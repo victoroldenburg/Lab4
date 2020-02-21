@@ -128,14 +128,6 @@ int main() {
 //###############################################STACK&QUEUE####################################################################
 	printf("\nPrinting Stacks 'n' Queues...\n");
 //Push and pop stack & prints
-	//pushStack(stackList, 1);
-	//pushStack(stackList, 9);
-	//pushStack(stackList, 8);
-	//pushStack(stackList, 7);
-	//pushStack(stackList, 0);
-	//pushStack(stackList, 2);
-	//pushStack(stackList, 2);
-	//pushStack(stackList, 0);
 	printf("The stack contains ");
 	printlist(stackList->head);
 
@@ -146,14 +138,6 @@ int main() {
 	printf("\n\n");
 
 //Push and pops Queue & prints
-	//pushQueue(queueList, 1);
-	//pushQueue(queueList, 9);
-	//pushQueue(queueList, 8);
-	//pushQueue(queueList, 7);
-	//pushQueue(queueList, 0);
-	//pushQueue(queueList, 2);
-	//pushQueue(queueList, 2);
-	//pushQueue(queueList, 0);
 	printf("The queue contains ");
 	printlist(queueList->head);
 

@@ -34,13 +34,19 @@ N* createNode(int key){
 
 //Check if empty
 bool isEmpty(L* list){
-	//If the head is empty the list is empty.
-	if (list->head == NULL) {
+	if (list != NULL) {
+		//If the head is empty the list is empty.
+		if (list->head == NULL) {
 
-		printf("List is empty...\n");
+			printf("List is empty...\n");
+			return true;
+		}
+		return false;
+	}
+	else {
+		printf("List is NULL.\n");
 		return true;
 	}
-	return false;
 }
 
 //Insert to list begining
@@ -219,22 +225,42 @@ void* printPSK(N* node, N* succ, N* pred) {
 //###############################################STACK&QUEUE####################################################################
 void pushStack(L* stacklist, int dataValue)
 {
-	bool insertNode = insert(stacklist, createNode(dataValue));
+	if (stacklist != NULL) {
+		bool insertNode = insert(stacklist, createNode(dataValue));
+	}
+	else {
+		printf("List is NULL.\n");
+	}
 }
 
 void popStack(L* stacklist)
 {
-	deleteNode(stacklist, stacklist->head);
+	if (stacklist != NULL) {
+		deleteNode(stacklist, stacklist->head);
+	}
+	else {
+		printf("List is NULL.\n");
+	}
 }
 
 void pushQueue(L* queueList, int dataValue)
 {
-	insertLast(queueList, dataValue);
+	if (queueList != NULL) {
+		insertLast(queueList, dataValue);
+	}
+	else {
+		printf("List is NULL.\n");
+	}
 }
 
 void popQueue(L* queueList)
 {
-	deleteNode(queueList, queueList->head);
+	if (queueList != NULL) {
+		deleteNode(queueList, queueList->head);
+	}
+	else {
+		printf("List is NULL.\n");
+	}
 }
 
 bool insertLast(L* list, int dataValue)
