@@ -9,6 +9,7 @@ typedef struct Node {
 
 typedef struct List {
 	struct Node* head; //List head
+	struct Node* tail; //Queue tail
 } L;
 
 L* createList();
@@ -34,14 +35,3 @@ N* successor(L* list, N* node);
 N* predecessor(L* list, N* node);
 
 void* printPSK(N* node, N* succ, N* pred);
-
-//###############################################STACK&QUEUE####################################################################
-void pushStack(L* stacklist, int dataValue);
-
-void popStack(L* stacklist);
-
-void pushQueue(L* queueList, int dataValue);
-
-void popQueue(L* queueList);
-
-bool insertLast(L* list, int dataValue);
