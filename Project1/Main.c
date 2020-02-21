@@ -17,6 +17,8 @@ int main() {
 	int input1[] = { 3, 1, 5, 10, 8, 7 };	//3, 1, 5, 10, 8, 7
 	int input2[] = { 5, 2, 9, 6, 1, 2 };	//5, 2, 9, 6, 1, 2 
 
+	int input3[] = { 1,9,9,8,0,1,1,0 }; //1,9,9,8,0,1,1,0
+
 //Create first list 
 	size = sizeof(input1) / sizeof(input1[0]);
 	for (int i = size - 1; i >= 0; i--) {
@@ -29,6 +31,18 @@ int main() {
 	for (int i = size - 1; i >= 0; i--) {
 		//Runs the insert funtion and return true/false 
 		bool insertNode = insert(list2, createNode(input2[i]));
+	}
+
+//Create third list
+	size = sizeof(input3) / sizeof(input3[0]);
+	for (int i = size - 1; i >= 0; i--) {
+		pushStack(stackList, input3[i]);
+	}
+
+//Create forth list
+	size = sizeof(input3) / sizeof(input3[0]);
+	for (int i = 0; i < size; i++) {
+		pushQueue(queueList, input3[i]);
 	}
 
 /* Print Messages */
@@ -114,14 +128,14 @@ int main() {
 //###############################################STACK&QUEUE####################################################################
 	printf("\nPrinting Stacks 'n' Queues...\n");
 //Push and pop stack & prints
-	pushStack(stackList, 1);
-	pushStack(stackList, 9);
-	pushStack(stackList, 8);
-	pushStack(stackList, 7);
-	pushStack(stackList, 0);
-	pushStack(stackList, 2);
-	pushStack(stackList, 2);
-	pushStack(stackList, 0);
+	//pushStack(stackList, 1);
+	//pushStack(stackList, 9);
+	//pushStack(stackList, 8);
+	//pushStack(stackList, 7);
+	//pushStack(stackList, 0);
+	//pushStack(stackList, 2);
+	//pushStack(stackList, 2);
+	//pushStack(stackList, 0);
 	printf("The stack contains ");
 	printlist(stackList->head);
 
@@ -132,14 +146,14 @@ int main() {
 	printf("\n\n");
 
 //Push and pops Queue & prints
-	pushQueue(queueList, 1);
-	pushQueue(queueList, 9);
-	pushQueue(queueList, 8);
-	pushQueue(queueList, 7);
-	pushQueue(queueList, 0);
-	pushQueue(queueList, 2);
-	pushQueue(queueList, 2);
-	pushQueue(queueList, 0);
+	//pushQueue(queueList, 1);
+	//pushQueue(queueList, 9);
+	//pushQueue(queueList, 8);
+	//pushQueue(queueList, 7);
+	//pushQueue(queueList, 0);
+	//pushQueue(queueList, 2);
+	//pushQueue(queueList, 2);
+	//pushQueue(queueList, 0);
 	printf("The queue contains ");
 	printlist(queueList->head);
 
