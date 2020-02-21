@@ -22,8 +22,6 @@ bool insert(L* list, N* newNode);
 
 N* search(L* list, int key);
 
-void printlist(N* print);
-
 N* deleteNode(L* list, N* node);
 
 N* maximum(L* list);
@@ -33,5 +31,7 @@ N* minimum(L* list);
 N* successor(L* list, N* node);
 
 N* predecessor(L* list, N* node);
+
+void printlist(N* print);
 
 void* printPSK(N* node, N* succ, N* pred);

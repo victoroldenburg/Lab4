@@ -7,8 +7,7 @@
 #include <stdlib.h>
 
 int main() {
-	int key = 0;
-	int size = 0;
+	int key, size;
 //Doubly Linked List
 	L* list1 = createList();
 	L* list2 = createList();
@@ -19,6 +18,7 @@ int main() {
 	int input1[] = { 3, 1, 5, 10, 8, 7 };	//3, 1, 5, 10, 8, 7
 	int input2[] = { 5, 2, 9, 6, 1, 2 };	//5, 2, 9, 6, 1, 2 
 
+//Input for stacks/queues
 	int input3[] = { 1,9,9,8,0,1,1,0 }; //1,9,9,8,0,1,1,0
 
 //Create first list 
@@ -68,9 +68,7 @@ int main() {
 	N* minNode1 = minimum(list1);
 	if (maxNode1 != NULL && minNode1 != NULL) {
 		printf("The maximum of List 1 is %d\n", maxNode1->data);
-		//free(maxNode1);
 		printf("The minimum of List 1 is %d\n", minNode1->data);
-		//free(minNode1);
 	}
 	else {
 		printf("The list only value is 0.\n");
@@ -80,9 +78,7 @@ int main() {
 	N* minNode2 = minimum(list2);
 	if (maxNode2 != NULL && minNode2 != NULL) {
 		printf("The maximum of List 2 is %d\n", maxNode2->data);
-		//free(maxNode2);
 		printf("The minimum of List 2 is %d\n", minNode2->data);
-		//free(minNode2);
 	}
 	else {
 		printf("The list only value is 0.\n");
@@ -100,10 +96,6 @@ int main() {
 		N* predecessorNode = predecessor(list1, foundNode);
 		//Print Successor and predecessor of key in List 1.
 		void* PSK = printPSK(foundNode, successorNode, predecessorNode);
-		//free(PSK);
-		//free(foundNode);
-		//free(successorNode);
-		//free(predecessorNode);
 	}
 	else {
 		printf("This program cannot find key, %d, in list 1.\n", key);
@@ -140,25 +132,26 @@ int main() {
 //##############PRINTING###########
 
 	// pop stack & prints
-	printf("The stack contains ");
+	printf("\nThe stack contains: ");
 	printlist(stackList->head);
 
 	popStack(stackList);
 	//popStack(stackList);
-	printf("After pop ");
+	printf("Pop last node in stack...\n");
 	printlist(stackList->head);
 	printf("\n\n");
 
 // dequeue & prints
-	printf("The queue contains ");
+	printf("The queue contains: ");
 	printlistQueue(queueList->tail);
 	printf("\n");
 
 	dequeue(queueList);
-	printf("After dequeue ");
+	printf("Dequeue first node in queue...\n");
 	printlistQueue(queueList->tail);
 	printf("\n");
 
+	//Freeeeee the memory!
 	free(list1);
 	free(list2);
 	free(listprint);

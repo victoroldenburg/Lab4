@@ -20,18 +20,19 @@ Q* createQueueList() {
 
 //Prints the queue
 void printlistQueue(N* print) {
-	N* temp = print;
-
-	if (temp->prev != NULL) {
-		printlistQueue(temp->prev);
-	}
-	while (temp != NULL) {
-		printf("%d ", print->data);
-		temp = temp->next;
+	if (print != NULL) {
+		N* temp = print;
+		if (temp->prev != NULL) {
+			printlistQueue(temp->prev);
+		}
+		while (temp != NULL) {
+			printf("%d ", print->data);
+			temp = temp->next;
+		}
 	}
 }
 
-bool enqueue(Q* queueList, N* node) {
+N* enqueue(Q* queueList, N* node) {
 	if (queueList->tail != NULL) {
 		//Define next pointer of new node to head pointer
 		N* temp = node;
@@ -48,10 +49,10 @@ bool enqueue(Q* queueList, N* node) {
 	}
 	//Check for success
 	if (queueList->tail == node) {
-		return true;
+		return queueList->tail;
 	}
 	else {
-		return false;
+		return NULL;
 	}
 }
 

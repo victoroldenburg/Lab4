@@ -9,7 +9,7 @@ typedef struct Queue {
 
 Q* createQueueList();
 
-bool enqueue(Q* queueList, N* node);
+N* enqueue(Q* queueList, N* node);
 
 N* dequeue(Q* queueList);
 

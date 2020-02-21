@@ -54,8 +54,4 @@ N* popStack(S* stacklist) {
 		}
 		return stacklist->head;
 	}
-	else {
-		printf("List is NULL.\n");
-		return NULL;
-	}
 }

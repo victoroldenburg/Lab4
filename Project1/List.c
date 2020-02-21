@@ -51,18 +51,22 @@ bool isEmpty(L* list){
 
 //Insert to list begining
 bool insert(L* list, N* newNode){
-	//Define next pointer of new node to head pointer
-	newNode->next = list->head;
-	//List head not NULL means we already have head
-		if (list->head != NULL){
+	if (list->head != NULL) {
+		//Define next pointer of new node to head pointer
+		newNode->next = list->head;
+		//List head not NULL means we already have head
+		if (list->head != NULL) {
 			//Overwrite head prev with new node
 			list->head->prev = newNode;
 		}
-	//Replace head with new node.
-	list->head = newNode;
-	//Should not point back.
-	newNode->prev = NULL; 
-
+		//Replace head with new node.
+		list->head = newNode;
+		//Should not point back.
+		newNode->prev = NULL;
+	}
+	else {
+		list->head = newNode;
+	}
 	//Check for success
 	if (list->head == newNode){
 		return true;
@@ -93,16 +97,19 @@ N* search(L* list, int key) {
 
 //Prints the whole list
 void printlist(N* print){
-	N* temp = print;
-	if (temp->next != NULL) {
-		while (temp != NULL) {
-			printf("%d ", temp->data);
-			temp = temp->next;
+	if (print != NULL) {
+		N* temp = print;
+		if (temp->next != NULL) {
+			while (temp != NULL) {
+				printf("%d ", temp->data);
+				temp = temp->next;
+			}
 		}
+		printf("\n");
 	}
-	printf("\n");
 }
 
+//Function to delete nodes in list
 N* deleteNode(L* list, N* node){
 	if (node != NULL) {
 		if (node->prev != NULL) {
@@ -115,7 +122,6 @@ N* deleteNode(L* list, N* node){
 			node->next->prev = node->prev;
 		}
 		return node;
-		free(node);
 	}
 	return NULL;
 }
@@ -190,12 +196,12 @@ N* predecessor(L* list, N* node) {
 	N* predNode = minimum(list);
 
 	if (node == NULL) {
-		printf("That key 0 does not have a predecessor in list 1.\n");
+		printf("That key 0 does not have a predecessor in that list.\n");
 		return NULL;
 	}
 
 	if (predNode == NULL) {
-		printf("That key %d does not have a predecessor in list 1.\n", node->data);
+		printf("That key %d does not have a predecessor in that list.\n", node->data);
 		return NULL;
 	}
 
