@@ -1,6 +1,6 @@
 #include "List.h"
-#include <stddef.h> //Give NULL
-#include <stdbool.h> //Give return values true/false
+#include <stddef.h>
+#include <stdbool.h> 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -63,16 +63,23 @@ bool insert(L* list, N* newNode){
 }
 
 //Search List
-N* search(L* list, int key) {	
+int search(L* list, int key) {
 	//Defining a temp varible
 	N* temp = list->head;
+	printf("Searching for key: %d\n", key);
 	//Itterate when key is not empty and temp is not the key
 	while (temp != NULL && temp->data != key) {
 		//Assign Next pointer of node to temp
 		temp = temp->next;
 	}
 	//Return what you found
-	return temp;
+	if (temp != NULL) {
+		if (temp->data == key) {
+			printf("Found the key %d\n", temp->data);
+			return temp->data;
+		}
+	}
+	return 0;
 }
 
 //Prints the whole list
@@ -102,94 +109,102 @@ N* deleteNode(L* list, N* node){
 	return NULL;
 }
 
-N* maximum(L* list){
+int maximum(L* list){
 	//Defining a temp varible
 	N* temp = list->head;
-	N* prtMaxValue = NULL;
+	int prtMaxValue = 0;
 
-	//Sets maxvalue to the first nodes data
-	int currentmaxvalue = list->head->data;
+	if (list != NULL) {
+		//Sets maxvalue to the first nodes data
+		int currentmaxvalue = list->head->data;
 
-	do{
-		//Checks if new temp data value is lager then previous
-		if (currentmaxvalue < temp->data){
-			currentmaxvalue = temp->data;
-			prtMaxValue = temp;
-		}
-	
-	//Assign Next pointer of node to temp
-	temp = temp->next;
-	} while (temp != NULL); 
-	return prtMaxValue;
+		do {
+			//Checks if new temp data value is lager then previous
+			if (currentmaxvalue < temp->data) {
+				currentmaxvalue = temp->data;
+				prtMaxValue = temp->data;
+			}
+
+			//Assign Next pointer of node to temp
+			temp = temp->next;
+		} while (temp != NULL);
+		return prtMaxValue;
+	}
+	return 0;
 }
 
-N* minimum(L* list){
+int minimum(L* list){
 	//Defining a temp varible
 	N* temp = list->head;
-	N* prtMinValue = NULL;
+	int prtMinValue = 0;
 
-	//Sets maxvalue to the first nodes data
-	int currentminvalue = list->head->data;
+	if (list != NULL) {
+		//Sets maxvalue to the first nodes data
+		int currentminvalue = list->head->data;
 
-	do{
-		//Checks if new temp data value is lager then previous
-		if (currentminvalue > temp->data){
-			currentminvalue = temp->data;
-			prtMinValue = temp;
-		}
+		do {
+			//Checks if new temp data value is lager then previous
+			if (currentminvalue > temp->data) {
+				currentminvalue = temp->data;
+				prtMinValue = temp->data;
+			}
 
-		//Assign Next pointer of node to temp
-		temp = temp->next;
-	}while (temp != NULL);
-	return prtMinValue;
+			//Assign Next pointer of node to temp
+			temp = temp->next;
+		} while (temp != NULL);
+		return prtMinValue;
+	}
+	return 0;
 }
 
-N* successor(L* list, N* node) {
+int successor(L* list, int key) {
 	N* temp = list->head;
-	N* succPtr = maximum(list);
+	int succKey = maximum(list);
 
-	if (node == NULL || node->data == succPtr->data) {
-		return NULL;
+	if (key == 0 || key == succKey || succKey == 0) {
+		return 0;
 	}
 
 	while (temp != NULL) {
-		if (temp->data < succPtr->data && temp->data > node->data) {
-			succPtr = temp;
+		if (temp->data < succKey && temp->data > key) {
+			succKey = temp->data;
 		}
 		temp = temp->next;
 	}
-	return succPtr;
+	return succKey;
 }
 
-N* predecessor(L* list, N* node) {
+int predecessor(L* list, int key) {
 	N* temp = list->head;
-	N* predPtr = minimum(list);
+	int predKey = minimum(list);
 
-	if (node == NULL || node->data == predPtr->data) {
-		return NULL;
+	if (key == 0 || key == predKey || predKey == 0) {
+		return 0;
 	}
 
 	while (temp != NULL) {
-		if (temp->data > predPtr->data && temp->data < node->data) {
-			predPtr = temp;
+		if (temp->data > predKey && temp->data < key) {
+			predKey = temp->data;
 		}
 		temp = temp->next;
 	}
-	return predPtr;
+	return predKey;
 }
 
-int printPSK(N* key, N* succ, N* pred) {
-	if (succ != NULL && pred != NULL) {
-		printf("The key %d has the predecessor %d and successor %d.", key->data, pred->data, succ->data);
-	}
-	else if (succ != NULL) {
-		printf("The key %d has no predecessor and successor %d.", key->data, succ->data);
-	}
-	else {
-		printf("The key %d has the predecessor %d, but no successor.", key->data, pred->data);
-	}
-	printf("\n");
-	return true;
+int printPSK(int key, int succ, int pred) {
+	if (key != 0) {
+		if (succ != 0 && pred != 0) {
+			printf("The key %d has the predecessor %d and successor %d.", key, pred, succ);
+		}
+		else if (succ != 0) {
+			printf("The key %d has no predecessor and successor %d.", key, succ);
+		}
+		else {
+			printf("The key %d has the predecessor %d, but no successor.", key, pred);
+		}
+		printf("\n");
+		return true;
+	}return 0;
 }
 
 //###############################################STACK&QUEUE####################################################################
