@@ -19,21 +19,21 @@ bool isEmpty(L* head);
 
 bool insert(L* list, N* newNode);
 
-void printlist(N* print);
+N* search(L* list, int key);
 
-int search(L* list, int key);
+void printlist(N* print);
 
 N* deleteNode(L* list, N* node);
 
-int maximum(L* list);
+N* maximum(L* list);
 
-int minimum(L* list);
+N* minimum(L* list);
 
-int successor(L* list, int key);
+N* successor(L* list, N* node);
 
-int predecessor(L* list, int key);
+N* predecessor(L* list, N* node);
 
-int printPSK(int key, int succ, int pred);
+void* printPSK(N* node, N* succ, N* pred);
 
 //###############################################STACK&QUEUE####################################################################
 void pushStack(L* stacklist, int dataValue);
