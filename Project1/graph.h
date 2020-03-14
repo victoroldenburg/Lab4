@@ -7,15 +7,16 @@ typedef struct Edge {
 } E;
 
 typedef struct graph {
-	struct Vertex* head; //List head
-	struct Vertex* tail; //Queue tail
+	struct Vertex* source; //Array head
+	int n_vertices;
 	
 } G;
 
 typedef struct Vertex {
 	struct Edge* head; //List head
-	struct Edge* tail; //Queue tail
 	int index; //Vertex index
 } V;
 
-void createGraph(int n);
+G* createGraph(int n);
+
+G* printArray(G* graph);

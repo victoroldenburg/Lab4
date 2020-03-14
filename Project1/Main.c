@@ -9,7 +9,12 @@
 
 int main() {
 
-	createGraph(10);
+	int n = 4;
+
+	G* graph = createGraph(n);
+
+	G* graphr = printArray(graph);
+
 
 	return 0;
 }
