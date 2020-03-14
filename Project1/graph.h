@@ -20,5 +20,3 @@ typedef struct Vertex {
 G* createGraph(int n);
 
 G* printArray(G* graph);
-
-E* createedgeList();

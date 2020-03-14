@@ -58,6 +58,7 @@ G* createGraph(int n)
 			}
 			
 		}
+		return graph;
 }
 
 //Print array
@@ -73,23 +74,12 @@ G* printArray(G* graph) {
 	for (int i = 1; i < n; i++)
 	{
 		int temp = vertex[i].index;
+
 		printf("%d ", temp);
+		printf("%p ", vertex[i].head);
 	}
 
 	printf("\n\n");
 
 	return graph;
-}
-
-//Create edgelist
-L* createedgeList() {
-	//Allocate memory for new list
-	E* edgeList = (E*)malloc(sizeof(E));
-
-	//Make sure head of list is NULL before starting any operations
-	if (edgeList != NULL) {
-		edgeList. = NULL;
-		return list;
-	}
-	return list;
 }
