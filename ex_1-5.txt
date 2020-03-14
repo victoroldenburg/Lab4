@@ -1,0 +1,45 @@
+Exercise #1
+• indicate which file(s) implement the algorithm and/or data structure in the exercise;
+list.c contains all functions
+list.h contains all headers
+main.c calls all the functions
+
+• a brief explanation of the tests that were carried out to test the implementation;
+We printed return value for each function, testing input with different values NULL and random combinations of integears.
+
+• instructions on how to execute a test to verify the implemented code;
+Take any function, input any integer value, and print return.
+
+• answers to any theoretical questions asked in the exercise.
+No questions in Ex 1.
+
+Exercise #2
+• a brief explanation of the tests that were carried out to test the implementation;
+We printed return value for each function, testing input with different values NULL and random combinations of integears.
+
+• instructions on how to execute a test to verify the implemented code;
+Take any function, input any integer value, and print return.
+
+• answers to any theoretical questions asked in the exercise.
+- What are the minimum and maximum of L1?
+    Minimum L1 = 1, Maximum L1 = 10 
+- What are the minimum and maximum of L2?
+    Minimum L2 = 1, Maximum L2 = 9 
+- What is the successor and predecessor of the node with key 5 in L1?
+    Successor = 7, Predecessor = 3
+- What is the successor and predecessor of the node with key 9 in L2?
+    No successor, Predecessor = 6
+- What is the key of the predecessor in L2 of the maximum of L1?
+    Maximum = 10, predecessor in L2 = 9
+- What is the key of the predecessor in L1 of the maximum of L2?
+    Maximum = 9, predecessor in L1 = 8
+
+Exercise #3-5
+• a brief explanation of the tests that were carried out to test the implementation;
+We printed return value for each function, testing input with different values NULL and random combinations of integears.
+
+• instructions on how to execute a test to verify the implemented code;
+Take any function, input any value, and print return.
+
+• answers to any theoretical questions asked in the exercise.
+No questions asked
