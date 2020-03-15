@@ -28,7 +28,7 @@ G* createGraph(int n)
 		if (graph != NULL) {
 			graph->source = NULL;
 		}
-		//Save pointer to array in Graph head pointer
+		//Save pointer to array in Graph source pointer
 		if (graph!=0)
 		{
 			graph->source = vertex;
@@ -41,16 +41,16 @@ G* createGraph(int n)
 		for (i = 0; i <= n; i++)
 		{
 			if(vertex != NULL){
-				vertex[i].index = i + 1;
+				vertex[i].index = i;
 				
 				//Create a edgeList for every vertex
 					//Allocate memory for new list
 					E* edgeList = (E*)malloc(sizeof(E));
 
+
 					//Make sure head of list is NULL before starting any operations
-					if (edgeList != NULL) {
-						vertex[i].head = edgeList;
-						
+					if (vertex != NULL) {
+						vertex[i].head = NULL;
 					}
 			}
 			
@@ -68,7 +68,7 @@ G* printArray(G* graph) {
 	V* vertex = graph->source;
 
 
-	for (int i = 0; i <= n; i++)
+	for (int i = 0; i <= n+1; i++)
 	{
 		int temp = vertex[i].index;
 
@@ -84,19 +84,64 @@ int getNumVertices(G* graph) {
 
 	V* vertex = graph->source;
 
-	int i = 0;
 
-	while (vertex != NULL && vertex[i].head != NULL) {
 
+	int i = 1;
+
+	while (vertex[i].head != NULL)
+	{
 		i++;
-		//Assign Next pointer of node to temp
-		//temp = temp->next;
 	}
 
 
-	int nrOfVertices = i;
+	int nrOfVertices = i-1;
 
 	printf("\n\n number of vertices %d ", nrOfVertices);
 
 	return nrOfVertices;
 }
+
+void addDirectedEdge(V* vertex1, V* vertex2)
+{
+	//Create empty edgeNode
+	E* x = (E*)malloc(sizeof(E));
+
+	//Make sure all values for a new node is set
+	if (x != NULL) {
+		x->index = vertex2->index;
+		x->next= NULL;
+		x->prev = NULL;
+	}
+
+	//Insert new node in array
+	bool insertedNode = insertEdgeNode(vertex1, x);
+
+}
+
+bool insertEdgeNode(V* vertex, E* newNode) {
+
+		if (vertex->head != NULL) {
+			//Define next pointer of new node to head pointer
+			newNode->next = vertex->head;
+			//List head not NULL means we already have head
+			if (vertex->head != NULL) {
+				//Overwrite head prev with new node
+				vertex->head->prev = newNode;
+			}
+			//Replace head with new node.
+			vertex->head = newNode;
+			//Should not point back.
+			newNode->prev = NULL;
+		}
+		else {
+			vertex->head = newNode;
+		}
+		//Check for success
+		if (vertex->head == newNode) {
+			return true;
+		}
+		else {
+			return false;
+		}
+}
+

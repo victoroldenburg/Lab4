@@ -1,7 +1,7 @@
 #pragma once
 
 typedef struct Edge {
-	int* index; //int to key
+	int index; //int to key
 	struct Edge* next; //Pointer to next node, next = 0 -> tail
 	struct Edge* prev; //Pointer to prev node , prev = 0 -> head
 } E;
@@ -30,9 +30,16 @@ int* getInNeighbors(G*);
 
 int* getOutNeighbors(G*);
 
-void addDirectedEdge(int node_a, int node_b);
+void addDirectedEdge(V* vertex1, V* vertex2);
 
 void addUndirectedEdge(int node_a, int node_b);
 
 bool hasEdge(int node_a, int node_b);
+
+
+//###########Support fucntions##########
+
+//Insert new node
+bool insertEdgeNode(V* vertex, E* newNode);
+
 
