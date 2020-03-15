@@ -9,12 +9,15 @@
 
 int main() {
 
-	int n = 4;
+	int n = 72;
 
 	G* graph = createGraph(n);
 
 	G* graphr = printArray(graph);
 
+	int nrOfVertices = getNumVertices(graph);
+
+	free(graph);
 
 	return 0;
 }

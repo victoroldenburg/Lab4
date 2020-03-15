@@ -21,7 +21,7 @@ G* createGraph(int n)
 		
 
 		//Create vertex array
-		V* vertex = (V*)calloc(n + 1000, sizeof(V));
+		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
 
 		//Make sure head of list is NULL before starting any operations
@@ -35,14 +35,13 @@ G* createGraph(int n)
 		}
 		
 
-
 		//Save index value in evey allocated memoryspace in array
 		int i = 0;
 
-		for (i = 1; i <= n; i++)
+		for (i = 0; i <= n; i++)
 		{
-			if(i != 0 && vertex != NULL){
-				vertex[i].index = i;
+			if(vertex != NULL){
+				vertex[i].index = i + 1;
 				
 				//Create a edgeList for every vertex
 					//Allocate memory for new list
@@ -53,8 +52,6 @@ G* createGraph(int n)
 						vertex[i].head = edgeList;
 						
 					}
-				
-
 			}
 			
 		}
@@ -71,15 +68,35 @@ G* printArray(G* graph) {
 	V* vertex = graph->source;
 
 
-	for (int i = 1; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		int temp = vertex[i].index;
 
 		printf("%d ", temp);
-		printf("%p ", vertex[i].head);
+		printf("%p \n", vertex[i].head);
 	}
 
-	printf("\n\n");
-
 	return graph;
+}
+
+//Return number of vertices in array
+int getNumVertices(G* graph) {
+
+	V* vertex = graph->source;
+
+	int i = 0;
+
+	while (vertex != NULL && vertex[i].head != NULL) {
+
+		i++;
+		//Assign Next pointer of node to temp
+		//temp = temp->next;
+	}
+
+
+	int nrOfVertices = i;
+
+	printf("\n\n number of vertices %d ", nrOfVertices);
+
+	return nrOfVertices;
 }
