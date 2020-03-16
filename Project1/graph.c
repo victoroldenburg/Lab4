@@ -43,28 +43,6 @@ G* createGraph(int n)
 		return graph;
 }
 
-//Print array
-G* printArray(G* graph) {
-
-	printf("\n\n");
-
-	int n = graph->n_vertices;
-
-	V* vertex = graph->source;
-
-
-	for (int i = 0; i <= n+1; i++)
-	{
-		int temp = vertex[i].index;
-
-		printf("%d ", temp);
-		printf("%p \n", vertex[i].head);
-	}
-
-	return graph;
-}
-
-//Return number of vertices in array
 int getNumVertices(G* graph) {
 
 	V* vertex = graph->source;
@@ -77,9 +55,6 @@ int getNumVertices(G* graph) {
 	}
 
 	int nrOfVertices = i-1;
-
-	printf("Number of vertices %d ", nrOfVertices);
-	printf("\n\n");
 
 	return nrOfVertices;
 }
@@ -176,7 +151,28 @@ bool hasEdge(V* vertex1, V* vertex2)
 
 //##########################SUPPORT FUCTIONS###########################################
 
-//Insert to list begining
+//Print array
+G* printArray(G* graph) {
+
+	printf("Prints all index and adresses in the struct array\n");
+
+	int n = graph->n_vertices;
+
+	V* vertex = graph->source;
+
+
+	for (int i = 1; i <= n; i++)
+	{
+		int temp = vertex[i].index;
+
+		printf("%d ", temp);
+		printf("%p \n", vertex[i].head);
+	}
+
+	return graph;
+}
+
+//Insert edge/node in beginning of list
 bool insertEdge(V* vertex, N* newNode) {
 	if (vertex->head != NULL) {
 		//Define next pointer of new node to head pointer
