@@ -84,6 +84,32 @@ int getNumVertices(G* graph) {
 	return nrOfVertices;
 }
 
+int getNumEdges(G* graph)
+{
+	V* vertex = graph->source;
+
+	int n = getNumVertices(graph);
+
+	int i = 0;
+	int edgeCounter = 0;
+
+	for (i = 1; i < n; i++)
+	{
+		//Defining a temp varible
+		N* temp = vertex[i].head;
+		//Itterate until last node
+		while (temp != NULL) {
+			//Assign Next pointer of node to temp
+			temp = temp->next;
+			edgeCounter++;
+		}
+
+		
+	}
+
+	return edgeCounter;
+}
+
 void addDirectedEdge(V* vertex1, V* vertex2)
 {
 	int index2 = vertex2->index;
@@ -117,6 +143,22 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 
 }
 
+bool hasEdge(V* vertex1, V* vertex2)
+{
+	//int index1 = vertex1->index;
+	int index2 = vertex2->index;
+
+	N* foundEdge = searchEdge(vertex1, index2);
+
+	if (foundEdge != NULL)
+	{
+		return true;
+	}
+	return false;
+}
+
+//##########################SUPPORT FUCTIONS##################################################
+
 //Insert to list begining
 bool insertEdge(V* vertex, N* newNode) {
 	if (vertex->head != NULL) {
@@ -142,5 +184,26 @@ bool insertEdge(V* vertex, N* newNode) {
 	else {
 		return false;
 	}
+}
+
+//Search List
+N* searchEdge(V* vertex, int key) {
+	//Defining a temp varible
+	N* temp = vertex->head;
+	printf("Searching for key: %d\n", key);
+	//Itterate when key is not empty and temp is not the key
+	while (temp != NULL && temp->data != key) {
+		//Assign Next pointer of node to temp
+		temp = temp->next;
+	}
+	//Return what you found
+	if (temp != NULL) {
+		if (temp->data == key) {
+			printf("Found the key %d\n", temp->data);
+			return temp;
+		}
+	}
+	printf("Did not find the key \n");
+	return NULL;
 }
 

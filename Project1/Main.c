@@ -113,6 +113,18 @@ int main() {
 	printlist(listprint);
 
 
+	//#####################HAS EDGE??############################
+	bool hasEdgetest1 = hasEdge(vertex3, vertex2); //true
+	bool hasEdgetest2 = hasEdge(vertex2, vertex3);	//false
+	bool hasEdgetest3 = hasEdge(vertex5, vertex4);	//true
+
+
+	//#####################GET NUMBER OF EDGES###################
+
+	int numberOfEdges =  getNumEdges(graph);
+
+
+
 	//Prints struct vertex array
 	G* graphr = printArray(graph);
 
@@ -120,6 +132,8 @@ int main() {
 	//Free memory
 	free(graph);
 	free(vertex);
+
+	
 
 	return 0;
 }

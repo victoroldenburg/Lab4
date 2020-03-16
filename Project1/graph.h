@@ -22,7 +22,7 @@ G* printArray(G* graph);
 
 int getNumVertices(G* graph);
 
-int getNumEdges(G*);
+int getNumEdges(G* graph);
 
 int* getNeighbors(G*);
 
@@ -34,12 +34,14 @@ void addDirectedEdge(V* vertex1, V* vertex2);
 
 void addUndirectedEdge(V* vertex1, V*vertex2);
 
-bool hasEdge(int node_a, int node_b);
+bool hasEdge(V* vertex1, V* vertex2);
 
 
 //###########Support fucntions##########
 
 //Insert new node
 bool insertEdge(V* vertex, N* newNode);
+
+N* searchEdge(V* vertex, int key);
 
 
