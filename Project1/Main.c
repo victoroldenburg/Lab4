@@ -1,6 +1,4 @@
 #include "List.h"
-#include "Stack.h"
-#include "Queue.h"
 #include "graph.h"
 #include <stddef.h>
 #include <stdbool.h> 

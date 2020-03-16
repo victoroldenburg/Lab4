@@ -22,15 +22,10 @@
     <ClCompile Include="graph.c" />
     <ClCompile Include="List.c" />
     <ClCompile Include="Main.c" />
-    <ClCompile Include="Queue.c" />
-    <ClCompile Include="Stack.c" />
-    <ClCompile Include="testList.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="Queue.h" />
-    <ClInclude Include="Stack.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D0D615D3-CF19-4C51-A5C0-351B3AC1479A}</ProjectGuid>
