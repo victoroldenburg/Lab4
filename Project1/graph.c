@@ -97,7 +97,40 @@ int* getInNeighbors(G* graph, V* vertex)
 
 int* getOutNeighbors(G* graph, V* vertex)
 {
-	return NULL;
+	
+	//Defining a temp varible
+	N* temp = vertex->head;
+	int counter = 0;
+
+	//Check how many out going gedges
+	while (temp != NULL) {
+		//Assign Next pointer of node to temp
+		temp = temp->next;
+		counter++;
+	}
+
+	int n = counter;
+
+	//Allocate array and save index in array
+	int* arr = (int*)calloc(n + 8, sizeof(int));
+
+	int i = 0;
+
+	N* temp2 = vertex->head;
+
+	while (temp2 != NULL) {
+		//Assign Next pointer of node to temp
+		i++;
+
+		if (arr != 0)
+		{
+			arr[i] = temp2->data;
+			temp2 = temp2->next;
+		}
+
+	}
+
+	return arr;
 }
 
 void addDirectedEdge(V* vertex1, V* vertex2)

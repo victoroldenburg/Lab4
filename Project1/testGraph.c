@@ -123,6 +123,11 @@ void runTestGraph() {
 	int numberOfEdges = getNumEdges(graph);
 
 
+	//#####################NEIGHBORS#############################
+	int* outNeighborsArray = getOutNeighbors(graph, vertex1);
+
+
+
 	//Prints struct vertex array
 	printf("\n\n"); //New lines
 	G* graphr = printArray(graph);
