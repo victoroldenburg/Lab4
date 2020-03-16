@@ -92,7 +92,34 @@ int* getNeighbors(G* graph, V* vertex)
 
 int* getInNeighbors(G* graph, V* vertex)
 {
-	return NULL;
+	int n = getNumVertices(graph);
+	int i = 0;
+	int j = 0;
+
+	V* startVertex = graph->source;
+
+	N* temp1 = startVertex->head;
+
+	int* arr2 = (int*)calloc(n + 8, sizeof(int));
+
+	for (i = 1; i < n; i++)
+	{
+
+		N* temp2 = startVertex[i].head;
+
+		//Itterate until last node
+		while (temp2 != NULL) {
+			//Assign Next pointer of node to temp
+			if (vertex->index == temp2->data && arr2!=NULL)
+			{
+				arr2[j] = startVertex[i].index;
+				j++;
+			}
+			temp2 = temp2->next;
+		}
+	}
+
+	return arr2;
 }
 
 int* getOutNeighbors(G* graph, V* vertex)
@@ -124,7 +151,7 @@ int* getOutNeighbors(G* graph, V* vertex)
 
 		if (arr != NULL)
 		{
-			arr[i] = temp2->data;
+			arr[i-1] = temp2->data;
 			temp2 = temp2->next;
 			i++;
 		}
@@ -209,9 +236,7 @@ G* printArray(G* graph) {
 //Print array of ints
 void printIntArray(int* array) {
 
-	printf("Print array of integers: ");
-
-	int i = 1;
+	int i = 0;
 
 	while (array[i] != 0)
 	{
@@ -268,7 +293,6 @@ N* searchEdge(V* vertex, int key) {
 	printf("Did not find the key \n");
 	return NULL;
 }
-
 
 bool freeMemory(G* graph)
 {

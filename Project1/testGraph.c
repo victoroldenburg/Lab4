@@ -45,13 +45,16 @@ void runTestGraph() {
 	addDirectedEdge(vertex1, vertex4);
 	addDirectedEdge(vertex1, vertex3);
 	addDirectedEdge(vertex1, vertex2);
-	addDirectedEdge(vertex1, vertex1);
+	addDirectedEdge(vertex1, vertex5);
 
-	//Insert edge to vertex with index1
+	//Insert edge to vertex
 	addDirectedEdge(vertex3, vertex1);
 	addDirectedEdge(vertex3, vertex2);
 	addDirectedEdge(vertex3, vertex3);
 	addDirectedEdge(vertex3, vertex4);
+
+	addDirectedEdge(vertex2, vertex1);
+	addDirectedEdge(vertex5, vertex1);
 
 	//Prints list
 	printf("Print vertex1 after function addDirectedEdge:  ");
@@ -124,15 +127,24 @@ void runTestGraph() {
 
 
 	//#####################NEIGHBORS#############################
+
+	//Out Nighbors
 	int* outNeighborsArray = getOutNeighbors(graph, vertex1);
+	printf("\n\n"); //New lines
+	printf("Print array of integers for OutNighbors: ");
 	printIntArray(outNeighborsArray);
 
-
-
-
-	//Prints struct vertex array
+	//In Neighbors
+	int* inNeighborsArray = getInNeighbors(graph, vertex1);
 	printf("\n\n"); //New lines
-	G* graphr = printArray(graph);
+	printf("Print array of integers for InNighbors: ");
+	printIntArray(inNeighborsArray);
+
+
+	
+	//Prints struct vertices array
+	printf("\n\n"); //New lines
+	//G* graphr = printArray(graph);
 
 
 
