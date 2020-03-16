@@ -33,7 +33,7 @@ G* createGraph(int n)
 		}
 
 		//Save index value in evey allocated memoryspace in array
-		int i = 0;
+		int i = 1;
 
 		for (i = 0; i <= n; i++)
 		{
@@ -72,7 +72,7 @@ int getNumVertices(G* graph) {
 
 	int i = 1;
 
-	while (vertex[i].head != NULL)
+	while (vertex[i].index != 0)
 	{
 		i++;
 	}
@@ -80,7 +80,7 @@ int getNumVertices(G* graph) {
 	int nrOfVertices = i-1;
 
 	printf("Number of vertices %d ", nrOfVertices);
-	printf("\n\n ");
+	printf("\n\n");
 
 	return nrOfVertices;
 }
@@ -90,7 +90,6 @@ void addDirectedEdge(V* vertex1, V* vertex2)
 	int index2 = vertex2->index;
 
 	///* Print Messages */
-
 	//printf("Printing lists...\n");
 	////Prints the first list
 	//printf("Vertex list inside function: ");
@@ -98,6 +97,24 @@ void addDirectedEdge(V* vertex1, V* vertex2)
 	//printlist(listprint);
 
 	bool insertNode = insertEdge(vertex1, createNode(index2));
+
+}
+
+void addUndirectedEdge(V* vertex1, V* vertex2)
+{
+	int index1 = vertex1->index;
+	int index2 = vertex2->index;
+	
+
+	///* Print Messages */
+	//printf("Printing lists...\n");
+	////Prints the first list
+	//printf("Vertex list inside function: ");
+	//N* listprint = vertex1->head;
+	//printlist(listprint);
+
+	bool testinsert = insertEdge(vertex1, createNode(index2));
+	testinsert = insertEdge(vertex2, createNode(index1));
 
 }
 

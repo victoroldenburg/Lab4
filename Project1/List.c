@@ -97,17 +97,17 @@ N* search(L* list, int key) {
 }
 
 //Prints the whole list
-void printlist(N* print){
+void printlist(N* print) {
 	if (print != NULL) {
 		N* temp = print;
-		if (temp->next != NULL) {
-			while (temp != NULL) {
-				printf("%d ", temp->data);
-				temp = temp->next;
-			}
+		//if (temp->next != NULL) {
+		while (temp != NULL) {
+			printf("%d ", temp->data);
+			temp = temp->next;
+			//}
 		}
-		printf("\n");
 	}
+	printf("\n");
 }
 
 //Function to delete nodes in list

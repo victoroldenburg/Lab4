@@ -20,13 +20,15 @@ int main() {
 	//##########Create edges##########
 		
 	//Input numbers
-	int index1 = 5;
+	int index1 = 10;
 
-	int index2 = 56;
+	int index2 = 13;
 
 	int index3 = 18;
 
-	int index4 = 57;
+	int index4 = 21;
+
+	int index5 = 23;
 
 	//Create new edges
 	V* vertex = graph->source;
@@ -39,16 +41,13 @@ int main() {
 
 	V* vertex4 = &vertex[index4];
 
-	//Insert edge to vertex with index
-	addDirectedEdge(vertex1, vertex2);
-	addDirectedEdge(vertex1, vertex3);
-	addDirectedEdge(vertex1, vertex3);
-	addDirectedEdge(vertex1, vertex3);
+	V* vertex5 = &vertex[index5];
 
-	//Prints list
-	printf("Print vertex3 before func addDirectedEdge: ");
-	N* listprint = vertex3->head;
-	printlist(listprint);
+	//Insert edge to vertex with index
+	addDirectedEdge(vertex1, vertex4);
+	addDirectedEdge(vertex1, vertex3);
+	addDirectedEdge(vertex1, vertex2);
+	addDirectedEdge(vertex1, vertex1);
 
 	//Insert edge to vertex with index1
 	addDirectedEdge(vertex3, vertex1);
@@ -56,17 +55,65 @@ int main() {
 	addDirectedEdge(vertex3, vertex3);
 	addDirectedEdge(vertex3, vertex4);
 
+	//Prints list
+	printf("Print vertex1 after function addDirectedEdge:  ");
+	N* listprint = vertex1->head;
+	printlist(listprint);
 
 	//Prints list
-	printf("Print vertex1 after function addDirectedEdge");
+	printf("Print vertex2 after function addDirectedEdge:  ");
+	listprint = vertex2->head;
+	printlist(listprint);
+
+	//Prints list
+	printf("Print vertex3 after function addDirectedEdge:  ");
+	listprint = vertex3->head;
+	printlist(listprint);
+
+	//Prints list
+	printf("Print vertex4 after function addDirectedEdge:  ");
+	listprint = vertex4->head;
+	printlist(listprint);
+
+	//Prints list
+	printf("Print vertex5 after function addUnDirectedEdge:  ");
+	listprint = vertex5->head;
+	printlist(listprint);
+
+	
+	
+	
+	//Insert undirected edges to vertex
+	addUndirectedEdge(vertex4, vertex5);
+	
+	
+	//Prints list
+	printf("\n\n"); //New lines
+
+	printf("Print vertex1 after function addUnDirectedEdge:  ");
 	listprint = vertex1->head;
 	printlist(listprint);
 
+	//Prints list
+	printf("Print vertex2 after function addUnDirectedEdge:  ");
+	listprint = vertex2->head;
+	printlist(listprint);
 
 	//Prints list
-	printf("Print vertex3 after function addDirectedEdge: ");
+	printf("Print vertex3 after function addUnDirectedEdge:  ");
 	listprint = vertex3->head;
 	printlist(listprint);
+
+	//Prints list
+	printf("Print vertex4 after function addUnDirectedEdge:  ");
+	listprint = vertex4->head;
+	printlist(listprint);
+
+	//Prints list
+	printf("Print vertex5 after function addUnDirectedEdge:  ");
+	listprint = vertex5->head;
+	printlist(listprint);
+
 
 	//Prints struct vertex array
 	G* graphr = printArray(graph);

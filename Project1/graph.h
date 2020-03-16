@@ -32,7 +32,7 @@ int* getOutNeighbors(G*);
 
 void addDirectedEdge(V* vertex1, V* vertex2);
 
-void addUndirectedEdge(int node_a, int node_b);
+void addUndirectedEdge(V* vertex1, V*vertex2);
 
 bool hasEdge(int node_a, int node_b);
 
