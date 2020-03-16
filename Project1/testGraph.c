@@ -16,7 +16,6 @@ void runTestGraph() {
 	int nrOfVertices = getNumVertices(graph); //Check how many Vertices there is in the array 
 
 	//##########Create edges##########
-
 	//Input numbers, which vertex to add edges to
 	int index1 = 10;
 
@@ -85,7 +84,6 @@ void runTestGraph() {
 	//#######################Insert undirected edges to vertex#########################
 	addUndirectedEdge(vertex4, vertex5);
 
-
 	//Prints list
 	printf("\n\n"); //New lines
 
@@ -125,17 +123,15 @@ void runTestGraph() {
 	int numberOfEdges = getNumEdges(graph);
 
 
-
 	//Prints struct vertex array
 	printf("\n\n"); //New lines
 	G* graphr = printArray(graph);
 
 
+
 	//Free memory
-	free(graph);
-	free(vertex);
+	freeMemory(graph);
 
+	//STOP
 
-
-	return 0;
 }

@@ -220,3 +220,33 @@ N* searchEdge(V* vertex, int key) {
 	return NULL;
 }
 
+
+bool freeMemory(G* graph)
+{
+	V* vertex = graph->source;
+
+	int n = getNumVertices(graph);
+
+	int i = 0;
+	int edgeCounter = 0;
+
+	for (i = 1; i < n; i++)
+	{
+		//Defining a temp varible
+		N* temp = vertex[i].head;
+		//Itterate until last node
+		while (temp != NULL) {
+			//Assign Next pointer of node to temp
+			temp = temp->next;
+			
+		}
+
+		free(temp);
+		
+
+	}
+	free(vertex);
+	free(graph);
+	
+	return true;
+}

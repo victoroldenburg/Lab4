@@ -44,4 +44,6 @@ bool insertEdge(V* vertex, N* newNode);
 
 N* searchEdge(V* vertex, int key);
 
+bool freeMemory(G* graph);
+
 
