@@ -41,7 +41,7 @@ int main() {
 
 	V* vertex5 = &vertex[index5];
 
-	//Insert edge to vertex with index
+	//#########################Insert edge to vertex with index###################################
 	addDirectedEdge(vertex1, vertex4);
 	addDirectedEdge(vertex1, vertex3);
 	addDirectedEdge(vertex1, vertex2);
@@ -74,14 +74,14 @@ int main() {
 	printlist(listprint);
 
 	//Prints list
-	printf("Print vertex5 after function addUnDirectedEdge:  ");
+	printf("Print vertex5 after function addDirectedEdge:  ");
 	listprint = vertex5->head;
 	printlist(listprint);
 
 	
 	
 	
-	//Insert undirected edges to vertex
+	//#######################Insert undirected edges to vertex#########################
 	addUndirectedEdge(vertex4, vertex5);
 	
 	
@@ -119,5 +119,7 @@ int main() {
 
 	//Free memory
 	free(graph);
+	free(vertex);
+
 	return 0;
 }

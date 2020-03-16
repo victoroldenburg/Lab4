@@ -1,10 +1,10 @@
 #pragma once
 
-typedef struct Edge {
-	int index; //int to key
-	struct Edge* next; //Pointer to next node, next = 0 -> tail
-	struct Edge* prev; //Pointer to prev node , prev = 0 -> head
-} E;
+//typedef struct Edge { 
+//	int index; //int to key
+//	struct Edge* next; //Pointer to next node, next = 0 -> tail
+//	struct Edge* prev; //Pointer to prev node , prev = 0 -> head
+//} E;		//Not using this struct for new nodes. Using struct node in list.h insted
 
 typedef struct graph {
 	struct Vertex* source; //Array head
