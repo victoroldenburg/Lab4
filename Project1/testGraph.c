@@ -125,6 +125,8 @@ void runTestGraph() {
 
 	//#####################NEIGHBORS#############################
 	int* outNeighborsArray = getOutNeighbors(graph, vertex1);
+	printIntArray(outNeighborsArray);
+
 
 
 

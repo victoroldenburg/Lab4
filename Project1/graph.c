@@ -114,18 +114,19 @@ int* getOutNeighbors(G* graph, V* vertex)
 	//Allocate array and save index in array
 	int* arr = (int*)calloc(n + 8, sizeof(int));
 
-	int i = 0;
+	int i = 1;
 
 	N* temp2 = vertex->head;
 
 	while (temp2 != NULL) {
 		//Assign Next pointer of node to temp
-		i++;
+		
 
-		if (arr != 0)
+		if (arr != NULL)
 		{
 			arr[i] = temp2->data;
 			temp2 = temp2->next;
+			i++;
 		}
 
 	}
@@ -203,6 +204,21 @@ G* printArray(G* graph) {
 	}
 
 	return graph;
+}
+
+//Print array of ints
+void printIntArray(int* array) {
+
+	printf("Print array of integers: ");
+
+	int i = 1;
+
+	while (array[i] != 0)
+	{
+		printf("%d ", array[i]);
+		i++;
+	}
+
 }
 
 //Insert edge/node in beginning of list

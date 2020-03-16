@@ -18,8 +18,6 @@ typedef struct Vertex {
 
 G* createGraph(int n);
 
-G* printArray(G* graph);
-
 int getNumVertices(G* graph);
 
 int getNumEdges(G* graph);
@@ -38,9 +36,11 @@ bool hasEdge(V* vertex1, V* vertex2);
 
 
 //###########SUPPORT FUNCTIONS##########
+G* printArray(G* graph);
 
-//Insert new node
-bool insertEdge(V* vertex, N* newNode);
+void printIntArray(int* array);
+
+bool insertEdge(V* vertex, N* newNode); //Insert new node
 
 N* searchEdge(V* vertex, int key);
 
