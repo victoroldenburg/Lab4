@@ -24,12 +24,18 @@
     <ClCompile Include="graph.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testGraph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

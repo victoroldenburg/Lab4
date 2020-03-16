@@ -24,11 +24,11 @@ int getNumVertices(G* graph);
 
 int getNumEdges(G* graph);
 
-int* getNeighbors(G*);
+int* getNeighbors(G* graph, V* vertex); //Return a pointer to an array with Nighbors
 
-int* getInNeighbors(G*);
+int* getInNeighbors(G* graph, V* vertex);
 
-int* getOutNeighbors(G*);
+int* getOutNeighbors(G* graph, V* vertex);
 
 void addDirectedEdge(V* vertex1, V* vertex2);
 
@@ -37,7 +37,7 @@ void addUndirectedEdge(V* vertex1, V*vertex2);
 bool hasEdge(V* vertex1, V* vertex2);
 
 
-//###########Support fucntions##########
+//###########SUPPORT FUNCTIONS##########
 
 //Insert new node
 bool insertEdge(V* vertex, N* newNode);

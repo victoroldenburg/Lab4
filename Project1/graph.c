@@ -110,6 +110,21 @@ int getNumEdges(G* graph)
 	return edgeCounter;
 }
 
+int* getNeighbors(G* graph, V* vertex)
+{
+	return NULL;
+}
+
+int* getInNeighbors(G* graph, V* vertex)
+{
+	return NULL;
+}
+
+int* getOutNeighbors(G* graph, V* vertex)
+{
+	return NULL;
+}
+
 void addDirectedEdge(V* vertex1, V* vertex2)
 {
 	int index2 = vertex2->index;
@@ -157,7 +172,9 @@ bool hasEdge(V* vertex1, V* vertex2)
 	return false;
 }
 
-//##########################SUPPORT FUCTIONS##################################################
+
+
+//##########################SUPPORT FUCTIONS###########################################
 
 //Insert to list begining
 bool insertEdge(V* vertex, N* newNode) {
