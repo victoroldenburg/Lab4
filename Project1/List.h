@@ -10,6 +10,7 @@ typedef struct Node {
 typedef struct List {
 	struct Node* head; //List head
 	struct Node* tail; //Queue tail
+	int data;
 } L;
 
 L* createList();

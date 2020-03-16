@@ -1,4 +1,5 @@
 #include "List.h"
+#include "graph.h"
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>

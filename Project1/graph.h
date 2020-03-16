@@ -13,7 +13,7 @@ typedef struct graph {
 
 typedef struct Vertex {
 	int index; //Vertex index
-	struct Edge* head; //List head
+	struct Node* head; //List head
 } V;
 
 G* createGraph(int n);
@@ -40,6 +40,6 @@ bool hasEdge(int node_a, int node_b);
 //###########Support fucntions##########
 
 //Insert new node
-bool insertEdgeNode(V* vertex, E* newNode);
+bool insertEdge(V* vertex, N* newNode);
 
 

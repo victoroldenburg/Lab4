@@ -13,27 +13,24 @@ G* createGraph(int n)
 		G* graph = (G*)malloc(sizeof(G));
 
 		//Set n_size equall to n
-
-		if (graph != 0)
+		if (graph != NULL)
 		{
 			graph->n_vertices = n;
 		}
 		
-
 		//Create vertex array
 		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
-
 		//Make sure head of list is NULL before starting any operations
-		if (graph != NULL) {
-			graph->source = NULL;
+		if (vertex != NULL) {
+			vertex->head = NULL;
 		}
+
 		//Save pointer to array in Graph source pointer
-		if (graph!=0)
+		if (graph!=NULL)
 		{
 			graph->source = vertex;
 		}
-		
 
 		//Save index value in evey allocated memoryspace in array
 		int i = 0;
@@ -42,18 +39,7 @@ G* createGraph(int n)
 		{
 			if(vertex != NULL){
 				vertex[i].index = i;
-				
-				//Create a edgeList for every vertex
-					//Allocate memory for new list
-					E* edgeList = (E*)malloc(sizeof(E));
-
-
-					//Make sure head of list is NULL before starting any operations
-					if (vertex != NULL) {
-						vertex[i].head = NULL;
-					}
 			}
-			
 		}
 		return graph;
 }
@@ -84,8 +70,6 @@ int getNumVertices(G* graph) {
 
 	V* vertex = graph->source;
 
-
-
 	int i = 1;
 
 	while (vertex[i].head != NULL)
@@ -93,55 +77,54 @@ int getNumVertices(G* graph) {
 		i++;
 	}
 
-
 	int nrOfVertices = i-1;
 
-	printf("\n\n number of vertices %d ", nrOfVertices);
+	printf("Number of vertices %d ", nrOfVertices);
+	printf("\n\n ");
 
 	return nrOfVertices;
 }
 
 void addDirectedEdge(V* vertex1, V* vertex2)
 {
-	//Create empty edgeNode
-	E* x = (E*)malloc(sizeof(E));
+	int index2 = vertex2->index;
 
-	//Make sure all values for a new node is set
-	if (x != NULL) {
-		x->index = vertex2->index;
-		x->next= NULL;
-		x->prev = NULL;
-	}
+	///* Print Messages */
 
-	//Insert new node in array
-	bool insertedNode = insertEdgeNode(vertex1, x);
+	//printf("Printing lists...\n");
+	////Prints the first list
+	//printf("Vertex list inside function: ");
+	//N* listprint = vertex1->head;
+	//printlist(listprint);
+
+	bool insertNode = insertEdge(vertex1, createNode(index2));
 
 }
 
-bool insertEdgeNode(V* vertex, E* newNode) {
-
+//Insert to list begining
+bool insertEdge(V* vertex, N* newNode) {
+	if (vertex->head != NULL) {
+		//Define next pointer of new node to head pointer
+		newNode->next = vertex->head;
+		//List head not NULL means we already have head
 		if (vertex->head != NULL) {
-			//Define next pointer of new node to head pointer
-			newNode->next = vertex->head;
-			//List head not NULL means we already have head
-			if (vertex->head != NULL) {
-				//Overwrite head prev with new node
-				vertex->head->prev = newNode;
-			}
-			//Replace head with new node.
-			vertex->head = newNode;
-			//Should not point back.
-			newNode->prev = NULL;
+			//Overwrite head prev with new node
+			vertex->head->prev = newNode;
 		}
-		else {
-			vertex->head = newNode;
-		}
-		//Check for success
-		if (vertex->head == newNode) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		//Replace head with new node.
+		vertex->head = newNode;
+		//Should not point back.
+		newNode->prev = NULL;
+	}
+	else {
+		vertex->head = newNode;
+	}
+	//Check for success
+	if (vertex->head == newNode) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
