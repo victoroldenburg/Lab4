@@ -20,26 +20,30 @@ G* createGraph(int n)
 		//Create vertex array
 		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
-		//Make sure head of list is NULL before starting any operations
 		if (vertex != NULL) {
-			vertex->head = NULL;
+				//Make sure head of list is NULL before starting any operations
+		
+					vertex->head = NULL;
+
+				//Save pointer to array in Graph source pointer
+				if (graph!=NULL)
+				{
+					graph->source = vertex;
+				}
+
+				//Save index value in evey allocated memoryspace in array
+				int i = 0;
+
+				for (i = 0; i < n; i++)
+				{
+					if(vertex != NULL){
+						vertex[i].index = i;
+					}
+				}
+
+				vertex[n].index = INT_MAX;
 		}
 
-		//Save pointer to array in Graph source pointer
-		if (graph!=NULL)
-		{
-			graph->source = vertex;
-		}
-
-		//Save index value in evey allocated memoryspace in array
-		int i = 1;
-
-		for (i = 0; i <= n; i++)
-		{
-			if(vertex != NULL){
-				vertex[i].index = i;
-			}
-		}
 		return graph;
 }
 
@@ -47,14 +51,14 @@ int getNumVertices(G* graph) {
 
 	V* vertex = graph->source;
 
-	int i = 1;
+	int i = 0;
 
-	while (vertex[i].index != 0)
+	while (vertex[i].index != INT_MAX)
 	{
 		i++;
 	}
 
-	int nrOfVertices = i-1;
+	int nrOfVertices = i;
 
 	return nrOfVertices;
 }
@@ -87,7 +91,48 @@ int getNumEdges(G* graph)
 
 int* getNeighbors(G* graph, V* vertex)
 {
-	return NULL;
+	int* inNeighborsArray = getInNeighbors(graph, vertex);
+	int* outNeighborsArray = getOutNeighbors(graph, vertex);
+
+	int nrOfInN = 0;
+	int nrOfOutN = 0;
+
+	while (inNeighborsArray[nrOfInN] != INT_MAX)
+	{
+		nrOfInN++;
+	}
+
+	while (outNeighborsArray[nrOfOutN] != INT_MAX)
+	{
+		nrOfOutN++;
+	}
+
+	int n = nrOfInN + nrOfOutN;
+
+	int* nrOfNeighborsArray = (int*)calloc(n, sizeof(int*));
+
+	if (nrOfNeighborsArray != NULL)
+	{
+			int i = 0;
+
+			for (i = 0; i < nrOfInN; i++)
+			{
+				nrOfNeighborsArray[i] = inNeighborsArray[i];
+			}
+
+			i = 0;
+
+			for (i = 0; i < nrOfOutN; i++)
+			{
+				nrOfNeighborsArray[i+ nrOfInN] = outNeighborsArray[i];
+			}
+
+			nrOfNeighborsArray[nrOfInN + nrOfOutN] = INT_MAX;
+
+			return nrOfNeighborsArray;
+	}
+	
+	return false;
 }
 
 int* getInNeighbors(G* graph, V* vertex)
@@ -117,7 +162,15 @@ int* getInNeighbors(G* graph, V* vertex)
 			}
 			temp2 = temp2->next;
 		}
+
 	}
+
+	//Insert INT_MAX at the end of array
+	if (arr2 != NULL)
+	{
+		arr2[j] = INT_MAX;
+	}
+	
 
 	return arr2;
 }
@@ -141,7 +194,7 @@ int* getOutNeighbors(G* graph, V* vertex)
 	//Allocate array and save index in array
 	int* arr = (int*)calloc(n + 8, sizeof(int));
 
-	int i = 1;
+	int i = 0;
 
 	N* temp2 = vertex->head;
 
@@ -151,11 +204,16 @@ int* getOutNeighbors(G* graph, V* vertex)
 
 		if (arr != NULL)
 		{
-			arr[i-1] = temp2->data;
+			arr[i] = temp2->data;
 			temp2 = temp2->next;
 			i++;
 		}
 
+	}
+	//Insert INT_MAX at the end of array
+	if (arr != NULL)
+	{
+		arr[i] = INT_MAX;
 	}
 
 	return arr;
@@ -217,17 +275,33 @@ G* printArray(G* graph) {
 
 	printf("Prints all index and adresses in the struct array\n");
 
-	int n = graph->n_vertices;
+	int n = getNumVertices(graph);
 
 	V* vertex = graph->source;
 
-
-	for (int i = 1; i <= n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		int temp = vertex[i].index;
 
 		printf("%d ", temp);
-		printf("%p \n", vertex[i].head);
+		printf("%p: ", vertex[i].head);
+
+		//###################################################
+
+
+			//Defining a temp varible
+			N* temp2 = vertex[i].head;
+			//Itterate until last node
+			while (temp2 != NULL) {
+				//Assign Next pointer of node to temp
+				int edgeToNode = temp2->data;
+				printf("%d ", edgeToNode);
+				temp2 = temp2->next;
+			}
+
+			printf("\n");
+		//##################################################
+
 	}
 
 	return graph;
@@ -238,7 +312,7 @@ void printIntArray(int* array) {
 
 	int i = 0;
 
-	while (array[i] != 0)
+	while (array[i] != INT_MAX)
 	{
 		printf("%d ", array[i]);
 		i++;
@@ -294,6 +368,7 @@ N* searchEdge(V* vertex, int key) {
 	return NULL;
 }
 
+//Free allocated memory
 bool freeMemory(G* graph)
 {
 	V* vertex = graph->source;
