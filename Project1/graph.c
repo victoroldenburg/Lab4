@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include "graph.h"
 
+//####################MAIN FUNCTIONS#################################################
 G* createGraph(int n)
 {
 	//Create graph (Pointer to vertex array)
-		//Allocate memory for new list
+		//Allocate memory for new pointer
 		G* graph = (G*)malloc(sizeof(G));
 
 		//Set n_size equall to n
@@ -20,15 +21,13 @@ G* createGraph(int n)
 		//Create vertex array
 		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
-		if (vertex != NULL) {
-				//Make sure head of list is NULL before starting any operations
-		
-					vertex->head = NULL;
-
-				//Save pointer to array in Graph source pointer
+		if (vertex != NULL) { 
+				
+				vertex->head = NULL; //Make sure head of list is NULL before starting any operations
+				
 				if (graph!=NULL)
 				{
-					graph->source = vertex;
+					graph->source = vertex; //Save adress to the array in the Graph source pointer
 				}
 
 				//Save index value in evey allocated memoryspace in array
@@ -41,7 +40,7 @@ G* createGraph(int n)
 					}
 				}
 
-				vertex[n].index = INT_MAX;
+				vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 		}
 
 		return graph;
@@ -60,7 +59,7 @@ int getNumVertices(G* graph) {
 
 	int nrOfVertices = i;
 
-	return nrOfVertices;
+	return nrOfVertices; //Return int number of vertices
 }
 
 int getNumEdges(G* graph)
@@ -72,7 +71,7 @@ int getNumEdges(G* graph)
 	int i = 0;
 	int edgeCounter = 0;
 
-	for (i = 1; i < n; i++)
+	for (i = 0; i < n; i++)
 	{
 		//Defining a temp varible
 		N* temp = vertex[i].head;
@@ -82,11 +81,9 @@ int getNumEdges(G* graph)
 			temp = temp->next;
 			edgeCounter++;
 		}
-
-		
 	}
 
-	return edgeCounter;
+	return edgeCounter; //Return number of edges found in array connected to graph
 }
 
 int* getNeighbors(G* graph, V* vertex)
@@ -109,7 +106,7 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = (int*)calloc(n, sizeof(int*));
+	int* nrOfNeighborsArray = (int*)calloc(n+24, sizeof(int*));
 
 	if (nrOfNeighborsArray != NULL)
 	{
@@ -200,7 +197,6 @@ int* getOutNeighbors(G* graph, V* vertex)
 
 	while (temp2 != NULL) {
 		//Assign Next pointer of node to temp
-		
 
 		if (arr != NULL)
 		{
@@ -222,42 +218,23 @@ int* getOutNeighbors(G* graph, V* vertex)
 void addDirectedEdge(V* vertex1, V* vertex2)
 {
 	int index2 = vertex2->index;
-
-	///* Print Messages */
-	//printf("Printing lists...\n");
-	////Prints the first list
-	//printf("Vertex list inside function: ");
-	//N* listprint = vertex1->head;
-	//printlist(listprint);
-
 	bool insertNode = insertEdge(vertex1, createNode(index2));
-
 }
 
 void addUndirectedEdge(V* vertex1, V* vertex2)
 {
 	int index1 = vertex1->index;
 	int index2 = vertex2->index;
-	
-
-	///* Print Messages */
-	//printf("Printing lists...\n");
-	////Prints the first list
-	//printf("Vertex list inside function: ");
-	//N* listprint = vertex1->head;
-	//printlist(listprint);
 
 	bool testinsert = insertEdge(vertex1, createNode(index2));
 	testinsert = insertEdge(vertex2, createNode(index1));
-
 }
 
 bool hasEdge(V* vertex1, V* vertex2)
 {
-	//int index1 = vertex1->index;
 	int index2 = vertex2->index;
 
-	N* foundEdge = searchEdge(vertex1, index2);
+	N* foundEdge = searchEdge(vertex1, index2); //Search for edges
 
 	if (foundEdge != NULL)
 	{
@@ -267,13 +244,11 @@ bool hasEdge(V* vertex1, V* vertex2)
 }
 
 
-
 //##########################SUPPORT FUCTIONS###########################################
-
-//Print array
+//Print V* struct array
 G* printArray(G* graph) {
 
-	printf("Prints all index and adresses in the struct array\n");
+	
 
 	int n = getNumVertices(graph);
 
