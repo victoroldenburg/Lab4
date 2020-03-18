@@ -1,4 +1,8 @@
 #pragma once
+#include "List.h"
+
+#include <stdbool.h>
+
 
 //typedef struct Edge { 
 //	int index; //int to key

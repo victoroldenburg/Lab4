@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BFS.c" />
     <ClCompile Include="graph.c" />
     <ClCompile Include="List.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="testGraph.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BFS.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="testGraph.h" />
