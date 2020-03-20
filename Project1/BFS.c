@@ -16,53 +16,59 @@ void BFS(G* graph, V* v_source, V* sheep) {
 
 			if (distance != NULL) {
 				for (int i = 0; i < size; i++) {
-					vertex = &vertex[i];
-					vertex->distance = INT_MAX - 1;
-					vertex->parent = NULL;
+					
+					vertex[i].distance = INT_MAX - 1;
+					vertex[i].parent = NULL;
 				}
 			}
-
-			Enqueue(graph, vertex, vertex->index);
+            Q* queue = createQueue();
+			enqueue(queue, vertex->index);
 
 		}
 	}
 }
 
 //enqueue graph
-void Enqueue(G* graph, V* vertex, int source){
-	int counter = 0;
-
-	//int head = vertex->head->data; //head node data
-
-	while (vertex[counter].index != INT_MAX){
-		if (counter == graph->n_vertices){
-			printf("Enqueue error!\n");
-			return;
-		}
-		counter++;
-	}
-	vertex[counter].index = source;
+void enqueue(Q* queue, int value) {
+    if (queue->rear == SIZE - 1)
+        printf("\nQueue is Full!!");
+    else {
+        if (queue->front == -1)
+            queue->front = 0;
+        queue->rear++;
+        queue->items[queue->rear] = value;
+    }
 }
 
+int dequeue(Q* queue) {
+    int item;
+    if (isEmptyQ(queue)) {
+        printf("Queue is empty");
+        item = -1;
+    }
+    else {
+        item = queue->items[queue->front];
+        queue->front++;
+        if (queue->front > queue->rear) {
+            printf("Resetting queue");
+            queue->front = queue->rear = -1;
+        }
+    }
+    return item;
+}
 
-//Dequeue graph
-int Dequeue(G* graph, int* head){
-	int output = INT_MAX;
-	int counter = 0;
+Q* createQueue() {
+    Q* queue = malloc(sizeof(Q));
+    if (queue != NULL) {
+        queue->front = -1;
+        queue->rear = -1;
+    }
+    return queue;
+}
 
-	if (head[0] == INT_MAX){
-		printf("Dequeue error!\n");
-		return INT_MAX;
-	}
-	else{
-		output = head[counter];
-
-		int i = 0;
-		while (head[i] != INT_MAX){
-			head[i] = head[i + 1];
-			i++;
-		}
-
-		return output;
-	}
+int isEmptyQ(Q* queue) {
+    if (queue->rear == -1)
+        return 1;
+    else
+        return 0;
 }

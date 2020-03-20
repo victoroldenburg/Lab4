@@ -10,41 +10,40 @@ G* createGraph(int n)
 {
 	//Create graph (Pointer to vertex array)
 		//Allocate memory for new pointer
-		G* graph = (G*)malloc(sizeof(G));
+	G* graph = (G*)malloc(sizeof(G));
 
-		//Set n_size equall to n
+	//Set n_size equall to n
+	if (graph != NULL)
+	{
+		graph->n_vertices = n;
+	}
+
+	//Create vertex array
+	V* vertex = (V*)calloc(n + 8, sizeof(V));
+
+	if (vertex != NULL) {
+
+		vertex->head = NULL; //Make sure head of list is NULL before starting any operations
+
 		if (graph != NULL)
 		{
-			graph->n_vertices = n;
-		}
-		
-		//Create vertex array
-		V* vertex = (V*)calloc(n + 8, sizeof(V));
-
-		if (vertex != NULL) { 
-				
-				vertex->head = NULL; //Make sure head of list is NULL before starting any operations
-				
-				if (graph!=NULL)
-				{
-					graph->source = vertex; //Save adress to the array in the Graph source pointer
-				}
-
-				//Save index value in evey allocated memoryspace in array
-				int i = 0;
-
-				for (i = 0; i < n; i++)
-				{
-					if(vertex != NULL){
-						vertex[i].index = i;
-						graph->vertex[i] = vertex[i]; //save every vertex in the graph for access
-					}
-				}
-
-				vertex[n].index = INT_MAX; //Ends array with INT_MAX value
+			graph->source = vertex; //Save adress to the array in the Graph source pointer
 		}
 
-		return graph;
+		//Save index value in evey allocated memoryspace in array
+		int i = 0;
+
+		for (i = 0; i < n; i++)
+		{
+			if (vertex != NULL) {
+				vertex[i].index = i;
+			}
+		}
+
+		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
+	}
+
+	return graph;
 }
 
 int getNumVertices(G* graph) {
@@ -107,29 +106,29 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = (int*)calloc(n+24, sizeof(int*));
+	int* nrOfNeighborsArray = (int*)calloc(n + 24, sizeof(int*));
 
 	if (nrOfNeighborsArray != NULL)
 	{
-			int i = 0;
+		int i = 0;
 
-			for (i = 0; i < nrOfInN; i++)
-			{
-				nrOfNeighborsArray[i] = inNeighborsArray[i];
-			}
+		for (i = 0; i < nrOfInN; i++)
+		{
+			nrOfNeighborsArray[i] = inNeighborsArray[i];
+		}
 
-			i = 0;
+		i = 0;
 
-			for (i = 0; i < nrOfOutN; i++)
-			{
-				nrOfNeighborsArray[i+ nrOfInN] = outNeighborsArray[i];
-			}
+		for (i = 0; i < nrOfOutN; i++)
+		{
+			nrOfNeighborsArray[i + nrOfInN] = outNeighborsArray[i];
+		}
 
-			nrOfNeighborsArray[nrOfInN + nrOfOutN] = INT_MAX;
+		nrOfNeighborsArray[nrOfInN + nrOfOutN] = INT_MAX;
 
-			return nrOfNeighborsArray;
+		return nrOfNeighborsArray;
 	}
-	
+
 	return false;
 }
 
@@ -153,7 +152,7 @@ int* getInNeighbors(G* graph, V* vertex)
 		//Itterate until last node
 		while (temp2 != NULL) {
 			//Assign Next pointer of node to temp
-			if (vertex->index == temp2->data && arr2!=NULL)
+			if (vertex->index == temp2->data && arr2 != NULL)
 			{
 				arr2[j] = startVertex[i].index;
 				j++;
@@ -168,14 +167,14 @@ int* getInNeighbors(G* graph, V* vertex)
 	{
 		arr2[j] = INT_MAX;
 	}
-	
+
 
 	return arr2;
 }
 
 int* getOutNeighbors(G* graph, V* vertex)
 {
-	
+
 	//Defining a temp varible
 	N* temp = vertex->head;
 	int counter = 0;
@@ -249,7 +248,7 @@ bool hasEdge(V* vertex1, V* vertex2)
 //Print V* struct array
 G* printArray(G* graph) {
 
-	
+
 
 	int n = getNumVertices(graph);
 
@@ -266,16 +265,16 @@ G* printArray(G* graph) {
 
 
 			//Defining a temp varible
-			N* temp2 = vertex[i].head;
-			//Itterate until last node
-			while (temp2 != NULL) {
-				//Assign Next pointer of node to temp
-				int edgeToNode = temp2->data;
-				printf("%d ", edgeToNode);
-				temp2 = temp2->next;
-			}
+		N* temp2 = vertex[i].head;
+		//Itterate until last node
+		while (temp2 != NULL) {
+			//Assign Next pointer of node to temp
+			int edgeToNode = temp2->data;
+			printf("%d ", edgeToNode);
+			temp2 = temp2->next;
+		}
 
-			printf("\n");
+		printf("\n");
 		//##################################################
 
 	}
@@ -362,15 +361,15 @@ bool freeMemory(G* graph)
 		while (temp != NULL) {
 			//Assign Next pointer of node to temp
 			temp = temp->next;
-			
+
 		}
 
 		free(temp);
-		
+
 
 	}
 	free(vertex);
 	free(graph);
-	
+
 	return true;
 }
