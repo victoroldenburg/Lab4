@@ -37,6 +37,7 @@ G* createGraph(int n)
 				{
 					if(vertex != NULL){
 						vertex[i].index = i;
+						graph->vertex[i] = vertex[i]; //save every vertex in the graph for access
 					}
 				}
 
