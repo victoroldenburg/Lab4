@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "List.h"
 
 #include <stdbool.h>
@@ -12,12 +12,15 @@
 
 typedef struct graph {
 	struct Vertex* source; //Array head
+	struct Vertex* vertex; //Sample vertex
 	int n_vertices; //Number of vertices
 } G;
 
 typedef struct Vertex {
 	int index; //Vertex index
 	struct Node* head; //List head
+	int distance; //distance from source
+	struct Node* parent; //π parent node
 } V;
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).
