@@ -12,12 +12,14 @@
 
 typedef struct graph {
 	struct Vertex* source; //Array head
+	struct Vertex* vertex; //Sample vertex
 	int n_vertices; //Number of vertices
 } G;
 
 typedef struct Vertex {
 	int index; //Vertex index
 	struct Node* head; //List head
+	struct Node* distance; //distance from source
 } V;
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).
