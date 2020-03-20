@@ -4,6 +4,7 @@
 #include <stdbool.h> 
 #include <stdio.h>
 #include <stdlib.h>
+#include "BFS.h"
 
 void runTestGraph() {
 
@@ -114,6 +115,9 @@ void runTestGraph() {
 
 	printf("Prints all index, adresses and edges in the struct array\n");
 	G* graphr = printArray(graph);
+
+	//#####################BFS#############################
+	BFS(graph, vertex2, vertex5);
 
 	//Free memory
 	freeMemory(graph);
