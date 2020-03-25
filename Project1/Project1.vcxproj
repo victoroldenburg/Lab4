@@ -22,6 +22,7 @@
     <ClCompile Include="BFS.c" />
     <ClCompile Include="graph.c" />
     <ClCompile Include="List.c" />
+    <ClCompile Include="loadgraphfile.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="testGraph.c" />
   </ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="BFS.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="loadgraphfile.h" />
     <ClInclude Include="testGraph.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -88,6 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
