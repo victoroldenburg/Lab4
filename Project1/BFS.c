@@ -18,12 +18,8 @@ void BFS(G* graph, V* start_node, V* end_node) {
 					vertex[i].distance = INT_MAX - 1;
 					vertex[i].parent = NULL;
 				}
-
-
 			}
-
 			Enqueue(graph, vertex, vertex->index);
-
 		}
 	}
 
