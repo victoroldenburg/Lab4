@@ -7,7 +7,7 @@
 #include "graph.h"
 
 
-void LoadGraph(char* filename)
+G* LoadGraph(char* filename)
 {
     //Create new graph
     int n_graph = 100; //number of vertices to create
@@ -31,6 +31,7 @@ void LoadGraph(char* filename)
     char* val;
     char delims[] = "\n";
 
+    //Reads every line and insert integers to graph
     while (fgets(line, 60, filepoint) != NULL)
     {
         val = strtok(line, delims);
@@ -45,7 +46,7 @@ void LoadGraph(char* filename)
             //Insert values to graph
             while (arr[i] != INT_MAX)
             {
-                if (i == 0)
+                if (i == 0) //First value is vertex index
                 {
                     vertex_index1 = arr[i];
                     i++;
@@ -59,21 +60,35 @@ void LoadGraph(char* filename)
             val = strtok(NULL, delims);
             read_n = (val == NULL) ? 0 : sscanf(val, "%d", &arr[0]);
             
-            arr[0] = arr[1] = arr[2] = arr[3] = arr[4] = arr[5] = INT_MAX;
+            arr[0] = arr[1] = arr[2] = arr[3] = arr[4] = arr[5] = INT_MAX; //Resets array before next line
         }
     }
      
     //Delete black marked squares in graph
-    int arrtodelete[8] = {};
+    int arrtodelete[] = {4,14,24,34,44,45,46,47,48,54,64,74,81,82,83,84};
+    N* nodetodelete;
 
-    //Searching for specific edge beloning to specific vertex
-    N* nodetodelete = searchEdge(vertex[i], arrtodelete[j]);
+    for (int vertex_index= 0; vertex_index < n_graph; vertex_index++) //Cycle through every vertex
+    {
+        for (int delete_index = 0; delete_index < 16; delete_index++) //Cycle thorugh every value to delete
+        {
+            vertex[arrtodelete[delete_index]].head = NULL; //Setting black square vertex to NULL
 
-    //Delete edge-node from graph
-    bool isDeleted = deleteNode(vertex[i], nodetodelete);
+            do //While loop if there is more than one edge with same index
+            {
+                //Searching for specific edge beloning to specific vertex
+                nodetodelete = searchEdge(&vertex[vertex_index], arrtodelete[delete_index]);
 
+                //Delete edge-node from graph
+                bool isDeleted = deleteNodeGraph(&vertex[vertex_index], nodetodelete);
 
-    printArray(graph);
+            } while (nodetodelete != 0);
+
+            
+        }
+    }
+        
+    //printArray(graph);
     fclose(filepoint);	//Close file
     return graph;
 }

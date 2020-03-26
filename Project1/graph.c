@@ -325,7 +325,7 @@ bool insertEdge(V* vertex, N* newNode) {
 N* searchEdge(V* vertex, int key) {
 	//Defining a temp varible
 	N* temp = vertex->head;
-	printf("Searching for key: %d\n", key);
+	//printf("Searching for key: %d\n", key);
 	//Itterate when key is not empty and temp is not the key
 	while (temp != NULL && temp->data != key) {
 		//Assign Next pointer of node to temp
@@ -334,16 +334,16 @@ N* searchEdge(V* vertex, int key) {
 	//Return what you found
 	if (temp != NULL) {
 		if (temp->data == key) {
-			printf("Found the key %d\n", temp->data);
+			//printf("Found the key %d\n", temp->data);
 			return temp;
 		}
 	}
-	printf("Did not find the key \n");
+	//printf("Did not find the key \n");
 	return NULL;
 }
 
 //Function to delete nodes in list
-bool deleteNode(V* vertex, N* node) {
+bool deleteNodeGraph(V* vertex, N* node) {
 	if (node != NULL) {
 		if (node->prev != NULL) {
 			node->prev->next = node->next;

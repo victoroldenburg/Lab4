@@ -5,28 +5,28 @@
 #include <stdlib.h>
 #include <limits.h>
 
-void BFS(G* graph, V* v_source, V* sheep) {
+void BFS(G* graph, V* start_node, V* end_node) {
 
 	if (graph != NULL) {
-		if (v_source != NULL) {
 			int size = graph->n_vertices;
-			V* vertex = v_source;
+			V* vertex = graph->source;
 
 			int* distance = (int*)malloc(size * sizeof(int));
 
 			if (distance != NULL) {
 				for (int i = 0; i < size; i++) {
-					vertex = &vertex[i];
-					vertex->distance = INT_MAX - 1;
-					vertex->parent = NULL;
+					vertex[i].distance = INT_MAX - 1;
+					vertex[i].parent = NULL;
 				}
+
+
 			}
 
 			Enqueue(graph, vertex, vertex->index);
 
 		}
 	}
-}
+
 
 //enqueue graph
 void Enqueue(G* graph, V* vertex, int source){

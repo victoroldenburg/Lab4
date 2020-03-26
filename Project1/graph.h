@@ -65,7 +65,7 @@ bool insertEdge(V* vertex, N* newNode); //Insert new node
 N* searchEdge(V* vertex, int key);
 
 //Delete edge-node from graph
-bool deleteNode(V* vertex, N* node);
+bool deleteNodeGraph(V* vertex, N* node);
 
 //Free allocated memory for graph and vertex
 bool freeMemory(G* graph);
