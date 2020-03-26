@@ -37,7 +37,7 @@ G* createGraph(int n)
 				{
 					if(vertex != NULL){
 						vertex[i].index = i;
-						graph->vertex[i] = vertex[i]; //save every vertex in the graph for access
+						//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
 					}
 				}
 
@@ -247,7 +247,7 @@ bool hasEdge(V* vertex1, V* vertex2)
 
 //##########################SUPPORT FUCTIONS###########################################
 //Print V* struct array
-G* printArray(G* graph) {
+void printArray(G* graph) {
 
 	
 
@@ -279,8 +279,6 @@ G* printArray(G* graph) {
 		//##################################################
 
 	}
-
-	return graph;
 }
 
 //Print array of ints
@@ -344,6 +342,23 @@ N* searchEdge(V* vertex, int key) {
 	return NULL;
 }
 
+//Function to delete nodes in list
+bool deleteNode(V* vertex, N* node) {
+	if (node != NULL) {
+		if (node->prev != NULL) {
+			node->prev->next = node->next;
+		}
+		else {
+			vertex->head = node->next;
+		}
+
+		if (node->next != NULL) {
+			node->next->prev = node->prev;
+		}
+	}
+	return true;
+}
+
 //Free allocated memory
 bool freeMemory(G* graph)
 {
@@ -374,3 +389,4 @@ bool freeMemory(G* graph)
 	
 	return true;
 }
+

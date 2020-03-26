@@ -114,7 +114,7 @@ void runTestGraph() {
 	printf("\n\n"); //New lines
 
 	printf("Prints all index, adresses and edges in the struct array\n");
-	G* graphr = printArray(graph);
+	printArray(graph);
 
 	//#####################BFS#############################
 	BFS(graph, vertex2, vertex5);

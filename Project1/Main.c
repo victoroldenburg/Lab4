@@ -5,7 +5,8 @@ int main() {
 
 	//runTestGraph();
 
-		char filename[] = { "graph_data/graph.txt" };
+
+		char filename[] = { "graph_data/graph0to99.txt" };
 
 
 		int width = 0;

@@ -1,4 +1,6 @@
 #pragma once
+#include "graph.h"
 
-void LoadGraph(char* filename, int* width, int* height);
+//Crates and return a graph presented i LAB4 ex2
+G* LoadGraph(char* filename);
 

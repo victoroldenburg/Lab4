@@ -53,7 +53,7 @@ bool hasEdge(V* vertex1, V* vertex2);
 
 //###########SUPPORT FUNCTIONS##########
 //Prints the struct array with vertex index, adress and edge list
-G* printArray(G* graph);
+void printArray(G* graph);
 
 //Prints the array of ints returned from neighbors functions
 void printIntArray(int* array);
@@ -63,6 +63,9 @@ bool insertEdge(V* vertex, N* newNode); //Insert new node
 
 //Searching for specific edge beloning to specific vertex
 N* searchEdge(V* vertex, int key);
+
+//Delete edge-node from graph
+bool deleteNode(V* vertex, N* node);
 
 //Free allocated memory for graph and vertex
 bool freeMemory(G* graph);
