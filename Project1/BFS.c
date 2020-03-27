@@ -63,7 +63,9 @@ void enqueue(Q* q, V* value) {
 
 int dequeue(Q* q) {
     int x;
-    if(isEmptyQ(q))
+    if (isEmptyQ(q)) {
+        return 0;
+    }
 }
 
 Q* createQueue() {
@@ -71,7 +73,6 @@ Q* createQueue() {
     if (queue != NULL) {
         queue->head = -1;
         queue->tail = -1;
-        queue->length = -1;
     }
     return queue;
 }

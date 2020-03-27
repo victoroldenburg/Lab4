@@ -1,8 +1,9 @@
 #pragma once
 #include "graph.h"
+#define SIZE 40
 
 typedef struct queue {
-    int length;
+    int length[SIZE];
     int head;
     int tail;
 } Q;
