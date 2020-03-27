@@ -27,9 +27,6 @@
     <ClCompile Include="testGraph.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BFS.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="loadgraphfile.c">
       <Filter>Source Files</Filter>
     </ClCompile>

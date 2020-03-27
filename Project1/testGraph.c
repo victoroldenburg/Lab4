@@ -123,7 +123,7 @@ void runTestGraph() {
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
 
-	BFS(graph_ex2, &vertex[0], &vertex[5]);
+	//BFS(graph_ex2, &vertex[0], &vertex[5]);
 
 
 	//Free memory
