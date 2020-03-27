@@ -15,11 +15,14 @@ void BFS(G* graph, V* start_node, V* end_node) {
 
 			if (distance != NULL) {
 				for (int i = 0; i < size; i++) {
-					vertex[i].distance = INT_MAX - 1;
+					vertex[i].distance = INT_MAX;
 					vertex[i].parent = NULL;
 				}
 			}
 			Enqueue(graph, vertex, vertex->index);
+
+			int temp = Dequeue(graph, vertex);
+
 		}
 	}
 
@@ -30,35 +33,36 @@ void Enqueue(G* graph, V* vertex, int source){
 
 	//int head = vertex->head->data; //head node data
 
-	while (vertex[counter].index != INT_MAX){
+	while (vertex[counter].distance != INT_MAX){
 		if (counter == graph->n_vertices){
 			printf("Enqueue error!\n");
 			return;
 		}
 		counter++;
 	}
-	vertex[counter].index = source;
+	vertex[counter].distance = source;
 }
 
 
 //Dequeue graph
-int Dequeue(G* graph, int* head){
+int Dequeue(G* graph, V* vertex){
 	int output = INT_MAX;
-	int counter = 0;
 
-	if (head[0] == INT_MAX){
+	if (vertex[0].distance == INT_MAX){
 		printf("Dequeue error!\n");
 		return INT_MAX;
 	}
 	else{
-		output = head[counter];
+		
+		output = vertex[0].distance;
 
 		int i = 0;
-		while (head[i] != INT_MAX){
-			head[i] = head[i + 1];
+		while (vertex[i].distance != INT_MAX){
+			vertex[i].distance = vertex[i + 1].distance;
 			i++;
 		}
 
+		
 		return output;
 	}
 }

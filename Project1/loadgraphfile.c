@@ -31,6 +31,7 @@ G* LoadGraph(char* filename)
     char* val;
     char delims[] = "\n";
 
+
     //Reads every line and insert integers to graph
     while (fgets(line, 60, filepoint) != NULL)
     {

@@ -53,7 +53,9 @@ int getNumVertices(G* graph) {
 
 	int i = 0;
 
-	while (vertex[i].index != INT_MAX)
+
+
+	while (vertex[i].index < 10000)
 	{
 		i++;
 	}

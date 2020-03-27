@@ -5,4 +5,4 @@ void BFS(G* graph, V* source, V* sheep);
 
 void Enqueue(G* graph, V* head, int index);
 
-int Dequeue(G* graph, int* index);
+int Dequeue(G* graph, V* vertex);
