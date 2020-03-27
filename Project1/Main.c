@@ -1,4 +1,5 @@
 #include "testGraph.h"
+#include "loadgraphfile.h"
 
 int main() {
 

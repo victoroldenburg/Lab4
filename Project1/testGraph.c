@@ -113,14 +113,22 @@ void runTestGraph() {
 	//Prints struct vertices array
 	printf("\n\n"); //New lines
 
-	printf("Prints all index, adresses and edges in the struct array\n");
-	G* graphr = printArray(graph);
+	//printf("Prints all index, adresses and edges in the struct array\n");
+	//printArray(graph);
 
 	//#####################BFS#############################
-	BFS(graph, vertex2, vertex5);
+	char filename[] = { "graph_data/graph0to99.txt" };
+
+	G* graph_ex2 = LoadGraph(filename);
+	printArray(graph_ex2);
+	nrOfVertices = getNumVertices(graph_ex2);
+
+	BFS(graph_ex2, &vertex[0], &vertex[5]);
+
 
 	//Free memory
 	freeMemory(graph);
+	freeMemory(graph_ex2);
 	free(outNeighborsArray);
 	free(inNeighborsArray);
 	free(nrOfNeighborsArray);

@@ -29,15 +29,31 @@ G* createGraph(int n)
 		{
 			graph->source = vertex; //Save adress to the array in the Graph source pointer
 		}
+		
+		//Create vertex array
+		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
-		//Save index value in evey allocated memoryspace in array
-		int i = 0;
+		if (vertex != NULL) { 
+				
+				vertex->head = NULL; //Make sure head of list is NULL before starting any operations
+				
+				if (graph!=NULL)
+				{
+					graph->source = vertex; //Save adress to the array in the Graph source pointer
+				}
 
-		for (i = 0; i < n; i++)
-		{
-			if (vertex != NULL) {
-				vertex[i].index = i;
-			}
+				//Save index value in evey allocated memoryspace in array
+				int i = 0;
+
+				for (i = 0; i < n; i++)
+				{
+					if(vertex != NULL){
+						vertex[i].index = i;
+						//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
+					}
+				}
+
+				vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 		}
 
 		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
@@ -52,7 +68,9 @@ int getNumVertices(G* graph) {
 
 	int i = 0;
 
-	while (vertex[i].index != INT_MAX)
+
+
+	while (vertex[i].index < 10000)
 	{
 		i++;
 	}
@@ -226,8 +244,23 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 	int index1 = vertex1->index;
 	int index2 = vertex2->index;
 
-	bool testinsert = insertEdge(vertex1, createNode(index2));
-	testinsert = insertEdge(vertex2, createNode(index1));
+	N* nodeAlreadyExists1 = searchEdge(vertex1, index2);
+
+	//Check if node already exists, if no, add edge
+	if (nodeAlreadyExists1==NULL)
+	{
+		insertEdge(vertex1, createNode(index2));
+	}
+	
+	
+	N* nodeAlreadyExists2 = searchEdge(vertex2, index1);
+
+	//Check if node already exists, if no, add edge
+	if (nodeAlreadyExists2==NULL)
+	{
+		insertEdge(vertex2, createNode(index1));
+	}
+	
 }
 
 bool hasEdge(V* vertex1, V* vertex2)
@@ -246,7 +279,7 @@ bool hasEdge(V* vertex1, V* vertex2)
 
 //##########################SUPPORT FUCTIONS###########################################
 //Print V* struct array
-G* printArray(G* graph) {
+void printArray(G* graph) {
 
 
 
@@ -278,8 +311,6 @@ G* printArray(G* graph) {
 		//##################################################
 
 	}
-
-	return graph;
 }
 
 //Print array of ints
@@ -326,7 +357,7 @@ bool insertEdge(V* vertex, N* newNode) {
 N* searchEdge(V* vertex, int key) {
 	//Defining a temp varible
 	N* temp = vertex->head;
-	printf("Searching for key: %d\n", key);
+	//printf("Searching for key: %d\n", key);
 	//Itterate when key is not empty and temp is not the key
 	while (temp != NULL && temp->data != key) {
 		//Assign Next pointer of node to temp
@@ -335,12 +366,29 @@ N* searchEdge(V* vertex, int key) {
 	//Return what you found
 	if (temp != NULL) {
 		if (temp->data == key) {
-			printf("Found the key %d\n", temp->data);
+			//printf("Found the key %d\n", temp->data);
 			return temp;
 		}
 	}
-	printf("Did not find the key \n");
+	//printf("Did not find the key \n");
 	return NULL;
+}
+
+//Function to delete nodes in list
+bool deleteNodeGraph(V* vertex, N* node) {
+	if (node != NULL) {
+		if (node->prev != NULL) {
+			node->prev->next = node->next;
+		}
+		else {
+			vertex->head = node->next;
+		}
+
+		if (node->next != NULL) {
+			node->next->prev = node->prev;
+		}
+	}
+	return true;
 }
 
 //Free allocated memory
