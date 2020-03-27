@@ -24,3 +24,5 @@ int isEmptyQ(Q*);
 //void printQueue(Q* queue);
 
 void BFS(G*,V*,V*);
+
+bool TEST();

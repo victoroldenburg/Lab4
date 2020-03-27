@@ -416,8 +416,6 @@ bool freeMemory(G* graph)
 
 
 	}
-	free(vertex);
-	free(graph);
 
 	return true;
 }

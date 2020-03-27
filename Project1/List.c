@@ -6,12 +6,12 @@
 #include <stdlib.h>
 
 //Create list
-L* createList(){
+L* createList() {
 	//Allocate memory for new list
 	L* list = (L*)malloc(sizeof(L));
 
 	//Make sure head of list is NULL before starting any operations
-	if (list != NULL){
+	if (list != NULL) {
 		list->head = NULL;
 		return list;
 	}
@@ -19,12 +19,12 @@ L* createList(){
 }
 
 //Create Node
-N* createNode(int key){
+N* createNode(int key) {
 	//Allocate memory for newNode
 	N* x = (N*)malloc(sizeof(N));
 
 	//Make sure all values for a new node is set
-	if (x != NULL){
+	if (x != NULL) {
 		x->data = key;
 		x->next = NULL;
 		x->prev = NULL;
@@ -34,7 +34,7 @@ N* createNode(int key){
 }
 
 //Check if empty
-bool isEmpty(L* list){
+bool isEmpty(L* list) {
 	if (list != NULL) {
 		//If the head is empty the list is empty.
 		if (list->head == NULL) {
@@ -51,7 +51,7 @@ bool isEmpty(L* list){
 }
 
 //Insert to list begining
-bool insert(L* list, N* newNode){
+bool insert(L* list, N* newNode) {
 	if (list->head != NULL) {
 		//Define next pointer of new node to head pointer
 		newNode->next = list->head;
@@ -69,9 +69,10 @@ bool insert(L* list, N* newNode){
 		list->head = newNode;
 	}
 	//Check for success
-	if (list->head == newNode){
+	if (list->head == newNode) {
 		return true;
-	}else{
+	}
+	else {
 		return false;
 	}
 }
@@ -111,11 +112,12 @@ void printlist(N* print) {
 }
 
 //Function to delete nodes in list
-N* deleteNode(L* list, N* node){
+N* deleteNode(L* list, N* node) {
 	if (node != NULL) {
 		if (node->prev != NULL) {
 			node->prev->next = node->next;
-		}else{
+		}
+		else {
 			list->head = node->next;
 		}
 
@@ -127,7 +129,7 @@ N* deleteNode(L* list, N* node){
 	return NULL;
 }
 
-N* maximum(L* list){
+N* maximum(L* list) {
 	//Defining a temp varible
 	N* temp = list->head;
 	N* prtMaxValue = NULL;
@@ -151,7 +153,7 @@ N* maximum(L* list){
 	return NULL;
 }
 
-N* minimum(L* list){
+N* minimum(L* list) {
 	//Defining a temp varible
 	N* temp = list->head;
 	N* prtMinValue = NULL;
@@ -207,7 +209,7 @@ N* predecessor(L* list, N* node) {
 	}
 
 	while (temp != NULL) {
-		if (temp->data > predNode->data && temp->data < node->data) {
+		if (temp->data > predNode->data&& temp->data < node->data) {
 			predNode = temp;
 		}
 		temp = temp->next;

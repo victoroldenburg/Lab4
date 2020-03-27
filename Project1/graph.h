@@ -32,7 +32,7 @@ int getNumVertices(G* graph);
 int getNumEdges(G* graph);
 
 //Returns all vertices connected to node v with any edge
-int* getNeighbors(G* graph, V* vertex); 
+int* getNeighbors(G* graph, V* vertex);
 
 //Returns a list of all vertices v0 connected to node v with an edge (v0; v)
 int* getInNeighbors(G* graph, V* vertex);
@@ -44,7 +44,7 @@ int* getOutNeighbors(G* graph, V* vertex);
 void addDirectedEdge(V* vertex1, V* vertex2);
 
 //Create an undirected edge between two vertices.
-void addUndirectedEdge(V* vertex1, V*vertex2);
+void addUndirectedEdge(V* vertex1, V* vertex2);
 
 //Returns true (1) if there is an edge between v1 and v2 and false (0) otherwise.
 bool hasEdge(V* vertex1, V* vertex2);

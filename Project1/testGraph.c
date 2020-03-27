@@ -2,7 +2,6 @@
 #include "graph.h"
 #include "BFS.h"
 #include "loadgraphfile.h"
-
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>
@@ -126,7 +125,9 @@ void runTestGraph() {
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
 
-	//BFS(graph_ex2, &vertex[0], &vertex[5]);
+	BFS(graph_ex2, &vertex[0], &vertex[5]);
+
+	//bool createqueue = TEST();
 
 
 	//Free memory
@@ -135,4 +136,6 @@ void runTestGraph() {
 	free(outNeighborsArray);
 	free(inNeighborsArray);
 	free(nrOfNeighborsArray);
+
+	return 0;
 }
