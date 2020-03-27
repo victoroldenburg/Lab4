@@ -1,17 +1,18 @@
 #pragma once
 #include "graph.h"
 
-typedef struct Q {
+typedef struct queue {
     int length;
     int head;
     int tail;
 } Q;
 
 Q* createQueue();
-void enqueue(Q* queue, V*);
-V* dequeue(Q* queue);
+void enqueue(Q*,V*);
+V* dequeue(Q*);
+int isEmptyQ(Q*);
+
 //void display(Q* queue);
-int isEmptyQ(Q* queue);
 //void printQueue(Q* queue);
 
-void BFS(G* graph, V* source, V* sheep);
+void BFS(G*,V*,V*);
