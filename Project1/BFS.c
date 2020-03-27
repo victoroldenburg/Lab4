@@ -47,28 +47,23 @@ void BFS(G* graph, V* v_source, V* sheep) {
 	}
 }
 
-//enqueue graph
-void enqueue(Q* queue, V* value) {
-    queue[queue->tail] = value;
-
-    if (queue->tail == queue->length) {
-        queue->tail = 1;
+//enqueue graph in queue q
+void enqueue(Q* q, V* value) {
+    if (q->tail == q->length) {
+        q->tail = 1;
     }
     else {
-        queue->tail = queue->tail + 1;
+        if (q->head == -1) {
+            q->head = 0;
+        }
+        q->tail++;
+        q->length[q->tail] = value;
     }
 }
 
-V* dequeue(Q* queue) {
-    V* x = queue[queue->head];
-
-    if (queue->head == queue->length) {
-        queue->head = 1;
-    } 
-    else {
-        queue->head = queue->head + 1;
-    }
-    return x;
+int dequeue(Q* q) {
+    int x;
+    if(isEmptyQ(q))
 }
 
 Q* createQueue() {

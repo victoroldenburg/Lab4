@@ -1,11 +1,10 @@
 #pragma once
 #include "graph.h"
-#define SIZE 40
 
 typedef struct Q {
-    int length[SIZE];
-    struct V* head;
-    struct V* tail;
+    int length;
+    int head;
+    int tail;
 } Q;
 
 Q* createQueue();
