@@ -1,11 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "graph.h"
 
+#include "graph.h"
+#include "loadgraphfile.h"
 
 G* LoadGraph(char* filename)
 {
