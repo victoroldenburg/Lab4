@@ -11,63 +11,71 @@ void BFS(G* graph, V* v_source, V* sheep) {
 		if (v_source != NULL) {
 			int size = graph->n_vertices;
 			V* vertex = v_source;
+            N* v = vertex->head;
+            V* u = vertex;
 
-			int* distance = (int*)malloc(size * sizeof(int));
+            char WHITE = 0;
+            char BLACK = 1;
 
-			if (distance != NULL) {
+			//int* distance = (int*)malloc(size * sizeof(int));
+
+			if (u != NULL) {
 				for (int i = 0; i < size; i++) {
 					
-					vertex[i].distance = INT_MAX - 1;
-					vertex[i].parent = NULL;
+                    u[i].color = WHITE;
+					u[i].distance = INT_MAX - 1;
+                    u[i].parent = NULL;
 				}
 			}
             Q* queue = createQueue();
-			enqueue(queue, vertex->index);
+			enqueue(queue, vertex);
+
+            while (queue != NULL) {
+                u = dequeue(queue);
+                
+                
+            }
 
 		}
 	}
 }
 
 //enqueue graph
-void enqueue(Q* queue, int value) {
-    if (queue->rear == SIZE - 1)
-        printf("\nQueue is Full!!");
+void enqueue(Q* queue, V* value) {
+    V* queue[queue->tail] = value;
+
+    if (queue->tail == queue->length) {
+        queue->tail = 1;
+    }
     else {
-        if (queue->front == -1)
-            queue->front = 0;
-        queue->rear++;
-        queue->items[queue->rear] = value;
+        queue->tail = queue->tail + 1;
     }
 }
 
-int dequeue(Q* queue) {
-    int item;
-    if (isEmptyQ(queue)) {
-        printf("Queue is empty");
-        item = -1;
-    }
+V* dequeue(Q* queue) {
+    V* x = queue[queue->head];
+
+    if (queue->head == queue->length) {
+        queue->head = 1;
+    } 
     else {
-        item = queue->items[queue->front];
-        queue->front++;
-        if (queue->front > queue->rear) {
-            printf("Resetting queue");
-            queue->front = queue->rear = -1;
-        }
+        queue->head = queue->head + 1;
     }
-    return item;
+    return x;
 }
 
 Q* createQueue() {
     Q* queue = malloc(sizeof(Q));
     if (queue != NULL) {
-        queue->front = -1;
-        queue->rear = -1;
+        queue->head = -1;
+        queue->tail = -1;
+        queue->length = -1;
     }
     return queue;
 }
 
 int isEmptyQ(Q* queue) {
-    if (queue->rear == -1)
+    if (queue->tail == -1)
         return 1;
     else
         return 0;
