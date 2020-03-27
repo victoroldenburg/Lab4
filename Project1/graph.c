@@ -227,8 +227,23 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 	int index1 = vertex1->index;
 	int index2 = vertex2->index;
 
-	bool testinsert = insertEdge(vertex1, createNode(index2));
-	testinsert = insertEdge(vertex2, createNode(index1));
+	N* nodeAlreadyExists1 = searchEdge(vertex1, index2);
+
+	//Check if node already exists, if no, add edge
+	if (nodeAlreadyExists1==NULL)
+	{
+		insertEdge(vertex1, createNode(index2));
+	}
+	
+	
+	N* nodeAlreadyExists2 = searchEdge(vertex2, index1);
+
+	//Check if node already exists, if no, add edge
+	if (nodeAlreadyExists2==NULL)
+	{
+		insertEdge(vertex2, createNode(index1));
+	}
+	
 }
 
 bool hasEdge(V* vertex1, V* vertex2)

@@ -52,8 +52,14 @@ G* LoadGraph(char* filename)
                     i++;
                 }
                 
+                //Second value is edge value
                 int vertex_index2 = arr[i];
-                addDirectedEdge(&vertex[vertex_index1], &vertex[vertex_index2]);
+                
+                 addUndirectedEdge(&vertex[vertex_index1], &vertex[vertex_index2]);
+
+                 //addDirectedEdge(&vertex[vertex_index1], &vertex[vertex_index2]);
+
+
                 i++;
             }
 
@@ -79,7 +85,7 @@ G* LoadGraph(char* filename)
                 //Searching for specific edge beloning to specific vertex
                 nodetodelete = searchEdge(&vertex[vertex_index], arrtodelete[delete_index]);
 
-                //Delete edge-node from graph
+                //Delete black edge/node from graph
                 bool isDeleted = deleteNodeGraph(&vertex[vertex_index], nodetodelete);
 
             } while (nodetodelete != 0);
