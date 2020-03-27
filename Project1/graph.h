@@ -1,8 +1,6 @@
 ﻿#pragma once
 #include "List.h"
-
 #include <stdbool.h>
-
 
 //typedef struct Edge { 
 //	int index; //int to key
@@ -21,6 +19,7 @@ typedef struct Vertex {
 	struct Node* head; //List head
 	int distance; //distance from source
 	struct Node* parent; //π parent node
+	char color; //White=not discovered, black=discovered
 } V;
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).

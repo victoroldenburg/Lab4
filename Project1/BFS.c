@@ -5,64 +5,80 @@
 #include <stdlib.h>
 #include <limits.h>
 
-void BFS(G* graph, V* start_node, V* end_node) {
+void BFS(G* graph, V* v_source, V* sheep) {
 
 	if (graph != NULL) {
+		if (v_source != NULL) {
+            //Init BFS
 			int size = graph->n_vertices;
-			V* vertex = graph->source;
+			V* vertex = v_source;
+            N* v = vertex->head;
+            V* u = vertex;
 
-			int* distance = (int*)malloc(size * sizeof(int));
+            char WHITE = 0;
+            char GRAY = 1;
+            char BLACK = 2;
 
-			if (distance != NULL) {
+			//int* distance = (int*)malloc(size * sizeof(int));
+
+            //for each vertex u in G.V -- {s}
+			if (u != NULL) {
 				for (int i = 0; i < size; i++) {
-					vertex[i].distance = INT_MAX;
-					vertex[i].parent = NULL;
+					
+                    u[i].color = WHITE;
+					u[i].distance = INT_MAX - 1;
+                    u[i].parent = NULL;
 				}
 			}
-			Enqueue(graph, vertex, vertex->index);
+            vertex->color = GRAY;
+            vertex->distance = 0;
+            vertex->parent = NULL;
 
-			int temp = Dequeue(graph, vertex);
+            Q* queue = createQueue();
+			enqueue(queue, vertex);
+
+            while (queue != NULL) {
+                u = dequeue(queue);
+                
+                
+            }
 
 		}
 	}
-
-
-//enqueue graph
-void Enqueue(G* graph, V* vertex, int source){
-	int counter = 0;
-
-	//int head = vertex->head->data; //head node data
-
-	while (vertex[counter].distance != INT_MAX){
-		if (counter == graph->n_vertices){
-			printf("Enqueue error!\n");
-			return;
-		}
-		counter++;
-	}
-	vertex[counter].distance = source;
 }
 
+//enqueue graph in queue q
+void enqueue(Q* q, V* value) {
+    if (q->tail == q->length) {
+        q->tail = 1;
+    }
+    else {
+        if (q->head == -1) {
+            q->head = 0;
+        }
+        q->tail++;
+        q->length[q->tail] = value;
+    }
+}
 
-//Dequeue graph
-int Dequeue(G* graph, V* vertex){
-	int output = INT_MAX;
+int dequeue(Q* q) {
+    int x;
+    if(isEmptyQ(q))
+}
 
-	if (vertex[0].distance == INT_MAX){
-		printf("Dequeue error!\n");
-		return INT_MAX;
-	}
-	else{
-		
-		output = vertex[0].distance;
+Q* createQueue() {
+    Q* queue = malloc(sizeof(Q));
+    if (queue != NULL) {
+        queue->head = -1;
+        queue->tail = -1;
+        queue->length = -1;
+    }
+    return queue;
+}
 
-		int i = 0;
-		while (vertex[i].distance != INT_MAX){
-			vertex[i].distance = vertex[i + 1].distance;
-			i++;
-		}
-
-		
-		return output;
-	}
+int isEmptyQ(Q* queue) {
+    if (queue->tail == -1)
+        return 1;
+    else
+        return 0;
 }
