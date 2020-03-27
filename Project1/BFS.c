@@ -9,16 +9,19 @@ void BFS(G* graph, V* v_source, V* sheep) {
 
 	if (graph != NULL) {
 		if (v_source != NULL) {
+            //Init BFS
 			int size = graph->n_vertices;
 			V* vertex = v_source;
             N* v = vertex->head;
             V* u = vertex;
 
             char WHITE = 0;
-            char BLACK = 1;
+            char GRAY = 1;
+            char BLACK = 2;
 
 			//int* distance = (int*)malloc(size * sizeof(int));
 
+            //for each vertex u in G.V -- {s}
 			if (u != NULL) {
 				for (int i = 0; i < size; i++) {
 					
@@ -27,6 +30,10 @@ void BFS(G* graph, V* v_source, V* sheep) {
                     u[i].parent = NULL;
 				}
 			}
+            vertex->color = GRAY;
+            vertex->distance = 0;
+            vertex->parent = NULL;
+
             Q* queue = createQueue();
 			enqueue(queue, vertex);
 
@@ -42,7 +49,7 @@ void BFS(G* graph, V* v_source, V* sheep) {
 
 //enqueue graph
 void enqueue(Q* queue, V* value) {
-    V* queue[queue->tail] = value;
+    queue[queue->tail] = value;
 
     if (queue->tail == queue->length) {
         queue->tail = 1;
