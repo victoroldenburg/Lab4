@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "BFS.h"
+#include "loadgraphfile.h"
 
 void runTestGraph() {
 
