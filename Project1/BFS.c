@@ -5,15 +5,15 @@
 #include <stdlib.h>
 #include <limits.h>
 
-void BFS(G* graph, V* v_source, V* sheep) {
+void BFS(G* G, V* source, V* des) {
 
-	if (graph != NULL) {
-		if (v_source != NULL) {
+	if (G != NULL) {
+		if (source != NULL) {
             //Init BFS
-			int size = graph->n_vertices;
-			V* vertex = v_source;
-            N* v = vertex->head;
-            V* u = vertex;
+			int size = G->n_vertices;
+            N* v = source->head;
+            V* s = source;
+            V* u = (V*)malloc(size * sizeof(V));
 
             char WHITE = 0;
             char GRAY = 1;
@@ -30,12 +30,12 @@ void BFS(G* graph, V* v_source, V* sheep) {
                     u[i].parent = NULL;
 				}
 			}
-            vertex->color = GRAY;
-            vertex->distance = 0;
-            vertex->parent = NULL;
+            s->color = GRAY;
+            s->distance = 0;
+            s->parent = NULL;
 
             Q* queue = createQueue();
-			enqueue(queue, vertex);
+			enqueue(queue, v);
 
             while (queue != NULL) {
                 u = dequeue(queue);
