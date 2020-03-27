@@ -6,20 +6,22 @@
 #include "graph.h"
 
 //####################MAIN FUNCTIONS#################################################
-G* createGraph(int n)
+
+//Create graph
+G* createGraph(int size)
 {
 	//Create graph (Pointer to vertex array)
 		//Allocate memory for new pointer
-	G* graph = (G*)malloc(sizeof(G));
+	G* graph = malloc(sizeof(G*));
 
 	//Set n_size equall to n
 	if (graph != NULL)
 	{
-		graph->n_vertices = n;
+		graph->n_vertices = size;
 	}
 
 	//Create vertex array
-	V* vertex = (V*)calloc(n + 8, sizeof(V));
+	V* vertex = calloc(80, sizeof(V*));
 
 	if (vertex != NULL) {
 
@@ -31,34 +33,27 @@ G* createGraph(int n)
 		}
 		
 		//Create vertex array
-		V* vertex = (V*)calloc(n + 8, sizeof(V));
-
 		if (vertex != NULL) { 
 				
-				vertex->head = NULL; //Make sure head of list is NULL before starting any operations
+			//Make sure head of list is NULL before starting any operations
+				vertex->head = NULL; 
 				
 				if (graph!=NULL)
 				{
-					graph->source = vertex; //Save adress to the array in the Graph source pointer
+					//Save adress to the array in the Graph source pointer
+					graph->source = vertex; 
 				}
 
 				//Save index value in evey allocated memoryspace in array
 				int i = 0;
 
-				for (i = 0; i < n; i++)
-				{
-					if(vertex != NULL){
-						vertex[i].index = i;
-						//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
-					}
+				for (i = 0; i < size; i++){
+					vertex[i].index = i;
 				}
 
-				vertex[n].index = INT_MAX; //Ends array with INT_MAX value
+				vertex[size-1].index = INT_MAX; //Ends array with INT_MAX value
 		}
-
-		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 	}
-
 	return graph;
 }
 
@@ -124,7 +119,7 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = (int*)calloc(n + 24, sizeof(int*));
+	int* nrOfNeighborsArray = calloc(8, sizeof(int*));
 
 	if (nrOfNeighborsArray != NULL)
 	{
@@ -160,7 +155,7 @@ int* getInNeighbors(G* graph, V* vertex)
 
 	N* temp1 = startVertex->head;
 
-	int* arr2 = (int*)calloc(n + 8, sizeof(int));
+	int* arr2 = calloc(8, sizeof(int*));
 
 	for (i = 1; i < n; i++)
 	{
@@ -207,7 +202,7 @@ int* getOutNeighbors(G* graph, V* vertex)
 	int n = counter;
 
 	//Allocate array and save index in array
-	int* arr = (int*)calloc(n + 8, sizeof(int));
+	int* arr = calloc(8, sizeof(int*));
 
 	int i = 0;
 
