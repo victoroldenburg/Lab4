@@ -1,15 +1,23 @@
 #pragma once
 #include "graph.h"
+#define SIZE 40
 
 typedef struct queue {
-    int length;
+    int length[SIZE];
     int head;
     int tail;
 } Q;
 
+//Form the queue
 Q* createQueue();
-void enqueue(Q*,V*);
-V* dequeue(Q*);
+
+//Add to queue
+void enqueue(Q*, int );
+
+//Remove from queue
+int dequeue(Q*);
+
+//Is queue empty?
 int isEmptyQ(Q*);
 
 //void display(Q* queue);
