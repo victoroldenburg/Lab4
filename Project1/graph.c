@@ -6,22 +6,20 @@
 #include "graph.h"
 
 //####################MAIN FUNCTIONS#################################################
-
-//Create graph
-G* createGraph(int size)
+G* createGraph(int n)
 {
 	//Create graph (Pointer to vertex array)
 		//Allocate memory for new pointer
-	G* graph = malloc(sizeof(G*));
+	G* graph = (G*)malloc(sizeof(G));
 
 	//Set n_size equall to n
 	if (graph != NULL)
 	{
-		graph->n_vertices = size;
+		graph->n_vertices = n;
 	}
 
 	//Create vertex array
-	V* vertex = calloc(80, sizeof(V*));
+	V* vertex = (V*)calloc(n + 8, sizeof(V));
 
 	if (vertex != NULL) {
 
@@ -31,29 +29,36 @@ G* createGraph(int size)
 		{
 			graph->source = vertex; //Save adress to the array in the Graph source pointer
 		}
-		
+
 		//Create vertex array
-		if (vertex != NULL) { 
-				
-			//Make sure head of list is NULL before starting any operations
-				vertex->head = NULL; 
-				
-				if (graph!=NULL)
-				{
-					//Save adress to the array in the Graph source pointer
-					graph->source = vertex; 
-				}
+		V* vertex = (V*)calloc(n + 8, sizeof(V));
 
-				//Save index value in evey allocated memoryspace in array
-				int i = 0;
+		if (vertex != NULL) {
 
-				for (i = 0; i < size; i++){
+			vertex->head = NULL; //Make sure head of list is NULL before starting any operations
+
+			if (graph != NULL)
+			{
+				graph->source = vertex; //Save adress to the array in the Graph source pointer
+			}
+
+			//Save index value in evey allocated memoryspace in array
+			int i = 0;
+
+			for (i = 0; i < n; i++)
+			{
+				if (vertex != NULL) {
 					vertex[i].index = i;
+					//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
 				}
+			}
 
-				vertex[size-1].index = INT_MAX; //Ends array with INT_MAX value
+			vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 		}
+
+		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 	}
+
 	return graph;
 }
 
@@ -119,7 +124,7 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = calloc(8, sizeof(int*));
+	int* nrOfNeighborsArray = (int*)calloc(n + 24, sizeof(int*));
 
 	if (nrOfNeighborsArray != NULL)
 	{
@@ -155,7 +160,7 @@ int* getInNeighbors(G* graph, V* vertex)
 
 	N* temp1 = startVertex->head;
 
-	int* arr2 = calloc(8, sizeof(int*));
+	int* arr2 = (int*)calloc(n + 8, sizeof(int));
 
 	for (i = 1; i < n; i++)
 	{
@@ -202,7 +207,7 @@ int* getOutNeighbors(G* graph, V* vertex)
 	int n = counter;
 
 	//Allocate array and save index in array
-	int* arr = calloc(8, sizeof(int*));
+	int* arr = (int*)calloc(n + 8, sizeof(int));
 
 	int i = 0;
 
@@ -242,20 +247,20 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 	N* nodeAlreadyExists1 = searchEdge(vertex1, index2);
 
 	//Check if node already exists, if no, add edge
-	if (nodeAlreadyExists1==NULL)
+	if (nodeAlreadyExists1 == NULL)
 	{
 		insertEdge(vertex1, createNode(index2));
 	}
-	
-	
+
+
 	N* nodeAlreadyExists2 = searchEdge(vertex2, index1);
 
 	//Check if node already exists, if no, add edge
-	if (nodeAlreadyExists2==NULL)
+	if (nodeAlreadyExists2 == NULL)
 	{
 		insertEdge(vertex2, createNode(index1));
 	}
-	
+
 }
 
 bool hasEdge(V* vertex1, V* vertex2)

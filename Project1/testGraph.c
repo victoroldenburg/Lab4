@@ -16,6 +16,7 @@ void runTestGraph() {
 	//start of test
 	G* graph = createGraph(n); //create graph w/o any edges
 
+
 	int nrOfVertices = getNumVertices(graph); //Check how many Vertices there is in the array 
 
 	//##########Create edges##########
@@ -116,7 +117,7 @@ void runTestGraph() {
 	printf("\n\n"); //New lines
 
 	//printf("Prints all index, adresses and edges in the struct array\n");
-	//printArray(graph);
+	printArray(graph);
 
 	//#####################BFS#############################
 	char filename[] = { "graph_data/graph0to99.txt" };
@@ -125,7 +126,7 @@ void runTestGraph() {
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
 
-	BFS(graph_ex2, &vertex[0], &vertex[5]);
+	//BFS(graph_ex2, &vertex[0], &vertex[5]);
 
 
 	//Free memory
