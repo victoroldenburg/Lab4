@@ -19,7 +19,8 @@ G* createGraph(int n)
 	}
 
 	//Create vertex array
-	V* vertex = (V*)calloc(n + 8, sizeof(V));
+	int size_t = n + 8;
+	V* vertex = calloc(size_t, sizeof(V));
 
 	if (vertex != NULL) {
 
@@ -31,10 +32,7 @@ G* createGraph(int n)
 		}
 
 		//Create vertex array
-		V* vertex = (V*)calloc(n + 8, sizeof(V));
-
 		if (vertex != NULL) {
-
 			vertex->head = NULL; //Make sure head of list is NULL before starting any operations
 
 			if (graph != NULL)
@@ -123,7 +121,9 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = calloc(n+1, sizeof(int));
+	//int* nrOfNeighborsArray = calloc(n+1, sizeof(int));
+	int size_t = n + 1;
+	int* nrOfNeighborsArray = calloc(size_t, sizeof(int));
 
 
 	if (nrOfNeighborsArray != NULL)
@@ -160,10 +160,11 @@ int* getInNeighbors(G* graph, V* vertex)
 	int j = 0;
 
 	V* startVertex = graph->source;
-
 	N* temp1 = startVertex->head;
 
-	int* arr2 = (int*)calloc(n + 8, sizeof(int));
+	//int* arr2 = (int*)calloc(n + 8, sizeof(int));
+	int size_t = n + 8;
+	int* arr2 = calloc(size_t, sizeof(int));
 
 	for (i = 1; i < n; i++)
 	{
@@ -210,7 +211,9 @@ int* getOutNeighbors(G* graph, V* vertex)
 	int n = counter;
 
 	//Allocate array and save index in array
-	int* arr = (int*)calloc(n + 8, sizeof(int));
+	//int* arr = (int*)calloc(n + 8, sizeof(int));
+	int size_t = n + 8;
+	int* arr = calloc(size_t, sizeof(int));
 
 	int i = 0;
 
@@ -283,9 +286,6 @@ bool hasEdge(V* vertex1, V* vertex2)
 //##########################SUPPORT FUCTIONS###########################################
 //Print V* struct array
 void printArray(G* graph) {
-
-
-
 	int n = getNumVertices(graph);
 
 	V* vertex = graph->source;
@@ -300,7 +300,7 @@ void printArray(G* graph) {
 		//###################################################
 
 
-			//Defining a temp varible
+		//Defining a temp varible
 		N* temp2 = vertex[i].head;
 		//Itterate until last node
 		while (temp2 != NULL) {

@@ -13,34 +13,40 @@ void BFS(G* graph, V* source, V* des) {
 			int size = graph->n_vertices;
 			N* v = source->head;
 			V* s = source;
-			//V* u = (V*)malloc(80 * sizeof(V));
 			V* u = graph->source;
-			
+
 			char WHITE = 0;
 			char GRAY = 1;
 			char BLACK = 2;
 
-			//for each vertex u in G.V -- {s}
 			if (u != NULL) {
+				//for each vertex u in G.V -- {s}
 				for (int i = 0; i < size; i++) {
 
 					u[i].color = WHITE;
 					u[i].distance = INT_MAX - 1;
 					u[i].parent = NULL;
 				}
+				s->color = GRAY;
+				s->distance = 0;
+				s->parent = NULL;
+
+				enqueue(queue, s->index);
+
+				size = graph->n_edges;
+				while (queue != NULL) {
+					u->index = dequeue(queue);
+
+					////for each vertex v in g.adj[u]
+					//for (int i = 0; i < size; i++) {
+					//	if (v[i].color == white) {
+					//		v[i].color = gray;
+					//		v[i].distance = u[i].distance + 1;
+					//		v[i].parent = u[i];
+					//	}
+					//}
+				}
 			}
-
-			s->color = GRAY;
-			s->distance = 0;
-			s->parent = NULL;
-
-			enqueue(queue, s->index);
-
-			//while (queue != NULL) {
-			//	//u = dequeue(queue);
-
-
-			//}
 		}
 	}
 }
