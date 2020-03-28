@@ -3,7 +3,7 @@
 #include "BFS.h"
 #include "loadgraphfile.h"
 #include <stddef.h>
-#include <stdbool.h> 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -135,6 +135,4 @@ void runTestGraph() {
 	free(outNeighborsArray);
 	free(inNeighborsArray);
 	free(nrOfNeighborsArray);
-
-	return 0;
 }

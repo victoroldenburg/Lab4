@@ -1,5 +1,6 @@
 #include "testBellmanFord.h"
 #include "BellmanFord.h"
+#include <stdio.h>
 
 void RunTestBellmanFord()
 {

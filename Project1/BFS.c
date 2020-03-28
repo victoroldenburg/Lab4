@@ -5,11 +5,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-
-
 void BFS(G* graph, V* source, V* des) {
-
-
 	if (graph != NULL) {
 		if (source != NULL) {
 			//Init BFS
@@ -38,7 +34,6 @@ void BFS(G* graph, V* source, V* des) {
 			s->distance = 0;
 			s->parent = NULL;
 
-			
 			enqueue(queue, s->index);
 
 			//while (queue != NULL) {
@@ -78,7 +73,6 @@ int dequeue(Q* queue) {
 
 Q* createQueue() {
 	//Q* queue = malloc(sizeof(Q));
-
 	Q* queue = (Q*)malloc(sizeof(Q));
 
 	if (queue != NULL) {
