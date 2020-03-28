@@ -116,7 +116,7 @@ void runTestGraph() {
 	printf("\n\n"); //New lines
 
 	//printf("Prints all index, adresses and edges in the struct array\n");
-	printArray(graph);
+	//printArray(graph);
 
 	//#####################BFS#############################
 	char filename[] = { "graph_data/graph0to99.txt" };

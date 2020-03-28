@@ -62,22 +62,21 @@ void BellmanFord(G* graph, int source)
 
                 }
             }
-
-
-            //Check if negative cycles exists, if below functions finds a lower value, then negative cycles exists
-            for (int j = 0; j < sizeEdges; j++)
-            {
-                int vertexSource = graph->edge[j].source;
-                int vertexDestination = graph->edge[j].destination;
-                int weight = graph->edge[j].weight;
-
-                if (arrDistance[vertexSource] + weight < arrDistance[vertexDestination]) {
-                    printf("The graph contains negative cycles");
-                    return 0;
-                }
-            }
-
         }
+
+        //Check if negative cycles exists, if below functions finds a lower value, then negative cycles exists
+        for (int j = 0; j < sizeEdges; j++)
+        {
+            int vertexSource = graph->edge[j].source;
+            int vertexDestination = graph->edge[j].destination;
+            int weight = graph->edge[j].weight;
+
+            if (arrDistance[vertexSource] + weight < arrDistance[vertexDestination]) {
+                printf("\nBeware! The graph contains negative cycles\n");
+                return 0;
+            }
+        }
+
         PrintDistanceArr(arrDistance, sizeVertecis);
     }
     return 0;

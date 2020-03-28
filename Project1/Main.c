@@ -4,7 +4,7 @@
 
 int main() {
 
-	//runTestGraph();
+	runTestGraph();
 
 	RunTestBellmanFord();
 
