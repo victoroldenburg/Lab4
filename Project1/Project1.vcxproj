@@ -19,19 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BellmanFord.c" />
     <ClCompile Include="BFS.c" />
     <ClCompile Include="graph.c" />
     <ClCompile Include="List.c" />
     <ClCompile Include="loadgraphfile.c" />
     <ClCompile Include="Main.c" />
+    <ClCompile Include="testBellmanFord.c" />
     <ClCompile Include="testGraph.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BellmanFord.h" />
     <ClInclude Include="BFS.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="loadgraphfile.h" />
+    <ClInclude Include="testBellmanFord.h" />
     <ClInclude Include="testGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="graph_data\graph.txt" />
+    <Text Include="graph_data\graph0to99.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D0D615D3-CF19-4C51-A5C0-351B3AC1479A}</ProjectGuid>

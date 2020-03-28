@@ -33,6 +33,12 @@
     <ClCompile Include="BFS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BellmanFord.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testBellmanFord.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
@@ -50,5 +56,19 @@
     <ClInclude Include="BFS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BellmanFord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testBellmanFord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="graph_data\graph.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="graph_data\graph0to99.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

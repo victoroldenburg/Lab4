@@ -128,8 +128,7 @@ void runTestGraph() {
 	BFS(graph_ex2, &vertex[0], &vertex[5]);
 
 	//bool createqueue = TEST();
-
-
+	
 	//Free memory
 	freeMemory(graph);
 	freeMemory(graph_ex2);

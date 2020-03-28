@@ -56,7 +56,6 @@ G* createGraph(int n)
 			vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 		}
 
-		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 	}
 
 	return graph;
