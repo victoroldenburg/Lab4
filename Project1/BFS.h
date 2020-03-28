@@ -1,5 +1,6 @@
 #pragma once
 #include "graph.h"
+#include "List.h"
 #define SIZE 40
 
 typedef struct queue {

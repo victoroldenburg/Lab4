@@ -2,8 +2,6 @@
 #include "List.h"
 #include <stdbool.h>
 
-		
-
 typedef struct graph {
 	struct Vertex* source; //Array head
 	struct Vertex* vertex; //Sample vertex
