@@ -5,10 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 G* createNewGraph(int sizeVertices, int sizeEdges)
 {
-
     //Allocate graph
     G* graph = (G*)malloc(sizeof(G));
 
@@ -27,19 +25,16 @@ G* createNewGraph(int sizeVertices, int sizeEdges)
     return NULL;
 }
 
-
 void BellmanFord(G* graph, int source)
 {
     int sizeVertecis = graph->n_vertices;
     int sizeEdges = graph->n_edges;
-
     
     //Allocate array to save distance and init all values to INT_MAX
     int* arrDistance = calloc(sizeVertecis, sizeof(int));
 
     if (arrDistance!=NULL)
     {
-
         for (int i = 0; i < sizeVertecis; i++)
         {
             arrDistance[i] = INT_MAX;
@@ -73,13 +68,11 @@ void BellmanFord(G* graph, int source)
 
             if (arrDistance[vertexSource] + weight < arrDistance[vertexDestination]) {
                 printf("\nBeware! The graph contains negative cycles\n");
-                return 0;
+                return;
             }
         }
-
         PrintDistanceArr(arrDistance, sizeVertecis);
     }
-    return 0;
 }
 
 void PrintDistanceArr(int* arrDistance, int sizeVertices)

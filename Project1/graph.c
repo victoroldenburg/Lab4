@@ -123,7 +123,8 @@ int* getNeighbors(G* graph, V* vertex)
 
 	int n = nrOfInN + nrOfOutN;
 
-	int* nrOfNeighborsArray = (int*)calloc(n + 24, sizeof(int*));
+	int* nrOfNeighborsArray = calloc(n+1, sizeof(int));
+
 
 	if (nrOfNeighborsArray != NULL)
 	{
@@ -131,7 +132,10 @@ int* getNeighbors(G* graph, V* vertex)
 
 		for (i = 0; i < nrOfInN; i++)
 		{
+			if (sizeof(nrOfNeighborsArray[i]) >= sizeof(inNeighborsArray[i])) {
+
 			nrOfNeighborsArray[i] = inNeighborsArray[i];
+			}
 		}
 
 		i = 0;
