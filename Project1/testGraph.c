@@ -125,9 +125,9 @@ void runTestGraph() {
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
 
+	printf("Running BFS...\n");
 	BFS(graph_ex2, &vertex[0], &vertex[5]);
-
-	//bool createqueue = TEST();
+	printf("Done.\n");
 	
 	//Free memory
 	freeMemory(graph);

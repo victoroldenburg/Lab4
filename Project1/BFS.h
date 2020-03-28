@@ -21,8 +21,9 @@ int dequeue(Q*);
 //Is queue empty?
 int isEmptyQ(Q*);
 
-//void display(Q* queue);
-//void printQueue(Q* queue);
+void display(Q*);
+
+void printQueue(Q*);
 
 void BFS(G*,V*,V*);
 
