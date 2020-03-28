@@ -34,17 +34,23 @@ void BFS(G* graph, V* source, V* des) {
 				enqueue(queue, s->index);
 
 				size = graph->n_edges;
-				while (queue != NULL) {
-					u->index = dequeue(queue);
+				while (!isEmptyQ(queue)) {
 
-					////for each vertex v in g.adj[u]
-					//for (int i = 0; i < size; i++) {
-					//	if (v[i].color == white) {
-					//		v[i].color = gray;
-					//		v[i].distance = u[i].distance + 1;
-					//		v[i].parent = u[i];
-					//	}
-					//}
+					printQueue(queue);
+					int currentVertex = dequeue(queue);
+					printf("Visited %d\n", currentVertex);
+
+					N* temp = graph->adjLists[currentVertex];
+
+					while (temp) {
+						int adjVertex = temp->data;
+
+						if (graph->visited[adjVertex] == 0) {
+							graph->visited[adjVertex] = 1;
+							enqueue(queue, adjVertex);
+						}
+						temp = temp->next;
+					}
 				}
 			}
 		}
@@ -93,6 +99,20 @@ int isEmptyQ(Q* queue) {
 		return 1;
 	else
 		return 0;
+}
+
+void printQueue(Q* queue) {
+	int i = queue->head;
+
+	if (isEmptyQ(queue)) {
+		printf("Queue is empty");
+	}
+	else {
+		printf("\nQueue contains \n");
+		for (i = queue->head; i < queue->tail + 1; i++) {
+			printf("%d ", queue->length[i]);
+		}
+	}
 }
 
 bool TEST()

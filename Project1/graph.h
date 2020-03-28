@@ -7,6 +7,8 @@ typedef struct graph {
 	struct Vertex* vertex; //Sample vertex
 	int n_vertices; //Number of vertices
 	int n_edges; //Number of edges
+	struct Node** adjLists;
+	int* visited;
 } G;
 
 typedef struct Vertex {

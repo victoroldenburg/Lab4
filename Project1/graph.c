@@ -10,12 +10,24 @@ G* createGraph(int n)
 {
 	//Create graph (Pointer to vertex array)
 		//Allocate memory for new pointer
-	G* graph = (G*)malloc(sizeof(G));
+	G* graph = malloc(sizeof(G));
 
-	//Set n_size equall to n
 	if (graph != NULL)
 	{
 		graph->n_vertices = n;
+		int size_t = n + 8;
+		graph->adjLists = calloc(size_t, sizeof(N*));
+		graph->visited = calloc(size_t, sizeof(int));
+
+		int i;
+		for (i = 0; i < n; i++) {
+			if (graph->adjLists != NULL) {
+				graph->adjLists[i] = NULL;
+			}
+			if (graph->visited != NULL) {
+				graph->visited[i] = 0;
+			}
+		}
 	}
 
 	//Create vertex array
@@ -23,39 +35,24 @@ G* createGraph(int n)
 	V* vertex = calloc(size_t, sizeof(V));
 
 	if (vertex != NULL) {
-
 		vertex->head = NULL; //Make sure head of list is NULL before starting any operations
 
 		if (graph != NULL)
 		{
 			graph->source = vertex; //Save adress to the array in the Graph source pointer
 		}
+		//Save index value in evey allocated memoryspace in array
+		int i = 0;
 
-		//Create vertex array
-		if (vertex != NULL) {
-			vertex->head = NULL; //Make sure head of list is NULL before starting any operations
-
-			if (graph != NULL)
-			{
-				graph->source = vertex; //Save adress to the array in the Graph source pointer
+		for (i = 0; i < n; i++)
+		{
+			if (vertex != NULL) {
+				vertex[i].index = i;
+				//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
 			}
-
-			//Save index value in evey allocated memoryspace in array
-			int i = 0;
-
-			for (i = 0; i < n; i++)
-			{
-				if (vertex != NULL) {
-					vertex[i].index = i;
-					//graph->vertex[i] = vertex[i]; //save every vertex in the graph for access (What does this line do? /victor)
-				}
-			}
-
-			vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 		}
-
+		vertex[n].index = INT_MAX; //Ends array with INT_MAX value
 	}
-
 	return graph;
 }
 
@@ -64,16 +61,11 @@ int getNumVertices(G* graph) {
 	V* vertex = graph->source;
 
 	int i = 0;
-
-
-
 	while (vertex[i].index < 10000)
 	{
 		i++;
 	}
-
 	int nrOfVertices = i;
-
 	return nrOfVertices; //Return int number of vertices
 }
 
@@ -82,7 +74,6 @@ int getNumEdges(G* graph)
 	V* vertex = graph->source;
 
 	int n = getNumVertices(graph);
-
 	int i = 0;
 	int edgeCounter = 0;
 
@@ -97,7 +88,6 @@ int getNumEdges(G* graph)
 			edgeCounter++;
 		}
 	}
-
 	return edgeCounter; //Return number of edges found in array connected to graph
 }
 
@@ -113,18 +103,15 @@ int* getNeighbors(G* graph, V* vertex)
 	{
 		nrOfInN++;
 	}
-
 	while (outNeighborsArray[nrOfOutN] != INT_MAX)
 	{
 		nrOfOutN++;
 	}
-
 	int n = nrOfInN + nrOfOutN;
 
 	//int* nrOfNeighborsArray = calloc(n+1, sizeof(int));
 	int size_t = n + 1;
 	int* nrOfNeighborsArray = calloc(size_t, sizeof(int));
-
 
 	if (nrOfNeighborsArray != NULL)
 	{
@@ -144,12 +131,9 @@ int* getNeighbors(G* graph, V* vertex)
 		{
 			nrOfNeighborsArray[i + nrOfInN] = outNeighborsArray[i];
 		}
-
 		nrOfNeighborsArray[nrOfInN + nrOfOutN] = INT_MAX;
-
 		return nrOfNeighborsArray;
 	}
-
 	return false;
 }
 
@@ -168,7 +152,6 @@ int* getInNeighbors(G* graph, V* vertex)
 
 	for (i = 1; i < n; i++)
 	{
-
 		N* temp2 = startVertex[i].head;
 
 		//Itterate until last node
@@ -181,7 +164,6 @@ int* getInNeighbors(G* graph, V* vertex)
 			}
 			temp2 = temp2->next;
 		}
-
 	}
 
 	//Insert INT_MAX at the end of array
@@ -189,14 +171,11 @@ int* getInNeighbors(G* graph, V* vertex)
 	{
 		arr2[j] = INT_MAX;
 	}
-
-
 	return arr2;
 }
 
 int* getOutNeighbors(G* graph, V* vertex)
 {
-
 	//Defining a temp varible
 	N* temp = vertex->head;
 	int counter = 0;
@@ -207,7 +186,6 @@ int* getOutNeighbors(G* graph, V* vertex)
 		temp = temp->next;
 		counter++;
 	}
-
 	int n = counter;
 
 	//Allocate array and save index in array
@@ -216,26 +194,22 @@ int* getOutNeighbors(G* graph, V* vertex)
 	int* arr = calloc(size_t, sizeof(int));
 
 	int i = 0;
-
 	N* temp2 = vertex->head;
 
 	while (temp2 != NULL) {
 		//Assign Next pointer of node to temp
-
 		if (arr != NULL)
 		{
 			arr[i] = temp2->data;
 			temp2 = temp2->next;
 			i++;
 		}
-
 	}
 	//Insert INT_MAX at the end of array
 	if (arr != NULL)
 	{
 		arr[i] = INT_MAX;
 	}
-
 	return arr;
 }
 
@@ -258,7 +232,6 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 		insertEdge(vertex1, createNode(index2));
 	}
 
-
 	N* nodeAlreadyExists2 = searchEdge(vertex2, index1);
 
 	//Check if node already exists, if no, add edge
@@ -266,7 +239,6 @@ void addUndirectedEdge(V* vertex1, V* vertex2)
 	{
 		insertEdge(vertex2, createNode(index1));
 	}
-
 }
 
 bool hasEdge(V* vertex1, V* vertex2)
@@ -298,7 +270,6 @@ void printArray(G* graph) {
 		printf("%p: ", vertex[i].head);
 
 		//###################################################
-
 
 		//Defining a temp varible
 		N* temp2 = vertex[i].head;
@@ -412,13 +383,8 @@ bool freeMemory(G* graph)
 		while (temp != NULL) {
 			//Assign Next pointer of node to temp
 			temp = temp->next;
-
 		}
-
 		free(temp);
-
-
 	}
-
 	return true;
 }
