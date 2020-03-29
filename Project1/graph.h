@@ -5,15 +5,15 @@
 typedef struct graph {
 	struct Vertex* source; //Array head
 	int n_vertices; //Number of vertices
+	//int shortPath; //storing shortest path in an array
 } G;
 
 typedef struct Vertex {
 	int index; //Vertex index
 	struct Node* head; //List head
-	int distance; //distance from source
-	struct Node* parent; //π parent node
-	char color; //White=not discovered, black=discovered
-	int* visited;
+	//int distance; //distance from source
+	//char color; //White=not discovered, black=discovered
+	int visited;
 } V;
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).

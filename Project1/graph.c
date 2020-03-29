@@ -15,14 +15,9 @@ G* createGraph(int n)
 	if (graph != NULL)
 	{
 		graph->n_vertices = n;
-		int size_t = n + 8;
-		//graph->source- = calloc(size_t, sizeof(int));
 
-		//int i;
-		//for (i = 0; i < n; i++) {
-		//		graph->source->visited[i] = 0;
-		//	
-		//}
+		//graph->shortPath = malloc(n * sizeof(int));
+
 	}
 
 	//Create vertex array
