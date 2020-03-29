@@ -1,6 +1,6 @@
 #pragma once
 #include "graph.h"
-#include "List.h"
+//#include "List.h"
 #define SIZE 40
 
 typedef struct queue {
@@ -26,5 +26,7 @@ void display(Q*);
 void printQueue(Q*);
 
 void BFS(G*,V*,V*);
+
+int isEmptyBFS(Q* q);
 
 bool TEST();

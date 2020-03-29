@@ -16,18 +16,13 @@ G* createGraph(int n)
 	{
 		graph->n_vertices = n;
 		int size_t = n + 8;
-		graph->adjLists = calloc(size_t, sizeof(N*));
-		graph->visited = calloc(size_t, sizeof(int));
+		//graph->source- = calloc(size_t, sizeof(int));
 
-		int i;
-		for (i = 0; i < n; i++) {
-			if (graph->adjLists != NULL) {
-				graph->adjLists[i] = NULL;
-			}
-			if (graph->visited != NULL) {
-				graph->visited[i] = 0;
-			}
-		}
+		//int i;
+		//for (i = 0; i < n; i++) {
+		//		graph->source->visited[i] = 0;
+		//	
+		//}
 	}
 
 	//Create vertex array

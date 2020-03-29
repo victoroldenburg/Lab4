@@ -33,23 +33,33 @@ void BFS(G* graph, V* source, V* des) {
 
 				enqueue(queue, s->index);
 
-				size = graph->n_edges;
-				while (!isEmptyQ(queue)) {
+				int counter = 0; //test value
+				//size = graph->n_edges;
+				while (!isEmptyBFS(queue)) {
 
 					printQueue(queue);
 					int currentVertex = dequeue(queue);
 					printf("Visited %d\n", currentVertex);
 
-					N* temp = graph->adjLists[currentVertex];
+					//printf("CurrentVertex %d ", currentVertex);
+					N* temp = graph->source[currentVertex].head;
 
 					while (temp) {
+						//printf("\nCounter%d \n", counter++);
 						int adjVertex = temp->data;
 
-						if (graph->visited[adjVertex] == 0) {
-							graph->visited[adjVertex] = 1;
+						if (graph->source[adjVertex].visited == 0) {
+							graph->source[adjVertex].visited = 1;
 							enqueue(queue, adjVertex);
 						}
-						temp = temp->next;
+					
+						if (temp->data == des->index)
+						{
+							printf("Congrats! You have reach your destination.");
+							return;
+						}
+					temp = temp->next;
+					
 					}
 				}
 			}
@@ -57,6 +67,13 @@ void BFS(G* graph, V* source, V* des) {
 	}
 }
 
+int isEmptyBFS(Q* queue)
+{
+	if (queue->tail == -1)
+		return 1;
+	else
+		return 0;
+}
 //enqueue graph in queue q
 void enqueue(Q* queue, int value) {
 	if (queue->tail != SIZE - 1) {
@@ -70,7 +87,7 @@ void enqueue(Q* queue, int value) {
 
 int dequeue(Q* queue) {
 	int x;
-	if (isEmptyQ(queue)) {
+	if (isEmptyBFS(queue)) {
 		x = -1;
 	}
 	else {
@@ -94,17 +111,10 @@ Q* createQueue() {
 	return queue;
 }
 
-int isEmptyQ(Q* queue) {
-	if (queue->tail == -1)
-		return 1;
-	else
-		return 0;
-}
-
 void printQueue(Q* queue) {
 	int i = queue->head;
 
-	if (isEmptyQ(queue)) {
+	if (isEmptyBFS(queue)) {
 		printf("Queue is empty");
 	}
 	else {

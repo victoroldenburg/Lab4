@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 
 #include <stddef.h>
 #include <stdbool.h> 
@@ -61,8 +61,11 @@ G* LoadGraph(char* filename)
 
                  //addDirectedEdge(&vertex[vertex_index1], &vertex[vertex_index2]);
 
-
-                i++;
+                 //Allocate visited and test value to zero (used in function BFS)
+                 //V* x = malloc(sizeof(int));
+                 graph->source->visited = 0;
+                     
+                 i++;
             }
 
             val = strtok(NULL, delims);

@@ -121,12 +121,16 @@ void runTestGraph() {
 	//#####################BFS#############################
 	char filename[] = { "graph_data/graph0to99.txt" };
 
+
+
 	G* graph_ex2 = LoadGraph(filename);
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
 
+	V* vertex_bfs = graph_ex2->source;
+
 	printf("Running BFS...\n");
-	BFS(graph_ex2, &vertex[0], &vertex[5]);
+	BFS(graph_ex2, &vertex_bfs[0], &vertex_bfs[5]);
 	printf("Done.\n");
 	
 	//Free memory
