@@ -1,7 +1,7 @@
 #pragma once
 #include "graph.h"
 //#include "List.h"
-#define SIZE 40
+#define SIZE 101
 
 typedef struct queue {
     int length[SIZE];

@@ -31,10 +31,11 @@ void BFS(G* graph, V* source, V* des) {
 				s->distance = 0;
 				s->parent = NULL;
 
+				graph->source->visited = 1; //Mark source node as visited
 				enqueue(queue, s->index);
 
-				int counter = 0; //test value
-				//size = graph->n_edges;
+
+
 				while (!isEmptyBFS(queue)) {
 
 					printQueue(queue);
