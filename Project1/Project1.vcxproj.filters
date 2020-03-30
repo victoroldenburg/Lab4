@@ -18,9 +18,6 @@
     <ClCompile Include="Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="List.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="graph.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,13 +41,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="List.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="testGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="loadgraphfile.h">
@@ -62,7 +53,10 @@
     <ClInclude Include="BellmanFord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testBellmanFord.h">
+    <ClInclude Include="SCC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

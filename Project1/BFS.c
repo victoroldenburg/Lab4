@@ -1,5 +1,6 @@
 #include "BFS.h"
 #include "graph.h"
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -149,42 +150,6 @@ void BFS(G* graph, V* source) {
 		}
 	}
 }
-
-void BFS_orginal(G* graph, V* source) {
-
-	if (graph != NULL) {
-		if (source != NULL) {
-
-			//Init BFS
-			Q* queue = createQueue();
-			int size = graph->n_vertices;
-			V* s = source;
-			V* u = graph->source;
-
-			if (u != NULL) {
-				graph->source->visited = 1; //Mark source node as visited
-				enqueue(queue, s->index);
-
-				while (!isEmptyBFS(queue)) {
-					int currentVertex = dequeue(queue);
-					N* temp = graph->source[currentVertex].head;
-
-					while (temp) {
-						int adjVertex = temp->data;
-
-						if (graph->source[adjVertex].visited == 0) {
-							graph->source[adjVertex].visited = 1;
-							printf("%d ", graph->source[adjVertex].index);
-							enqueue(queue, adjVertex);
-						}
-						temp = temp->next;
-					}
-				}
-			}
-		}
-	}
-}
-
 
 void resetBFS(G* graph, V* source) {
 	if (graph != NULL) {

@@ -22,7 +22,6 @@
     <ClCompile Include="BellmanFord.c" />
     <ClCompile Include="BFS.c" />
     <ClCompile Include="graph.c" />
-    <ClCompile Include="List.c" />
     <ClCompile Include="loadgraphfile.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="SSC.c" />
@@ -33,10 +32,9 @@
     <ClInclude Include="BellmanFord.h" />
     <ClInclude Include="BFS.h" />
     <ClInclude Include="graph.h" />
-    <ClInclude Include="List.h" />
     <ClInclude Include="loadgraphfile.h" />
-    <ClInclude Include="testBellmanFord.h" />
-    <ClInclude Include="testGraph.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="SCC.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="graph_data\graph.txt" />

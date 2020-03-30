@@ -1,22 +1,35 @@
 ﻿#pragma once
-#include "List.h"
 #include <stdbool.h>
+
+/* This file provide call to the functions in graph.c */
+
+//###########STRUCTS##########
+
+typedef struct Node {
+	int data; //Number saved in a Node
+	struct Node* next; //Pointer to next node, next = 0 -> tail
+	struct Node* prev; //Pointer to prev node , prev = 0 -> head
+} N;
+
+typedef struct List {
+	struct Node* head; //List head
+	struct Node* tail; //Queue tail
+	int data; //Number saved in a list
+} L;
 
 typedef struct graph {
 	struct Vertex* source; //Array head
 	int n_vertices; //Number of vertices
-	//int shortPath; //storing shortest path in an array
 } G;
 
 typedef struct Vertex {
 	int index; //Vertex index
 	struct Node* head; //List head
-	//int distance; //distance from source
-	//char color; //White=not discovered, black=discovered
-	int visited;
-	int path;
-	int distance;
+	int visited; //Number if visited: 0 No, 1 Yes
+	int path; //Shortest path in BFS
 } V;
+
+//###########MAIN FUNCTIONS##########
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).
 G* createGraph(int n);
@@ -47,6 +60,9 @@ bool hasEdge(V* vertex1, V* vertex2);
 
 
 //###########SUPPORT FUNCTIONS##########
+//Create each new Node, copied from earlier assignment
+N* createNode(int key);
+
 //Prints the struct array with vertex index, adress and edge list
 void printArray(G* graph);
 
@@ -64,5 +80,3 @@ bool deleteNodeGraph(V* vertex, N* node);
 
 //Free allocated memory for graph and vertex
 bool freeMemory(G* graph);
-
-

@@ -1,6 +1,4 @@
-#include "testGraph.h"
-#include "loadgraphfile.h"
-#include "testBellmanFord.h"
+#include "main.h"
 
 int main() {
 

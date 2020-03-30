@@ -1,5 +1,6 @@
 #include "BFS.h"
 #include "graph.h"
+
 #include <stdio.h>
 
 void runEx3SCC() {

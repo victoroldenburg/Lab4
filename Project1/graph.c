@@ -1,11 +1,26 @@
-#include "List.h"
+#include "graph.h"
+
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>
 #include <stdlib.h>
-#include "graph.h"
 
 //####################MAIN FUNCTIONS#################################################
+//Create Node
+N* createNode(int key) {
+	//Allocate memory for newNode
+	N* x = (N*)malloc(sizeof(N));
+
+	//Make sure all values for a new node is set
+	if (x != NULL) {
+		x->data = key;
+		x->next = NULL;
+		x->prev = NULL;
+		return x;
+	}
+	return x;
+}
+
 G* createGraph(int n)
 {
 	//Create graph (Pointer to vertex array)

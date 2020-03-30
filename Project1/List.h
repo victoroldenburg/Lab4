@@ -1,6 +1,8 @@
 #pragma once
 #include <stdbool.h>
 
+/* This file provide call to the functions for List.c */
+
 typedef struct Node {
 	int data; //int to key
 	struct Node* next; //Pointer to next node, next = 0 -> tail
