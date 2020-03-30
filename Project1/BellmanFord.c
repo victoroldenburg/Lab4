@@ -1,4 +1,3 @@
-
 #include "BellmanFord.h"
 #include <stddef.h>
 #include <stdbool.h> 

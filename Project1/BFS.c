@@ -118,6 +118,7 @@ void BFS(G* graph, V* source) {
 				graph->source->visited = 1; //Mark source node as visited
 				enqueue(queue, s->index);
 
+				printf("Vertex visited from vertex %d:\n", source->index);
 				while (!isEmptyBFS(queue)) {
 					//printQueue(queue);
 					int currentVertex = dequeue(queue);
@@ -131,12 +132,13 @@ void BFS(G* graph, V* source) {
 
 						if (graph->source[adjVertex].visited == 0) {
 							graph->source[adjVertex].visited = 1;
-
+							printf("%d ", graph->source[adjVertex].index);
 							enqueue(queue, adjVertex);
 						}
 						temp = temp->next;
 					}
 				}
+				printf("\n");
 			}
 		}
 	}
