@@ -13,22 +13,24 @@ typedef struct queue {
 Q* createQueue();
 
 //Add to queue
-void enqueue(Q*, int );
+void enqueue(Q*, int);
 
 //Remove from queue
 int dequeue(Q*);
 
 //Is queue empty?
-int isEmptyQ(Q*);
+int isEmptyBFS(Q*);
 
 void display(Q*);
 
 void printQueue(Q*);
 
+//Run BFS - mark vertext as visited
 void BFS(G*,V*);
 
-void BFS_shortestpath(G*, V*, V*);
+//Reset BFS - mark as NOT visited
+void resetBFS(G*,V*);
 
-int isEmptyBFS(Q* q);
+void BFS_shortestpath(G*, V*, V*);
 
 bool TEST();

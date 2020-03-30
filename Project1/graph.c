@@ -278,6 +278,7 @@ void printArray(G* graph) {
 			//##################################################
 		}
 	}
+	printf("\n");
 }
 
 //Print array of ints

@@ -114,14 +114,10 @@ void BFS(G* graph, V* source) {
 
 				printf("Vertex visited from vertex %d:\n", source->index);
 				while (!isEmptyBFS(queue)) {
-					//printQueue(queue);
 					int currentVertex = dequeue(queue);
-					//printf("Visited %d\n", currentVertex);
-					//printf("CurrentVertex %d ", currentVertex);
 					N* temp = graph->source[currentVertex].head;
 
 					while (temp) {
-						//printf("\nCounter%d \n", counter++);
 						int adjVertex = temp->data;
 
 						if (graph->source[adjVertex].visited == 0) {
@@ -133,6 +129,38 @@ void BFS(G* graph, V* source) {
 					}
 				}
 				printf("\n");
+			}
+		}
+	}
+}
+
+void resetBFS(G* graph, V* source) {
+	if (graph != NULL) {
+		if (source != NULL) {
+			//Init BFS
+			Q* queue = createQueue();
+			int size = graph->n_vertices;
+			V* s = source;
+			V* u = graph->source;
+
+			if (u != NULL) {
+				graph->source->visited = 0; //Mark source node as NOT visited
+				enqueue(queue, s->index);
+
+				while (!isEmptyBFS(queue)) {
+					int currentVertex = dequeue(queue);
+					N* temp = graph->source[currentVertex].head;
+
+					while (temp) {
+						int adjVertex = temp->data;
+
+						if (graph->source[adjVertex].visited == 1) {
+							graph->source[adjVertex].visited = 0;
+							enqueue(queue, adjVertex);
+						}
+						temp = temp->next;
+					}
+				}
 			}
 		}
 	}

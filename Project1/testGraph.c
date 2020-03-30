@@ -113,6 +113,7 @@ void runTestGraph() {
 	//printArray(graph);
 
 	//#####################BFS and load graph#############################
+	printf("\n##############RUNNING BFS##############\n");
 	printf("Loadning graph from file and running BFS on it.\n");
 	char filename[] = { "graph_data/graph0to99.txt" };
 
@@ -124,7 +125,7 @@ void runTestGraph() {
 
 	V* vertex_bfs = graph_ex2->source;
 
-	printf("Running BFS...\n");
+	printf("Starting BFS...\n");
 	BFS_shortestpath(graph_ex2, &vertex_bfs[0], &vertex_bfs[5]);
 	BFS(graph_ex2, &vertex_bfs[0]);
 	printf("Done.\n");
