@@ -14,10 +14,8 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 			//N* v = source->head;
 			V* s = source;
 			V* u = graph->source;
-
-			char WHITE = 0;
-			char GRAY = 1;
-			char BLACK = 2;
+			int destination = des->index;
+			int start_source = source->index;
 
 			if (u != NULL) {
 				////for each vertex u in G.V -- {s}
@@ -34,15 +32,7 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 				graph->source->visited = 1; //Mark source node as visited
 				enqueue(queue, s->index);
 
-				int* arrPath = calloc(size, sizeof(int));
-				int* arrDist = calloc(size, sizeof(int));
 
-				for (int i = 1; i < size; i++)
-				{
-					arrPath[0] = 0;
-					arrDist[i] = INT_MAX;
-					arrPath[i] = INT_MAX;
-				}
 
 				while (!isEmptyBFS(queue)) {
 
@@ -79,10 +69,26 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 
 							printf("\n");
 
-							for (int i = 0; i < 100; i++)
+							int* arrPath = calloc(size, sizeof(int));
+							int* arrDist = calloc(size, sizeof(int));
+
+							for (int i = 1; i < size; i++)
 							{
-								int path = graph->source[i].path;
-								printf("Index %d: %d  ",i, path);
+								arrPath[0] = 0;
+								arrDist[i] = INT_MAX;
+								arrPath[i] = INT_MAX;
+							}
+
+							int step = graph->source[destination].index;
+							arrPath[0] = step;
+
+							int i = 1;
+
+							while (graph->source[destination].path != start_source)
+							{
+								arrPath[i] = graph->source[step].path;
+									i++;
+									step = graph->source[step].path;
 							}
 																					
 							return;

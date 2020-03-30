@@ -151,6 +151,8 @@ void runTestGraph() {
 	//Number of verts.
 	nrOfVertices = getNumVertices(graph_ex3);
 
+	printArray(graph_ex3);
+
 	//Input numbers, which vertex to add edges to
 	index1 = 4;
 	index2 = 12;
@@ -201,12 +203,12 @@ void runTestGraph() {
 	addDirectedEdge(&vertex[32], &vertex[26]);
 	//25
 	addDirectedEdge(&vertex[25], &vertex[12]); //SCC
-
-	addDirectedEdge(&vertex[25], &vertex[12]);
 	addDirectedEdge(&vertex[25], &vertex[23]);
 	addDirectedEdge(&vertex[25], &vertex[1]);
 	addDirectedEdge(&vertex[25], &vertex[15]);
 	addDirectedEdge(&vertex[25], &vertex[36]);
 
 	printArray(graph_ex3);
+
+	return;
 }
