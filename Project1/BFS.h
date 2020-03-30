@@ -36,6 +36,9 @@ void BFS(G*, V*);
 //Reset BFS - mark as NOT visited
 void resetBFS(G*, V*);
 
+//For loop BFS
+void forloop(G*, V*, int);
+
 //Add edges seperatly
 void addEdges1(V*);
 void addEdges2(V*);

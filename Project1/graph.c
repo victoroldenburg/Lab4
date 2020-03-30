@@ -252,9 +252,11 @@ bool hasEdge(V* vertex1, V* vertex2)
 //##########################SUPPORT FUCTIONS###########################################
 //Print V* struct array
 void printArray(G* graph) {
-	int n = getNumVertices(graph);
 
-	printf("Printing vertices in Array not NULL out of %d: \n", n);
+	int num = getNumVertices(graph); //Vertices not NULL
+	int n = graph->n_vertices;
+
+	printf("Printing vertices in Array not NULL out of %d: \n", num);
 
 	V* vertex = graph->source;
 
