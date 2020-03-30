@@ -68,4 +68,9 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="graph_data\data for lab 4.xlsx">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

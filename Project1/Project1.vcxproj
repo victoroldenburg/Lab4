@@ -40,6 +40,9 @@
     <Text Include="graph_data\graph.txt" />
     <Text Include="graph_data\graph0to99.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="graph_data\data for lab 4.xlsx" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D0D615D3-CF19-4C51-A5C0-351B3AC1479A}</ProjectGuid>
     <RootNamespace>Project1</RootNamespace>
