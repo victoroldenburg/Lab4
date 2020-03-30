@@ -48,11 +48,6 @@ int runEx3SCC() {
 	printArray(graph_ex3);
 
 	BFS(graph_ex3, vertex1);
-	BFS(graph_ex3, vertex2);
-	BFS(graph_ex3, vertex3);
-	BFS(graph_ex3, vertex4);
-	BFS(graph_ex3, vertex5);
-	BFS(graph_ex3, vertex6);
 
 	//#####################Free Memory############################
 	freeMemory(graph_ex3);
