@@ -61,17 +61,11 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 
 						
 						if (graph->source[adjVertex].visited == 0) {
+							
 							graph->source[adjVertex].visited = 1;
 							graph->source[adjVertex].path = currentVertex;
+
 							printf("test value: ");
-							printf("%d ", currentVertex);
-							graph->source[adjVertex].distance = graph->source[currentVertex].distance + 1;
-
-
-							/*arrPath[graph->source[adjVertex].index] = currentVertex;
-							arrDist[graph->source[adjVertex].index] = arrDist[currentVertex] + 1;*/
-
-
 							
 							enqueue(queue, adjVertex);
 						}
@@ -79,28 +73,19 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 						if (temp->data == des->index)
 						{
 							printf("Congrats! You have reach your destination.");
-
-
 							printf("\n");
 							printf("A path, not the shortest!!!! ");
 
-							int j = 0;
-							
-							//printf("\n");
-							//while (arrPath[j]!=INT_MAX)
-							//{
-							//	printf("%d ", arrPath[j]);
-							//	j++;
-							//}
-							//printf("\n");
 
-							//for (int i = 0; i < 100; i++)
-							//{
-							//	printf("%d ", arrPath[i]);
-							//}
-							//														
+							printf("\n");
 
-							//return;
+							for (int i = 0; i < 100; i++)
+							{
+								int path = graph->source[i].path;
+								printf("Index %d: %d  ",i, path);
+							}
+																					
+							return;
 							
 
 						}
@@ -111,6 +96,7 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 			}
 		}
 	}
+	//STOP
 }
 
 void BFS(G* graph, V* source) {
