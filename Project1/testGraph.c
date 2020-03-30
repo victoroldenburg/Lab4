@@ -14,7 +14,7 @@ void runTestGraph() {
 
 	//start of test
 	G* graph = createGraph(n); //create graph w/o any edges
-
+	
 	int nrOfVertices = getNumVertices(graph); //Check how many Vertices there is in the array 
 
 	//##########Create edges##########
@@ -62,7 +62,7 @@ void runTestGraph() {
 	addDirectedEdge(&vertex[45], &vertex[0]);
 	addDirectedEdge(&vertex[45], &vertex[5]);
 	addDirectedEdge(&vertex[45], &vertex[6]);
-
+	
 	//#######################Insert undirected edges to vertex#########################
 	addUndirectedEdge(&vertex[54], &vertex[59]);
 	addUndirectedEdge(&vertex[54], &vertex[58]);
@@ -110,7 +110,7 @@ void runTestGraph() {
 	printf("\n\n"); //New lines
 
 	//printf("Prints all index, adresses and edges in the struct array\n");
-	printArray(graph);
+	//printArray(graph);
 
 	//#####################BFS and load graph#############################
 	printf("Loadning graph from file and running BFS on it.\n");
@@ -129,8 +129,19 @@ void runTestGraph() {
 	BFS(graph_ex2, &vertex_bfs[0]);
 	printf("Done.\n");
 
-	//#####################SCC#############################
-	
+	//#####################Free Memory############################
+	freeMemory(graph);
+	freeMemory(graph_ex2);
+
+	free(vertex);
+	free(vertex_bfs);
+
+	free(outNeighborsArray);
+	free(inNeighborsArray);
+	free(nrOfNeighborsArray);
+
+//#####################SCC#############################
+
 	//Update n
 	n = 48;
 
@@ -138,7 +149,7 @@ void runTestGraph() {
 	G* graph_ex3 = createGraph(n);
 
 	//Number of verts.
-	nrOfVertices = getNumVertices(graph);
+	nrOfVertices = getNumVertices(graph_ex3);
 
 	//Input numbers, which vertex to add edges to
 	index1 = 4;
@@ -147,14 +158,14 @@ void runTestGraph() {
 	index4 = 32;
 	index5 = 25;
 
-	vertex = graph->source;
+	vertex = graph_ex3->source;
 
 	vertex1 = &vertex[index1];
 	vertex2 = &vertex[index2];
 	vertex3 = &vertex[index3];
 	vertex4 = &vertex[index4];
 	vertex5 = &vertex[index5];
-
+		
 	//Create new edges
 	//Vertex with index 4
 	addDirectedEdge(&vertex[4], &vertex[12]); //SCC
@@ -198,11 +209,4 @@ void runTestGraph() {
 	addDirectedEdge(&vertex[25], &vertex[36]);
 
 	printArray(graph_ex3);
-
-	//#####################Free Memory############################
-	freeMemory(graph);
-	freeMemory(graph_ex2);
-	free(outNeighborsArray);
-	free(inNeighborsArray);
-	free(nrOfNeighborsArray);
 }
