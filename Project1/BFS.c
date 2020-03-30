@@ -35,8 +35,14 @@ void BFS(G* graph, V* source, V* des) {
 				enqueue(queue, s->index);
 
 				int* arrPath = calloc(size, sizeof(int));
+				int* arrDist = calloc(size, sizeof(int));
 
-				int counter = 0;
+				for (int i = 1; i < size; i++)
+				{
+					arrPath[0] = 0;
+					arrDist[i] = INT_MAX;
+					arrPath[i] = INT_MAX;
+				}
 
 				while (!isEmptyBFS(queue)) {
 
@@ -49,16 +55,23 @@ void BFS(G* graph, V* source, V* des) {
 					N* temp = graph->source[currentVertex].head;
 
 					
-
 					while (temp) {
 						//printf("\nCounter%d \n", counter++);
 						int adjVertex = temp->data;
 
 						
-
 						if (graph->source[adjVertex].visited == 0) {
 							graph->source[adjVertex].visited = 1;
-							arrPath[++counter] = graph->source[adjVertex].index;
+							graph->source[adjVertex].path = currentVertex;
+							printf("test value: ");
+							printf("%d ", currentVertex);
+							graph->source[adjVertex].distance = graph->source[currentVertex].distance + 1;
+
+
+							/*arrPath[graph->source[adjVertex].index] = currentVertex;
+							arrDist[graph->source[adjVertex].index] = arrDist[currentVertex] + 1;*/
+
+
 							
 							enqueue(queue, adjVertex);
 						}
@@ -70,17 +83,25 @@ void BFS(G* graph, V* source, V* des) {
 
 							printf("\n");
 							printf("A path, not the shortest!!!! ");
-							for (int i = 0; i < counter; i++)
-							{
-								
-								printf("%d ", arrPath[i]);
-								
-							}
 
-							return;
-							printf("\n");
+							int j = 0;
+							
+							//printf("\n");
+							//while (arrPath[j]!=INT_MAX)
+							//{
+							//	printf("%d ", arrPath[j]);
+							//	j++;
+							//}
+							//printf("\n");
 
+							//for (int i = 0; i < 100; i++)
+							//{
+							//	printf("%d ", arrPath[i]);
+							//}
+							//														
 
+							//return;
+							
 
 						}
 					temp = temp->next;

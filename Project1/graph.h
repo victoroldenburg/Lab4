@@ -14,6 +14,8 @@ typedef struct Vertex {
 	//int distance; //distance from source
 	//char color; //White=not discovered, black=discovered
 	int visited;
+	int path;
+	int distance;
 } V;
 
 //Create and return a graph containing n vertices (each vertex is an integerbetween 1 and n).
