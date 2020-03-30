@@ -47,14 +47,16 @@ void forloop(G* graph_ex3, V* vertex, int n) {
 		if (vertex[i].head != NULL) {
 			//Defining a temp varible
 			N* temp2 = vertex[i].head;
+
 			//Itterate until last node
 			while (temp2 != NULL) {
 
+				printf("BFS visited from vertex %d:\n", i);
 				BFS(graph_ex3, &vertex[i]);
 				printf("\n");
-				resetBFS(graph_ex3, &vertex[i]);
-				printf("\n");
 
+				resetBFS(graph_ex3, &vertex[i]);
+				
 				temp2 = temp2->next;
 			}
 		}
