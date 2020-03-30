@@ -136,7 +136,7 @@ void BFS(G* graph, V* source) {
 							}
 						}
 
-						printf("\n\nSCC exists for vertices: ");
+						printf("\n\nSCC exists for vertex/vertices: ");
 						for (int i = 0; i < counter; i++)
 						{
 							
