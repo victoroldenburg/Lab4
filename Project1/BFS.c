@@ -94,7 +94,7 @@ void BFS(G* graph, V* source) {
 
 	for (int i = 0; i < size; i++)
 	{
-		if (graph->source[i].head != NULL)
+		if (graph->source[i].head != NULL && graph->source[i].visited == 0)
 		{
 			V* s = &graph->source[i];
 
@@ -104,10 +104,19 @@ void BFS(G* graph, V* source) {
 					//Init BFS
 					Q* queue = createQueue();
 					
+					int* arrSCC = calloc(size, sizeof(int));
+
+					for (int i = 1; i < size; i++)
+					{
+						arrSCC[0] = -1;
+					}
+
 
 					if (u != NULL) {
 						s->visited = 1; //Mark source node as visited
 						enqueue(queue, s->index);
+						int counter = 1;
+						arrSCC[0] = s->index;
 
 						while (!isEmptyBFS(queue)) {
 							int currentVertex = dequeue(queue);
@@ -118,13 +127,22 @@ void BFS(G* graph, V* source) {
 
 								if (graph->source[adjVertex].visited == 0) {
 									graph->source[adjVertex].visited = 1;
-
-									printf("\nFor current vertex %d: SCC gives: %d \n ", s->index, graph->source[adjVertex].index);
+									
+									arrSCC[counter++] = graph->source[adjVertex].index;
+								
 									enqueue(queue, adjVertex);
 								}
 								temp = temp->next;
 							}
 						}
+
+						printf("\n\nSCC >1 exists for vertices: ");
+						for (int i = 0; i < counter; i++)
+						{
+							
+							printf("%d ",arrSCC[i]);
+						}
+
 					}
 				}
 			}
