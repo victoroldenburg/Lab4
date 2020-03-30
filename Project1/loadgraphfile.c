@@ -1,12 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include "graph.h"
+#include "loadgraphfile.h"
+
 #include <stddef.h>
 #include <stdbool.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "graph.h"
-#include "loadgraphfile.h"
 
 G* LoadGraph(char* filename)
 {
@@ -40,9 +41,6 @@ G* LoadGraph(char* filename)
         int i = 0;
         while (read_n > 0)
         {
-            //Test print function
-            //printf("Read [%d %d %d %d %d %d]\n", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
-            
             int vertex_index1 = 0;
             //Insert values to graph
             while (arr[i] != INT_MAX)
@@ -93,8 +91,6 @@ G* LoadGraph(char* filename)
                 bool isDeleted = deleteNodeGraph(&vertex[vertex_index], nodetodelete);
 
             } while (nodetodelete != 0);
-
-            
         }
     }
         
