@@ -34,7 +34,6 @@
     <ClInclude Include="graph.h" />
     <ClInclude Include="loadgraphfile.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="SCC.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\ex_1_to_4.txt" />

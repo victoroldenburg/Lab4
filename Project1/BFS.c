@@ -138,7 +138,6 @@ void BFS(G* graph, V* source) {
 									printf("\n\nSCC exists for vertex/vertices: ");
 									for (int i = 0; i < counter; i++)
 									{
-
 										printf("%d ", arrSCC[i]);
 									}
 								}
@@ -190,7 +189,7 @@ int isEmptyBFS(Q* queue)
 	else
 		return 0;
 }
-//enqueue graph in queue q
+
 void enqueue(Q* queue, int value) {
 	if (queue->tail != SIZE - 1) {
 		if (queue->head == -1) {
@@ -217,7 +216,6 @@ int dequeue(Q* queue) {
 }
 
 Q* createQueue() {
-	//Q* queue = malloc(sizeof(Q));
 	Q* queue = (Q*)malloc(sizeof(Q));
 
 	if (queue != NULL) {
@@ -234,16 +232,7 @@ void printQueue(Q* queue) {
 		printf("Queue is empty");
 	}
 	else {
-		//printf("\nQueue contains \n");
 		for (i = queue->head; i < queue->tail + 1; i++) {
-			//printf("%d ", queue->length[i]);
 		}
 	}
-}
-
-bool TEST()
-{
-	Q* queue = createQueue();
-
-	return true;
 }
