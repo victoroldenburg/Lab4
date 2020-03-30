@@ -121,8 +121,6 @@ void runTestGraph() {
 	//#####################BFS#############################
 	char filename[] = { "graph_data/graph0to99.txt" };
 
-
-
 	G* graph_ex2 = LoadGraph(filename);
 	printArray(graph_ex2);
 	nrOfVertices = getNumVertices(graph_ex2);
@@ -132,8 +130,76 @@ void runTestGraph() {
 	printf("Running BFS...\n");
 	BFS(graph_ex2, &vertex_bfs[0], &vertex_bfs[5]);
 	printf("Done.\n");
+
+	//#####################SCC#############################
 	
-	//Free memory
+	//Update n
+	n = 48;
+
+	//Create a new graph
+	G* graph_ex3 = createGraph(n);
+
+	//Number of verts.
+	nrOfVertices = getNumVertices(graph);
+
+	//Input numbers, which vertex to add edges to
+	index1 = 4;
+	index2 = 12;
+	index3 = 43;
+	index4 = 32;
+	index5 = 25;
+
+	vertex = graph->source;
+
+	vertex1 = &vertex[index1];
+	vertex2 = &vertex[index2];
+	vertex3 = &vertex[index3];
+	vertex4 = &vertex[index4];
+	vertex5 = &vertex[index5];
+
+	//Create new edges
+	//Vertex with index 4
+	addDirectedEdge(&vertex[4], &vertex[12]); //SCC
+
+	addDirectedEdge(&vertex[4], &vertex[13]);
+	addDirectedEdge(&vertex[4], &vertex[14]);
+	addDirectedEdge(&vertex[4], &vertex[0]);
+	addDirectedEdge(&vertex[4], &vertex[16]);
+	addDirectedEdge(&vertex[4], &vertex[31]);
+	//Vertext with index 12
+	addDirectedEdge(&vertex[12], &vertex[43]); //SCC
+	addDirectedEdge(&vertex[12], &vertex[32]);
+
+	addDirectedEdge(&vertex[12], &vertex[22]);
+	addDirectedEdge(&vertex[12], &vertex[6]);
+	addDirectedEdge(&vertex[12], &vertex[8]);
+	addDirectedEdge(&vertex[12], &vertex[10]);
+	//43
+	addDirectedEdge(&vertex[43], &vertex[25]); //SCC
+
+	addDirectedEdge(&vertex[43], &vertex[24]);
+	addDirectedEdge(&vertex[43], &vertex[4]);
+	addDirectedEdge(&vertex[43], &vertex[20]);
+	addDirectedEdge(&vertex[43], &vertex[27]);
+	addDirectedEdge(&vertex[43], &vertex[35]);
+	//32
+	addDirectedEdge(&vertex[32], &vertex[4]); //SCC
+	addDirectedEdge(&vertex[32], &vertex[25]);
+
+	addDirectedEdge(&vertex[32], &vertex[40]);
+	addDirectedEdge(&vertex[32], &vertex[30]);
+	addDirectedEdge(&vertex[32], &vertex[5]);
+	addDirectedEdge(&vertex[32], &vertex[26]);
+	//25
+	addDirectedEdge(&vertex[25], &vertex[12]); //SCC
+
+	addDirectedEdge(&vertex[25], &vertex[12]);
+	addDirectedEdge(&vertex[25], &vertex[23]);
+	addDirectedEdge(&vertex[25], &vertex[1]);
+	addDirectedEdge(&vertex[25], &vertex[15]);
+	addDirectedEdge(&vertex[25], &vertex[36]);
+
+	//#####################Free Memory############################
 	freeMemory(graph);
 	freeMemory(graph_ex2);
 	free(outNeighborsArray);

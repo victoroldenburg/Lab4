@@ -27,7 +27,7 @@ void BFS(G* graph, V* source, V* des) {
 				//	u[i].distance = INT_MAX - 1;
 				//	u[i].parent = NULL;
 				//}
-				////s->color = GRAY;
+				//s->color = GRAY;
 				//s->distance = 0;
 				//s->parent = NULL;
 
