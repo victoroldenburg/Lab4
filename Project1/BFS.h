@@ -39,6 +39,11 @@ void resetBFS(G*, V*);
 //For loop BFS
 void forloop(G*, V*, int);
 
+void reverse(G*, V*);
+void reverseVertex(G*, V*);
+
+int getNumEdgesV(V*);
+
 //Add edges seperatly
 void addEdges1(V*);
 void addEdges2(V*);

@@ -133,7 +133,8 @@ int* getNeighbors(G* graph, V* vertex)
 
 int* getInNeighbors(G* graph, V* vertex)
 {
-	int n = getNumVertices(graph);
+	//int n = getNumVertices(graph);
+	int n = graph->n_vertices;
 	int i = 0;
 	int j = 0;
 

@@ -1,6 +1,7 @@
 #include "BFS.h"
 #include "graph.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void runEx3SCC() {
 	printf("\n##############RUNNING SCC##############\n");
@@ -53,7 +54,10 @@ void forloop(G* graph_ex3, V* vertex, int n) {
 
 				printf("BFS visited from vertex %d:\n", i);
 				BFS(graph_ex3, &vertex[i]);
+
 				printf("\n");
+
+				reverseVertex(graph_ex3, &vertex[i]);
 
 				resetBFS(graph_ex3, &vertex[i]);
 				
@@ -84,4 +88,54 @@ void addEdges2(V* vertex) {
 	addDirectedEdge(&vertex[35], &vertex[76]);
 	addDirectedEdge(&vertex[42], &vertex[22]);
 	addDirectedEdge(&vertex[62], &vertex[35]);
+}
+
+void reverseVertex(G* graph, V* vertex) {
+	
+	vertex->visited = 1;
+
+	int temp = vertex->index;
+
+	int* E = getNeighbors(graph, vertex);
+
+	int numOfEdges = getNumEdgesV(vertex);
+	printf("Num of edges for vertex %d: %d\n", vertex->index, numOfEdges);
+
+	int* N = {0};
+
+	for (int i = 0; i < numOfEdges; i++) {
+
+
+
+		if (vertex->visited != 1) {
+			
+			N[i] = vertex;
+		}
+	}
+}
+
+//q = vertex reached by e from v
+//if q is not visited,
+//add q to N
+//reverse direction of e
+//end if
+//end for
+//
+//for each vertex q in N,
+//reverseVertex(q)
+//end function
+
+int getNumEdgesV(V* vertex) {
+	int edgeCounter = 0;
+
+	//Defining a temp varible
+	N* temp = vertex->head;
+	//Itterate until last node
+	while (temp != NULL) {
+		//Assign Next pointer of node to temp
+		temp = temp->next;
+		edgeCounter++;
+	}
+
+	return edgeCounter; //Return number of edges found in array connected to graph
 }
