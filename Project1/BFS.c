@@ -46,39 +46,39 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 							//Printing shortest path, starting from destination node and traversal the saved path
 							int* arrPath = calloc(size, sizeof(int));
 
-							for (int i = 1; i < size; i++)
-							{
-								arrPath[0] = -1;
-								arrPath[i] = INT_MAX;
-							}
+							if (arrPath != NULL) {
+								for (int i = 1; i < size; i++)
+								{
+									arrPath[0] = -1;
+									arrPath[i] = INT_MAX;
+								}
 
-							int step = graph->source[destination].index;
-							
-							arrPath[0] = step;
+								int step = graph->source[destination].index;
 
-							int i = 1;
-							int numSteps = 0;
+								arrPath[0] = step;
 
-							while (graph->source[step].path != start_source)
-							{
-								    arrPath[i] = graph->source[step].path;
+								int i = 1;
+								int numSteps = 0;
+
+								while (graph->source[step].path != start_source)
+								{
+									arrPath[i] = graph->source[step].path;
 									i++;
 									step = graph->source[step].path;
 									numSteps++;
-							}
+								}
 
-							printf("From vertex %d, the shortest path is: ", start_source);
+								printf("From vertex %d, the shortest path is: ", start_source);
 
-							for (int i = numSteps; i >= 0 ; i--)
-							{
-							printf("%d ", arrPath[i]);
+								for (int i = numSteps; i >= 0; i--)
+								{
+									printf("%d ", arrPath[i]);
+								}
+
+								return;
 							}
-																					
-							return;
-							
 						}
 					 temp = temp->next;
-					
 					}
 				}
 			}
@@ -87,62 +87,62 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 }
 
 void BFS(G* graph, V* source) {
-	
+
 	int size = graph->n_vertices;
-	
+
 	V* u = graph->source;
 
-	for (int i = 0; i < size; i++)
-	{
-		if (graph->source[i].head != NULL && graph->source[i].visited == 0)
-		{
-			V* s = &graph->source[i];
+	if (graph != NULL) {
+		if (u != NULL) {
+			for (int i = 0; i < size; i++) {
+				if (graph->source[i].head != NULL) {
+					if (graph->source[i].visited == 0) {
 
-			if (graph != NULL) {
-				if (source != NULL) {
+						V* s = &graph->source[i];
+						if (s != NULL) {
+							if (source != NULL) {
 
-					//Init BFS
-					Q* queue = createQueue();
-					
-					int* arrSCC = calloc(size, sizeof(int));
+								//Init BFS
+								Q* queue = createQueue();
 
-					for (int i = 1; i < size; i++)
-					{
-						arrSCC[0] = -1;
-					}
+								int* arrSCC = calloc(size, sizeof(int));
+								if (arrSCC != NULL) {
+									for (int i = 1; i < size; i++) {
+										arrSCC[0] = -1;
+									}
 
+									s->visited = 1; //Mark source node as visited
+									enqueue(queue, s->index);
+									int counter = 1;
+									arrSCC[0] = s->index;
 
-					if (u != NULL) {
-						s->visited = 1; //Mark source node as visited
-						enqueue(queue, s->index);
-						int counter = 1;
-						arrSCC[0] = s->index;
+									while (!isEmptyBFS(queue)) {
+										int currentVertex = dequeue(queue);
+										N* temp = graph->source[currentVertex].head;
 
-						while (!isEmptyBFS(queue)) {
-							int currentVertex = dequeue(queue);
-							N* temp = graph->source[currentVertex].head;
+										while (temp) {
+											int adjVertex = temp->data;
 
-							while (temp) {
-								int adjVertex = temp->data;
+											if (graph->source[adjVertex].visited == 0) {
+												graph->source[adjVertex].visited = 1;
 
-								if (graph->source[adjVertex].visited == 0) {
-									graph->source[adjVertex].visited = 1;
-									
-									arrSCC[counter++] = graph->source[adjVertex].index;
-								
-									enqueue(queue, adjVertex);
+												arrSCC[counter++] = graph->source[adjVertex].index;
+
+												enqueue(queue, adjVertex);
+											}
+											temp = temp->next;
+										}
+									}
+
+									printf("\n\nSCC exists for vertex/vertices: ");
+									for (int i = 0; i < counter; i++)
+									{
+
+										printf("%d ", arrSCC[i]);
+									}
 								}
-								temp = temp->next;
 							}
 						}
-
-						printf("\n\nSCC exists for vertex/vertices: ");
-						for (int i = 0; i < counter; i++)
-						{
-							
-							printf("%d ",arrSCC[i]);
-						}
-
 					}
 				}
 			}
