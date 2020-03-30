@@ -128,7 +128,8 @@ void runTestGraph() {
 	V* vertex_bfs = graph_ex2->source;
 
 	printf("Running BFS...\n");
-	BFS(graph_ex2, &vertex_bfs[0], &vertex_bfs[5]);
+	//BFS_shortestpath(graph_ex2, &vertex_bfs[0], &vertex_bfs[5]);
+	BFS(graph_ex2, &vertex_bfs[0]);
 	printf("Done.\n");
 
 	//#####################SCC#############################

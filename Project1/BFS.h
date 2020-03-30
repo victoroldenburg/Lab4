@@ -25,7 +25,9 @@ void display(Q*);
 
 void printQueue(Q*);
 
-void BFS(G*,V*,V*);
+void BFS(G*,V*);
+
+void BFS_shortestpath(G*, V*, V*);
 
 int isEmptyBFS(Q* q);
 

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-void BFS(G* graph, V* source, V* des) {
+void BFS_shortestpath(G* graph, V* source, V* des) {
 	if (graph != NULL) {
 		if (source != NULL) {
 			//Init BFS
@@ -106,6 +106,72 @@ void BFS(G* graph, V* source, V* des) {
 						}
 					temp = temp->next;
 					
+					}
+				}
+			}
+		}
+	}
+}
+
+void BFS(G* graph, V* source) {
+	if (graph != NULL) {
+		if (source != NULL) {
+			//Init BFS
+			Q* queue = createQueue();
+			int size = graph->n_vertices;
+			//N* v = source->head;
+			V* s = source;
+			V* u = graph->source;
+
+			char WHITE = 0;
+			char GRAY = 1;
+			char BLACK = 2;
+
+			if (u != NULL) {
+				////for each vertex u in G.V -- {s}
+				//for (int i = 0; i < size; i++) {
+
+				//	u[i].color = WHITE;
+				//	u[i].distance = INT_MAX - 1;
+				//	u[i].parent = NULL;
+				//}
+				//s->color = GRAY;
+				//s->distance = 0;
+				//s->parent = NULL;
+
+				graph->source->visited = 1; //Mark source node as visited
+				enqueue(queue, s->index);
+
+
+				while (!isEmptyBFS(queue)) {
+
+					printQueue(queue);
+					int currentVertex = dequeue(queue);
+					printf("Visited %d\n", currentVertex);
+
+
+					//printf("CurrentVertex %d ", currentVertex);
+					N* temp = graph->source[currentVertex].head;
+
+
+					while (temp) {
+						//printf("\nCounter%d \n", counter++);
+						int adjVertex = temp->data;
+
+
+						if (graph->source[adjVertex].visited == 0) {
+							graph->source[adjVertex].visited = 1;
+
+
+
+
+
+							enqueue(queue, adjVertex);
+						}
+
+
+						temp = temp->next;
+
 					}
 				}
 			}
