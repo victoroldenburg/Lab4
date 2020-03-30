@@ -37,6 +37,7 @@
     <ClInclude Include="SCC.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\ex_1_to_4.txt" />
     <Text Include="graph_data\graph.txt" />
     <Text Include="graph_data\graph0to99.txt" />
   </ItemGroup>

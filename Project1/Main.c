@@ -2,9 +2,9 @@
 
 int main() {
 
-	//runTestGraph();
+	runTestGraph();
 
-	//RunTestBellmanFord();
+	RunTestBellmanFord();
 
 	runEx3SCC();
 

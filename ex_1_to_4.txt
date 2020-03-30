@@ -1,0 +1,48 @@
+EX1
+• indicate which file(s) implement the algorithm and/or data structure in the exercise;
+testGraph.c  graph.c 
+• a brief explanation of the tests that were carried out to test the implementation;
+A test graph was set up to test all the functions and verify that each function delivered correct result. Also different modification of the graph was carried out to see that the function worked for different input.
+
+• instructions on how to execute a test to verify the implemented code;
+Run the “runTestGraph()” function from main. It will print the output of the different functions. 
+
+
+EX2
+• indicate which file(s) implement the algorithm and/or data structure in the exercise;
+testGraph.c and graph.c
+
+• a brief explanation of the tests that were carried out to test the implementation;
+The test was to create the graph based on given input data and run it through the function and verify the result with the actual map. 
+
+• instructions on how to execute a test to verify the implemented code;
+Run the “runTestGraph()” function from main. It will print the output in console. 
+The function LoadGraph is used to import the x/y-map. BFS_shortestpath-function is used to calculate and plot the shortest path.  
+
+
+EX3
+• indicate which file(s) implement the algorithm and/or data structure in the exercise;
+SSC.c
+
+• a brief explanation of the tests that were carried out to test the implementation;
+We created a couple of test graphs to run through the algorithm and verified the result at the end. 
+
+• instructions on how to execute a test to verify the implemented code;
+Run the function runEx3SCC() in SSC.c. The function will present all SCC in the console for the current test graph. The test graphs can be altered in the functions addedges1 and addedges2, in the SSC.c-file. 
+
+
+
+EX4
+• indicate which file(s) implement the algorithm and/or data structure in the exercise;
+testBellmanFord.c and BellmanFord.c
+
+• a brief explanation of the tests that were carried out to test the implementation;
+Created different test graphs to verify the output. Also tested to alter the weights and created a negative cycle. 
+
+• instructions on how to execute a test to verify the implemented code;
+Run function RunTestBellmanFord() in testBellmanFord.c. The function will present the result in console. Input values can be altered directly in function RunTestBellmanFord() by modifying the input arrays. 
+
+• answers to any theoretical questions asked in the exercise.
+Does the algorithm make any assumptions on the input graph?
+Bellman-ford is used for weighted directed graphs. The weights can also be negative. But no negative cycles can be present in graph. 
+
