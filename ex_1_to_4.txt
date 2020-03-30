@@ -37,7 +37,7 @@ EX4
 testBellmanFord.c and BellmanFord.c
 
 • a brief explanation of the tests that were carried out to test the implementation;
-Created different test graphs to verify the output. Also tested to alter the weights and created and negative cycle. 
+Created different test graphs to verify the output. Also tested to alter the weights and created a negative cycle. 
 
 • instructions on how to execute a test to verify the implemented code;
 Run function RunTestBellmanFord() in testBellmanFord.c. The function will present the result in console. Input values can be altered directly in function RunTestBellmanFord() by modifying the input arrays. 
