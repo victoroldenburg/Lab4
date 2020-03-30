@@ -25,12 +25,17 @@ void display(Q*);
 
 void printQueue(Q*);
 
-//Run BFS - mark vertext as visited
-void BFS(G*,V*);
-
-//Reset BFS - mark as NOT visited
-void resetBFS(G*,V*);
-
 void BFS_shortestpath(G*, V*, V*);
 
 bool TEST();
+
+
+//Run BFS - mark vertext as visited
+void BFS(G*, V*);
+
+//Reset BFS - mark as NOT visited
+void resetBFS(G*, V*);
+
+//Add edges seperatly
+void addEdges1(V*);
+void addEdges2(V*);

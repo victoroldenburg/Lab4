@@ -2,7 +2,7 @@
 #include "graph.h"
 #include <stdio.h>
 
-int runEx3SCC() {
+void runEx3SCC() {
 	printf("\n##############RUNNING SCC##############\n");
 
 	//Update n
@@ -10,9 +10,6 @@ int runEx3SCC() {
 
 	//Create a new graph
 	G* graph_ex3 = createGraph(n);
-
-	//Number of verts.
-	int nrOfVertices = getNumVertices(graph_ex3);
 
 	//Input numbers, which vertex to add edges to
 	int index1 = 33;
@@ -36,35 +33,90 @@ int runEx3SCC() {
 	addDirectedEdge(&vertex[33], &vertex[22]);
 
 	addDirectedEdge(&vertex[42], &vertex[33]); //1
-
 	addDirectedEdge(&vertex[22], &vertex[42]); //2
-
 	addDirectedEdge(&vertex[76], &vertex[35]); //3
-
 	addDirectedEdge(&vertex[35], &vertex[62]); //4
-
 	addDirectedEdge(&vertex[62], &vertex[76]); //5
+
+	int num = getNumVertices(graph_ex3);
 
 	printArray(graph_ex3);
 
-	BFS(graph_ex3, vertex1);
-	resetBFS(graph_ex3, vertex1);
+	for (int i = 1; i <= num; i++){
 
-	BFS(graph_ex3, vertex2);
-	resetBFS(graph_ex3, vertex2);
+		printf("%d", vertex2->head->data);
+		int temp = vertex[i].index;
 
-	BFS(graph_ex3, vertex3);
-	resetBFS(graph_ex3, vertex3);
+		//Defining a temp varible
+		N* temp2 = vertex[i].head;
+		//Itterate until last node
+		while (temp2) {
 
-	BFS(graph_ex3, vertex4);
-	resetBFS(graph_ex3, vertex4);
+			BFS(graph_ex3, &vertex[i]);
 
-	BFS(graph_ex3, vertex5);
-	resetBFS(graph_ex3, vertex5);
-	
-	BFS(graph_ex3, vertex6);
-	resetBFS(graph_ex3, vertex6);
+		}
+	}
+
+	////##########TEST 1###################################
+
+	//printf("First vertex can reach all nodes:\n");
+	//BFS(graph_ex3_forward, vertex1);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex1_back);
+	//printf("\n");
+
+	////##########TEST 2###################################
+	//BFS(graph_ex3_forward, vertex2);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex2_back);
+	//printf("\n");
+
+	////##########TEST 3###################################
+	//BFS(graph_ex3_forward, vertex3);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex3_back);
+	//printf("\n");
+
+	////##########TEST 4###################################
+	//BFS(graph_ex3_forward, vertex4);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex4_back);
+	//printf("\n");
+
+	////##########TEST 5###################################
+	//BFS(graph_ex3_forward, vertex5);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex5_back);
+	//printf("\n");
+
+	////##########TEST 6###################################
+	//BFS(graph_ex3_forward, vertex6);
+	//printf("\n");
+	//BFS(graph_ex3_backward, vertex6_back);
+	//printf("\n");
 
 	//#####################Free Memory############################
 	freeMemory(graph_ex3);
+}
+
+void addEdges1(V* vertex) {
+	//Create new edges
+	addDirectedEdge(&vertex[33], &vertex[76]); //0
+	addDirectedEdge(&vertex[33], &vertex[22]);
+	addDirectedEdge(&vertex[42], &vertex[33]); //1
+	addDirectedEdge(&vertex[22], &vertex[42]); //2
+	addDirectedEdge(&vertex[76], &vertex[35]); //3
+	addDirectedEdge(&vertex[35], &vertex[62]); //4
+	addDirectedEdge(&vertex[62], &vertex[76]); //5
+}
+
+void addEdges2(V* vertex) {
+	//Create new edges
+	addDirectedEdge(&vertex[76], &vertex[33]); 
+	addDirectedEdge(&vertex[76], &vertex[62]);
+	addDirectedEdge(&vertex[22], &vertex[33]);
+	addDirectedEdge(&vertex[33], &vertex[42]);
+	addDirectedEdge(&vertex[35], &vertex[76]);
+	addDirectedEdge(&vertex[42], &vertex[22]);
+	addDirectedEdge(&vertex[62], &vertex[35]);
 }

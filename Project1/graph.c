@@ -51,11 +51,15 @@ int getNumVertices(G* graph) {
 	V* vertex = graph->source;
 
 	int i = 0;
+	int num = 0;
 	while (vertex[i].index < 10000)
 	{
+		if (vertex[i].head != NULL) {
+			num++;
+		}
 		i++;
 	}
-	int nrOfVertices = i;
+	int nrOfVertices = num;
 	return nrOfVertices; //Return int number of vertices
 }
 
@@ -206,7 +210,7 @@ int* getOutNeighbors(G* graph, V* vertex)
 void addDirectedEdge(V* vertex1, V* vertex2)
 {
 	int index2 = vertex2->index;
-	bool insertNode = insertEdge(vertex1, createNode(index2));
+	insertEdge(vertex1, createNode(index2));
 }
 
 void addUndirectedEdge(V* vertex1, V* vertex2)
