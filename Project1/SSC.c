@@ -103,20 +103,20 @@ void reverseVertex(G* graph, V* vertex) {
 
 	int* N = {0};
 
-	for (int i = 0; i < numOfEdges; i++) {
+	if (N != NULL) {
+		for (int i = 0; i < numOfEdges; i++) {
 
+			V* q = &vertex[i];
 
+			if (q->visited != 1) {
 
-		if (vertex->visited != 1) {
-			
-			N[i] = vertex;
+				N[i] = q;
+
+			}
 		}
 	}
 }
 
-//q = vertex reached by e from v
-//if q is not visited,
-//add q to N
 //reverse direction of e
 //end if
 //end for
