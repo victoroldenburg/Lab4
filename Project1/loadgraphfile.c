@@ -15,7 +15,6 @@ G* LoadGraph(char* filename)
     G* graph = createGraph(n_graph); //create graph w/o any edges
     V* vertex = graph->source;
 
-
     //Load data from graph_.txt and insert to created graph
     FILE* filepoint;
 

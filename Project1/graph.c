@@ -250,30 +250,33 @@ bool hasEdge(V* vertex1, V* vertex2)
 void printArray(G* graph) {
 	int n = getNumVertices(graph);
 
+	printf("Printing %d vertices in Array: \n", n);
+
 	V* vertex = graph->source;
 
-	for (int i = 0; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		int temp = vertex[i].index;
 
-		printf("%d ", temp);
-		printf("%p: ", vertex[i].head);
+		if (vertex[i].head != NULL) {
+			printf("%d ", temp);
+			printf("%p: ", vertex[i].head);
 
-		//###################################################
+			//###################################################
 
-		//Defining a temp varible
-		N* temp2 = vertex[i].head;
-		//Itterate until last node
-		while (temp2 != NULL) {
-			//Assign Next pointer of node to temp
-			int edgeToNode = temp2->data;
-			printf("%d ", edgeToNode);
-			temp2 = temp2->next;
+			//Defining a temp varible
+			N* temp2 = vertex[i].head;
+			//Itterate until last node
+			while (temp2 != NULL) {
+				//Assign Next pointer of node to temp
+				int edgeToNode = temp2->data;
+				printf("%d ", edgeToNode);
+				temp2 = temp2->next;
+			}
+
+			printf("\n");
+			//##################################################
 		}
-
-		printf("\n");
-		//##################################################
-
 	}
 }
 
