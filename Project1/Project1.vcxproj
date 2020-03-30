@@ -25,6 +25,7 @@
     <ClCompile Include="List.c" />
     <ClCompile Include="loadgraphfile.c" />
     <ClCompile Include="Main.c" />
+    <ClCompile Include="SSC.c" />
     <ClCompile Include="testBellmanFord.c" />
     <ClCompile Include="testGraph.c" />
   </ItemGroup>

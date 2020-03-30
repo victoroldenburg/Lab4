@@ -8,5 +8,7 @@ int main() {
 
 	RunTestBellmanFord();
 
+	runEx3SCC();
+
 	return 0;
 }

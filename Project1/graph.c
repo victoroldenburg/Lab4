@@ -250,7 +250,7 @@ bool hasEdge(V* vertex1, V* vertex2)
 void printArray(G* graph) {
 	int n = getNumVertices(graph);
 
-	printf("Printing %d vertices in Array: \n", n);
+	printf("Printing vertices in Array not NULL out of %d: \n", n);
 
 	V* vertex = graph->source;
 
