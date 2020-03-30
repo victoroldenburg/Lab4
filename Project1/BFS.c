@@ -8,100 +8,89 @@
 void BFS_shortestpath(G* graph, V* source, V* des) {
 	if (graph != NULL) {
 		if (source != NULL) {
+			
 			//Init BFS
 			Q* queue = createQueue();
 			int size = graph->n_vertices;
-			//N* v = source->head;
 			V* s = source;
 			V* u = graph->source;
-
-			char WHITE = 0;
-			char GRAY = 1;
-			char BLACK = 2;
+			int destination = des->index;
+			int start_source = source->index;
 
 			if (u != NULL) {
-				////for each vertex u in G.V -- {s}
-				//for (int i = 0; i < size; i++) {
-
-				//	u[i].color = WHITE;
-				//	u[i].distance = INT_MAX - 1;
-				//	u[i].parent = NULL;
-				//}
-				//s->color = GRAY;
-				//s->distance = 0;
-				//s->parent = NULL;
-
+				
+				//Standard BFS:
 				graph->source->visited = 1; //Mark source node as visited
-				enqueue(queue, s->index);
-
-				int* arrPath = calloc(size, sizeof(int));
-				int* arrDist = calloc(size, sizeof(int));
-
-				for (int i = 1; i < size; i++)
-				{
-					arrPath[0] = 0;
-					arrDist[i] = INT_MAX;
-					arrPath[i] = INT_MAX;
-				}
+				enqueue(queue, s->index); 
 
 				while (!isEmptyBFS(queue)) {
-
 					printQueue(queue);
 					int currentVertex = dequeue(queue);
-					printf("Visited %d\n", currentVertex);
-					
 
-					//printf("CurrentVertex %d ", currentVertex);
 					N* temp = graph->source[currentVertex].head;
-
 					
 					while (temp) {
-						//printf("\nCounter%d \n", counter++);
 						int adjVertex = temp->data;
-
 						
 						if (graph->source[adjVertex].visited == 0) {
-							
 							graph->source[adjVertex].visited = 1;
-							graph->source[adjVertex].path = currentVertex;
-
-							printf("test value: ");
-							
+							graph->source[adjVertex].path = currentVertex; //Saving the parent node in all adjNodes when encountered the first time
+														
 							enqueue(queue, adjVertex);
 						}
 					
-						if (temp->data == des->index)
+						if (temp->data == des->index) //Stop when reaching destination node
 						{
-							printf("Congrats! You have reach your destination.");
-							printf("\n");
-							printf("A path, not the shortest!!!! ");
+							printf("\nCongrats! You have reach your destination.\n");
 
+							//Printing shortest path, starting from destination node and traversal the saved path
+							int* arrPath = calloc(size, sizeof(int));
 
-							printf("\n");
-
-							for (int i = 0; i < 100; i++)
+							for (int i = 1; i < size; i++)
 							{
-								int path = graph->source[i].path;
-								printf("Index %d: %d  ",i, path);
+								arrPath[0] = -1;
+								arrPath[i] = INT_MAX;
+							}
+
+							int step = graph->source[destination].index;
+							
+							arrPath[0] = step;
+
+							int i = 1;
+							int numSteps = 0;
+
+							while (graph->source[step].path != start_source)
+							{
+								    arrPath[i] = graph->source[step].path;
+									i++;
+									step = graph->source[step].path;
+									numSteps++;
+							}
+
+							printf("From vertex %d, the shortest path is: ", start_source);
+
+							for (int i = numSteps; i >= 0 ; i--)
+							{
+							printf("%d ", arrPath[i]);
 							}
 																					
 							return;
 							
-
 						}
-					temp = temp->next;
+					 temp = temp->next;
 					
 					}
 				}
 			}
 		}
 	}
-	//STOP
 }
 
 void BFS(G* graph, V* source) {
+	
 	if (graph != NULL) {
 		if (source != NULL) {
+
 			//Init BFS
 			Q* queue = createQueue();
 			int size = graph->n_vertices;
@@ -217,9 +206,9 @@ void printQueue(Q* queue) {
 		printf("Queue is empty");
 	}
 	else {
-		printf("\nQueue contains \n");
+		//printf("\nQueue contains \n");
 		for (i = queue->head; i < queue->tail + 1; i++) {
-			printf("%d ", queue->length[i]);
+			//printf("%d ", queue->length[i]);
 		}
 	}
 }
