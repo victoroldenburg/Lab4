@@ -15,31 +15,22 @@ void runTestGraph() {
 	//start of test
 	G* graph = createGraph(n); //create graph w/o any edges
 
-
 	int nrOfVertices = getNumVertices(graph); //Check how many Vertices there is in the array 
 
 	//##########Create edges##########
 	//Input numbers, which vertex to add edges to
 	int index1 = 0;
-
 	int index2 = 4;
-
 	int index3 = 45;
-
 	int index4 = 54;
-
 	int index5 = 23;
 
 	V* vertex = graph->source;
 
 	V* vertex1 = &vertex[index1];
-
 	V* vertex2 = &vertex[index2];
-
 	V* vertex3 = &vertex[index3];
-
 	V* vertex4 = &vertex[index4];
-
 	V* vertex5 = &vertex[index5];
 
 	//#########################Insert edge to vertex with following index###################################
@@ -60,7 +51,7 @@ void runTestGraph() {
 
 	addDirectedEdge(&vertex[4], &vertex[23]);
 	addDirectedEdge(&vertex[4], &vertex[24]);
-	addDirectedEdge(&vertex[4], &vertex[25]);
+	addDirectedEdge(&vertex[4], &vertex[45]);
 	addDirectedEdge(&vertex[4], &vertex[0]);
 	addDirectedEdge(&vertex[4], &vertex[27]);
 	addDirectedEdge(&vertex[4], &vertex[28]);
@@ -85,13 +76,16 @@ void runTestGraph() {
 	//#####################HAS EDGE??############################
 	printf("Checking that specified vertex has edges.....\n");
 	bool hasEdgetest1 = hasEdge(vertex3, vertex2);
-	bool hasEdgetest2 = hasEdge(vertex2, vertex3);	
+	printf("V3 and V2: %d\n", hasEdgetest1);
+	bool hasEdgetest2 = hasEdge(vertex2, vertex3);
+	printf("V2 and V3: %d\n", hasEdgetest2);
 	bool hasEdgetest3 = hasEdge(vertex5, vertex4);	
+	printf("V5 and V4: %d\n", hasEdgetest3);
 
 	//#####################GET NUMBER OF EDGES###################
 	int numberOfEdges = getNumEdges(graph);
 	printf("\n\n"); //New lines
-	printf("Total number of edges: %d: ", numberOfEdges);
+	printf("Total number of edges: %d", numberOfEdges);
 
 	//#####################NEIGHBORS#############################
 	//Out Nighbors
@@ -116,14 +110,17 @@ void runTestGraph() {
 	printf("\n\n"); //New lines
 
 	//printf("Prints all index, adresses and edges in the struct array\n");
-	//printArray(graph);
+	printArray(graph);
 
-	//#####################BFS#############################
+	//#####################BFS and load graph#############################
+	printf("Loadning graph from file and running BFS on it.\n");
 	char filename[] = { "graph_data/graph0to99.txt" };
 
 	G* graph_ex2 = LoadGraph(filename);
-	printArray(graph_ex2);
+	//printArray(graph_ex2);
+
 	nrOfVertices = getNumVertices(graph_ex2);
+	printf("Number of vertices: %d\n", nrOfVertices);
 
 	V* vertex_bfs = graph_ex2->source;
 
@@ -199,6 +196,8 @@ void runTestGraph() {
 	addDirectedEdge(&vertex[25], &vertex[1]);
 	addDirectedEdge(&vertex[25], &vertex[15]);
 	addDirectedEdge(&vertex[25], &vertex[36]);
+
+	printArray(graph_ex3);
 
 	//#####################Free Memory############################
 	freeMemory(graph);
