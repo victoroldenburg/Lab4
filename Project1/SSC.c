@@ -29,7 +29,7 @@ void runEx3SCC() {
 	V* vertex6 = &vertex[index6];
 
 	//Create new edges
-	addEdges2(vertex);
+	addEdges1(vertex);
 
 	printArray(graph_ex3);
 
@@ -73,6 +73,7 @@ void addEdges1(V* vertex) {
 	addDirectedEdge(&vertex[76], &vertex[35]); //3
 	addDirectedEdge(&vertex[35], &vertex[62]); //4
 	addDirectedEdge(&vertex[62], &vertex[76]); //5
+	addDirectedEdge(&vertex[12], &vertex[12]);
 }
 
 void addEdges2(V* vertex) {
