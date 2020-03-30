@@ -29,11 +29,11 @@ void runEx3SCC() {
 	V* vertex6 = &vertex[index6];
 
 	//Create new edges
-	addEdges1(vertex);
+	addEdges2(vertex);
 
 	printArray(graph_ex3);
 
-	forloop(graph_ex3, vertex, n);
+	BFS(graph_ex3, vertex);
 
 	//#####################Free Memory############################
 	freeMemory(graph_ex3);

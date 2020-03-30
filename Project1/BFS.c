@@ -88,6 +88,52 @@ void BFS_shortestpath(G* graph, V* source, V* des) {
 
 void BFS(G* graph, V* source) {
 	
+	int size = graph->n_vertices;
+	
+	V* u = graph->source;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (graph->source[i].head != NULL)
+		{
+			V* s = &graph->source[i];
+
+			if (graph != NULL) {
+				if (source != NULL) {
+
+					//Init BFS
+					Q* queue = createQueue();
+					
+
+					if (u != NULL) {
+						s->visited = 1; //Mark source node as visited
+						enqueue(queue, s->index);
+
+						while (!isEmptyBFS(queue)) {
+							int currentVertex = dequeue(queue);
+							N* temp = graph->source[currentVertex].head;
+
+							while (temp) {
+								int adjVertex = temp->data;
+
+								if (graph->source[adjVertex].visited == 0) {
+									graph->source[adjVertex].visited = 1;
+
+									printf("\nFor current vertex %d: SCC gives: %d \n ", s->index, graph->source[adjVertex].index);
+									enqueue(queue, adjVertex);
+								}
+								temp = temp->next;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void BFS_orginal(G* graph, V* source) {
+
 	if (graph != NULL) {
 		if (source != NULL) {
 
@@ -120,6 +166,7 @@ void BFS(G* graph, V* source) {
 		}
 	}
 }
+
 
 void resetBFS(G* graph, V* source) {
 	if (graph != NULL) {
